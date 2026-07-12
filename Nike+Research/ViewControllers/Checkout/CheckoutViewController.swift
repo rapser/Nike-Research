@@ -31,6 +31,10 @@ final class CheckoutViewController: UITableViewController {
                         IndexPath(row: Row.placeOrder.rawValue, section: 0)]
             self.tableView.reloadRows(at: rows, with: .none)
         }
+        viewModel.onCheckoutFailed = { [weak self] error in
+            self?.setPlacingOrder(false)
+            self?.presentAlert(title: String(localized: "Couldn't Place Order"), message: error.localizedDescription)
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,7 +45,7 @@ final class CheckoutViewController: UITableViewController {
         switch Row(rawValue: indexPath.row)! {
         case .orderTitle:
             let cell = tableView.dequeueReusableCell(withIdentifier: BillingTitleCell.reuseID, for: indexPath) as! BillingTitleCell
-            cell.configure(title: "ORDER SUMMARY")
+            cell.configure(title: String(localized: "ORDER SUMMARY"))
             return cell
 
         case .summary:
@@ -56,7 +60,7 @@ final class CheckoutViewController: UITableViewController {
 
         case .paymentTitle:
             let cell = tableView.dequeueReusableCell(withIdentifier: BillingTitleCell.reuseID, for: indexPath) as! BillingTitleCell
-            cell.configure(title: "PAYMENT METHOD")
+            cell.configure(title: String(localized: "PAYMENT METHOD"))
             return cell
 
         case .paymentCard:
@@ -66,7 +70,7 @@ final class CheckoutViewController: UITableViewController {
 
         case .placeOrder:
             let cell = tableView.dequeueReusableCell(withIdentifier: ActionButtonCell.reuseID, for: indexPath) as! ActionButtonCell
-            cell.configure(title: "PLACE ORDER", enabled: viewModel.isFormValid)
+            cell.configure(title: String(localized: "PLACE ORDER"), enabled: viewModel.isFormValid)
             cell.onActionTapped = { [weak self] in self?.handlePlaceOrder() }
             return cell
         }
@@ -81,13 +85,15 @@ final class CheckoutViewController: UITableViewController {
 
     private func handlePlaceOrder() {
         guard viewModel.isFormValid else {
-            let alert = UIAlertController(title: "No Payment Method",
-                                          message: "Please select a payment method before placing your order.",
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
+            presentAlert(title: String(localized: "No Payment Method"), message: String(localized: "Please select a payment method before placing your order."))
             return
         }
+        setPlacingOrder(true)
         viewModel.placeOrder()
+    }
+
+    private func setPlacingOrder(_ placing: Bool) {
+        guard let cell = tableView.cellForRow(at: IndexPath(row: Row.placeOrder.rawValue, section: 0)) as? ActionButtonCell else { return }
+        cell.configure(title: placing ? String(localized: "PLACING ORDER...") : String(localized: "PLACE ORDER"), enabled: !placing && viewModel.isFormValid)
     }
 }

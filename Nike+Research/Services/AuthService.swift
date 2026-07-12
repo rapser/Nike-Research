@@ -17,7 +17,7 @@ final class AuthService {
     var isAuthenticated: Bool { currentUser != nil }
     var onAuthStateChanged: (() -> Void)?
 
-    init(repository: AuthRepository = DummyAuthRepository()) {
+    init(repository: AuthRepository = RemoteAuthRepository()) {
         self.repository = repository
         self.currentUser = Self.loadPersistedUser(key: userDefaultsKey)
     }
@@ -37,6 +37,7 @@ final class AuthService {
     func logout() {
         currentUser = nil
         UserDefaults.standard.removeObject(forKey: userDefaultsKey)
+        repository.logout()
     }
 
     private func handle(result: Result<User, AuthError>, completion: @escaping (Result<User, AuthError>) -> Void) {

@@ -13,6 +13,8 @@ final class CartViewController: UITableViewController {
     }
     required init?(coder: NSCoder) { fatalError() }
 
+    private lazy var clearButton = UIBarButtonItem(title: String(localized: "Clear"), style: .plain, target: self, action: #selector(clearTapped))
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = viewModel.title
@@ -25,15 +27,41 @@ final class CartViewController: UITableViewController {
         tableView.register(CartSummaryCell.self, forCellReuseIdentifier: CartSummaryCell.reuseID)
         tableView.register(CartTotalCell.self, forCellReuseIdentifier: CartTotalCell.reuseID)
         tableView.register(ActionButtonCell.self, forCellReuseIdentifier: ActionButtonCell.reuseID)
+        navigationItem.rightBarButtonItem = clearButton
 
         viewModel.onCartChanged = { [weak self] in
+            self?.updateClearButton()
             self?.tableView.reloadData()
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        viewModel.loadCart { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.presentAlert(title: String(localized: "Couldn't Load Cart"), message: error.localizedDescription)
+            }
+            self.updateClearButton()
+            self.tableView.reloadData()
+        }
+    }
+
+    private func updateClearButton() {
+        clearButton.isEnabled = !viewModel.isEmpty
+    }
+
+    @objc private func clearTapped() {
+        let alert = UIAlertController(title: String(localized: "Clear Cart"), message: String(localized: "Remove all items from your cart?"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: String(localized: "Cancel"), style: .cancel))
+        alert.addAction(UIAlertAction(title: String(localized: "Clear"), style: .destructive) { [weak self] _ in
+            self?.viewModel.clearCart { error in
+                if let error {
+                    self?.presentAlert(title: String(localized: "Couldn't Clear Cart"), message: error.localizedDescription)
+                }
+            }
+        })
+        present(alert, animated: true)
     }
 
     // MARK: - DataSource
@@ -66,8 +94,26 @@ final class CartViewController: UITableViewController {
             cell.configure(image: item.shoe.images.first, name: item.shoe.name,
                            price: item.shoe.formattedPrice, quantity: item.quantity)
             let idx = indexPath.row
+            cell.onDecrementTapped = { [weak self] in
+                self?.viewModel.decrementQuantity(at: idx) { error in
+                    if let error {
+                        self?.presentAlert(title: String(localized: "Couldn't Update Quantity"), message: error.localizedDescription)
+                    }
+                }
+            }
+            cell.onIncrementTapped = { [weak self] in
+                self?.viewModel.incrementQuantity(at: idx) { error in
+                    if let error {
+                        self?.presentAlert(title: String(localized: "Couldn't Update Quantity"), message: error.localizedDescription)
+                    }
+                }
+            }
             cell.onRemoveTapped = { [weak self] in
-                self?.viewModel.removeItem(at: idx)
+                self?.viewModel.removeItem(at: idx) { error in
+                    if let error {
+                        self?.presentAlert(title: String(localized: "Couldn't Remove Item"), message: error.localizedDescription)
+                    }
+                }
             }
             return cell
 
@@ -86,7 +132,7 @@ final class CartViewController: UITableViewController {
 
         case .checkout:
             let cell = tableView.dequeueReusableCell(withIdentifier: ActionButtonCell.reuseID, for: indexPath) as! ActionButtonCell
-            cell.configure(title: "CHECKOUT")
+            cell.configure(title: String(localized: "CHECKOUT"))
             cell.onActionTapped = { [weak self] in self?.viewModel.checkoutTapped() }
             return cell
         }

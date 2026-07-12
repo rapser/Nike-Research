@@ -5,7 +5,7 @@ final class ProductDetailsCell: UITableViewCell {
 
     private let titleLabel: UILabel = {
         let l = UILabel()
-        l.text = "PRODUCT DETAILS"
+        l.text = String(localized: "PRODUCT DETAILS")
         l.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 15) ?? .boldSystemFont(ofSize: 15)
         return l
     }()

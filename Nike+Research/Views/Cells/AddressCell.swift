@@ -28,7 +28,7 @@ final class AddressCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
+        accessoryType = .disclosureIndicator
         contentView.addSubview(iconView)
         contentView.addSubview(streetLabel)
         contentView.addSubview(detailLabel)

@@ -134,13 +134,13 @@ final class ProfileViewController: UIViewController {
         iconView.translatesAutoresizingMaskIntoConstraints = false
 
         let titleLabel = UILabel()
-        titleLabel.text = "Join Us"
+        titleLabel.text = String(localized: "Join Us")
         titleLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 22) ?? .boldSystemFont(ofSize: 22)
         titleLabel.textAlignment = .center
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         let subtitleLabel = UILabel()
-        subtitleLabel.text = "Log in to see your orders, cards and addresses."
+        subtitleLabel.text = String(localized: "Log in to see your orders, cards and addresses.")
         subtitleLabel.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
         subtitleLabel.textColor = .gray
         subtitleLabel.textAlignment = .center
@@ -173,28 +173,28 @@ extension ProfileViewController: UITableViewDataSource {
         switch rows[indexPath.row] {
         case .myCards:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProfileMenuCell.reuseID, for: indexPath) as! ProfileMenuCell
-            cell.configure(title: "MY CARDS", sfSymbol: "creditcard")
+            cell.configure(title: String(localized: "MY CARDS"), sfSymbol: "creditcard")
             return cell
         case .myOrders:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProfileMenuCell.reuseID, for: indexPath) as! ProfileMenuCell
-            cell.configure(title: "MY ORDERS", sfSymbol: "bag")
+            cell.configure(title: String(localized: "MY ORDERS"), sfSymbol: "bag")
             return cell
         case .myAddresses:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProfileMenuCell.reuseID, for: indexPath) as! ProfileMenuCell
-            cell.configure(title: "MY ADDRESSES", sfSymbol: "location")
+            cell.configure(title: String(localized: "MY ADDRESSES"), sfSymbol: "location")
             return cell
         case .logOut:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProfileMenuCell.reuseID, for: indexPath) as! ProfileMenuCell
-            cell.configure(title: "LOG OUT", sfSymbol: "rectangle.portrait.and.arrow.right")
+            cell.configure(title: String(localized: "LOG OUT"), sfSymbol: "rectangle.portrait.and.arrow.right")
             return cell
         case .login:
             let cell = tableView.dequeueReusableCell(withIdentifier: ActionButtonCell.reuseID, for: indexPath) as! ActionButtonCell
-            cell.configure(title: "LOG IN", style: .primary)
+            cell.configure(title: String(localized: "LOG IN"), style: .primary)
             cell.onActionTapped = { [weak self] in self?.onLoginTapped?() }
             return cell
         case .signUp:
             let cell = tableView.dequeueReusableCell(withIdentifier: ActionButtonCell.reuseID, for: indexPath) as! ActionButtonCell
-            cell.configure(title: "SIGN UP", style: .outline)
+            cell.configure(title: String(localized: "SIGN UP"), style: .outline)
             cell.onActionTapped = { [weak self] in self?.onSignUpTapped?() }
             return cell
         }

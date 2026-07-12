@@ -10,24 +10,30 @@
 		02E6B2C479DC45EC83DBEF78 /* ShoeDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F06CEA56507494986BA99E2 /* ShoeDetailInfoCell.swift */; };
 		0495EE028920412A977FDBFD /* MyAddressesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E3B025227941F484DCEF5A /* MyAddressesViewModel.swift */; };
 		0EBF3244712747CAA36E0258 /* FavoriteShoeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D484FB21BB5E4F4BA729289F /* FavoriteShoeCell.swift */; };
+		117D8FD0240D10D2B10ED531 /* APILogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9B9298E41D1C1CC3BD46C /* APILogger.swift */; };
 		12FCE26067994ACAAD6725A4 /* SuggestionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E725320BE46040D7AACE1C27 /* SuggestionCollectionCell.swift */; };
 		13852876450B411C9269DDEC /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D999FDDEF41A59830C950 /* FavoritesViewModel.swift */; };
 		15226F9A88494BC498A1E8D1 /* ProfileMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57A6C00BE104A2A873EE5E5 /* ProfileMenuCell.swift */; };
 		1546B57D5BCC41CB9D08516D /* PaymentProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725AEDCA6964E4E8C45939B /* PaymentProcessingViewController.swift */; };
 		1B8EC9C550444EB5A8981C7C /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE76976FBBC941EFBC412FED /* MyOrdersViewController.swift */; };
+		1C88223965150114D7F87584 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121C471C6DD2EA6D5B93E152 /* AppConfig.swift */; };
+		1F61FBC5E9ED4BECA9131B65 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240AD3248B09FE7BD0E67E4 /* APIEndpoint.swift */; };
 		266CD441FAD7453B83366512 /* NikePlusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BF005B11A34613980B57AA /* NikePlusViewModel.swift */; };
 		27BBAFF6AF5946A1AF728B52 /* CartTotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECD825D20604A31ADAA2E8D /* CartTotalCell.swift */; };
+		2F1EDA50DC0EDD7B5521BE73 /* AuthTokenInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCC41D53CCBF35C22BB1B3 /* AuthTokenInterceptor.swift */; };
 		30802983FF7341B09B904763 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3CE70129744B4D8E859D43 /* ProfileViewModel.swift */; };
 		33DB4B2EB3A1401698D8A045 /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA04D0A2B049D688D00FFD /* AddressService.swift */; };
 		38703122F1154880A20FE446 /* ShoeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB712D09D8D4BB18B605BAE /* ShoeDetailViewModel.swift */; };
+		38CF7ACC747E2C45617F8BEB /* String+Luhn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC365AE1B9C55B03014491 /* String+Luhn.swift */; };
+		39A1DCF4AD78A832BC27F928 /* ProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D0BBE6945019210E5095A /* ProductDTO.swift */; };
 		3B6BF3E2B11A4398B24C0B15 /* MyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06119129A9D44F3BAFE3C41A /* MyCardsViewController.swift */; };
 		3F800DE4772E4A35B94DF9E1 /* ProductDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32D7C7D80034C1B99E76B0F /* ProductDetailsCell.swift */; };
 		433EAA67DE0F4D1C8C8B6D1F /* ActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D6517D3DD42A88227B34E /* ActionButtonCell.swift */; };
 		439C14ED85284F78B70E3BAC /* OrderHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CCA9289C20430AAF73C913 /* OrderHistoryCell.swift */; };
 		46C871B0300296FA00005621 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 46C871AF300296FA00005621 /* Alamofire */; };
-		46C871B2300296FA00005621 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 46C871B1300296FA00005621 /* AlamofireDynamic */; };
 		4916ED97BA10478B82C4E4D0 /* SelectCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700012F30224CB483B6BEDB /* SelectCardViewModel.swift */; };
 		4D09D0890B2C418DAFC9B09E /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AD82A29B24BB792C84401 /* FavoritesService.swift */; };
+		4DE39ACB2A03F74DF1290FFB /* OrderDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4B306243507122D91CDE62 /* OrderDTOs.swift */; };
 		577D1B77F8A84DCB82834B2A /* SuggestionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6F6601C3C74C6C82AA31F8 /* SuggestionTableCell.swift */; };
 		59F25A27BF124FF7BF9E1774 /* AddCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C643BAA7749739C726606 /* AddCardViewModel.swift */; };
 		5C5F9EC7ED19BF63EC43C2AB /* DummyAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508C9610F48291DFC74BEF0 /* DummyAuthRepository.swift */; };
@@ -36,16 +42,21 @@
 		60CB8E50910443F894CF780A /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA94EBEA6642B2AF9D0A6B /* OrderConfirmationViewController.swift */; };
 		6345AF89B184463EB65D6071 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CA0985504DD39DDDB43B /* AppDelegate.swift */; };
 		6676424C33C749BBB2D40331 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CA1CFB57084E73852D73A6 /* Coordinator.swift */; };
+		6B07BC67B5332B51DA5C953D /* RemoteAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2174ED705F1FF70063E0553 /* RemoteAuthRepository.swift */; };
+		6C32850CA4E48C8CA11FB055 /* KeychainTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8928AEE42916EA3C27D45BBB /* KeychainTokenStore.swift */; };
 		6C528FA6271A4D23ABBF59D4 /* AddAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5D0FC5E7446D99C3C6255 /* AddAddressViewModel.swift */; };
 		7302DABF045448D58BBFDE84 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1AB30EA2C4CCFB5454FFF /* Order.swift */; };
 		7393489CC2A845A7B5444F75 /* OrdersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120BF2ED2BB5442582B56437 /* OrdersService.swift */; };
 		73E80C08DC984BC8BAD42BFC /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B8DE00C77489CA7B94EB6 /* CartViewModel.swift */; };
 		745FE61ECDE2402384E98D3B /* OrderDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2129B198F0447FABA0EA25 /* OrderDetailViewModel.swift */; };
+		7AF49F91DDFDDF87B9307F15 /* FavoriteDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956996DE8A691BC425054F74 /* FavoriteDTOs.swift */; };
 		7EA2A8CAE2CE4DF5194BC21B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0578FE34BE28E8D57F80053A /* AuthService.swift */; };
+		7F4FD3DAED7537DE03B565CB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480D3C234CF64F71AA5AD0DF /* APIClient.swift */; };
 		7FD9A5CA7451473AAD701AFF /* BuyButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5996A262EA4A9193B0C33E /* BuyButtonCell.swift */; };
 		808EF914F5426FC4DDFBDD4E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E5CFB92B112600B877E735 /* User.swift */; };
 		8511319D918A957494625D95 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B1D9F45FEB992DC5C25E21 /* AuthError.swift */; };
 		859E221A13604933ACF545AB /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17574869BB564443ABF2D2E4 /* FavoritesCoordinator.swift */; };
+		87F1ECF8827BE47A29FD84CE /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EB3E816C5834DD0B4C608A /* UIViewController+Alert.swift */; };
 		8A454F051AECD1A414C3D4D5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95620212D38445B04891BB30 /* LoginViewModel.swift */; };
 		8C117A9074BE42BE996D2CB5 /* ImageCarouselHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD144FD63B043D2AF4FE8AC /* ImageCarouselHeaderView.swift */; };
 		8DEC3D059E6649CCB77F1DCE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070C8341EC2F40A7BFC7EA4F /* AddCardViewController.swift */; };
@@ -61,11 +72,19 @@
 		ABA2645DF4544CFA837B5DE3 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5495D1024AA42D19309B961 /* OrderDetailViewController.swift */; };
 		AD3186D22BFC4944BB5DD30E /* ShoeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B347099F9B417FA30243C9 /* ShoeDetailViewController.swift */; };
 		AE3C82CCAA0344F28734081E /* NikePlusHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925F913372E8456A9021E84F /* NikePlusHeaderCell.swift */; };
+		AF5103ED8E43A43EBEC48140 /* ProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9158354C1A39395CAD54BE71 /* ProductsService.swift */; };
+		B2B67EC3C98F268CEE096935 /* NikePlusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB684332D8E6DE7ECDBD17 /* NikePlusService.swift */; };
+		B2D2D0926E77D36DF26CE32A /* AddressDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB27CE476C0D9ACDB3635C63 /* AddressDTOs.swift */; };
 		B5DEC31280DC4501BF2E1D04 /* NikePlusProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBE41E3E4AB4F6BB37FE463 /* NikePlusProfile.swift */; };
+		B71078EE9CEF8811B3235E5C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AEFBA5EBDB8995CC677B82 /* APIError.swift */; };
+		B894CF05F25DC7BB625D420E /* ExpiryDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975AEDC5A77EA3FEEAC22A1D /* ExpiryDateCell.swift */; };
+		B8F2634584CF1F3F0A4C5FD9 /* Date+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659686D6FBA97891B74978FE /* Date+ISO8601.swift */; };
 		BC4DA5BA6BA548A880950889 /* MyCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDB8215386422A9A876FB7 /* MyCardsViewModel.swift */; };
 		BC6CA5D400AC42D98FA3C447 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92D93F7A28004183B45149F5 /* Assets.xcassets */; };
 		BD03A8B614A54E37B7B2E5ED /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6479660BF45229A9191C0 /* AppCoordinator.swift */; };
+		BD0EB3499CED2AB0703C7D8B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F7F11B2E64F5DDB41203059B /* Localizable.xcstrings */; };
 		BE508514559649208CC90FC8 /* PaymentCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A54EC7B1CBB4FE18DDE1B21 /* PaymentCardCell.swift */; };
+		BE8101F13F2A3CF6D89D8E11 /* CartDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7742548D734EF0AF9F8B768 /* CartDTOs.swift */; };
 		BFF605E5A70D46DAAFCFC58F /* CartEmptyStateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789983B59DC447B38D781D72 /* CartEmptyStateCell.swift */; };
 		C367BEDFEC85425FA86652BD /* BillingFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB52728F4E79464F9A5FDCA9 /* BillingFormCell.swift */; };
 		C5CE06F6B1D24812A78C82BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C77B9D931CD4FEEACB274E3 /* LaunchScreen.storyboard */; };
@@ -79,15 +98,19 @@
 		D84605E3C76A4DBC8ECBC2E5 /* PaymentMethodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F37E6F4F4EB43D7A396AD40 /* PaymentMethodsService.swift */; };
 		DA377D49270646E9A4B7AE6D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177D409F5DF84AF08C2CF728 /* FeedViewController.swift */; };
 		DACF270A70A941BEB41DB335 /* FeedShoeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C52E49103741CEB9A942A7 /* FeedShoeCell.swift */; };
+		DC201898F8105AB8E9C5CDB6 /* CardNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AABEE76A58FD03E6E8FA31 /* CardNumberCell.swift */; };
+		E0EFDAFBEA512C67D078A5B7 /* AuthDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EDD3B0FB8C3360F037A57 /* AuthDTOs.swift */; };
 		E35E9BF540A54C0DA0BC0F61 /* NikePlusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178331BBC39440419C83AAB3 /* NikePlusViewController.swift */; };
 		E4C62174877C4A199073B9CB /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7860C38932B4A72AF9F11D5 /* FeedCoordinator.swift */; };
 		E61877F3BC8D411B8116C408 /* ShoeImagesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C0D62871446D8994C3E3C /* ShoeImagesPageViewController.swift */; };
 		E8EA3E961AE8457390ED3230 /* CartItemCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF39BAFCC5D44A6B3D4E928 /* CartItemCountCell.swift */; };
 		E94FF1B276CD4B839ADFEE19 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE9BF52608243A09E769B9B /* CheckoutViewController.swift */; };
+		EA04DB776120B83D0954DA36 /* PaymentMethodDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C68B9C8F7A6DBEC51CE158 /* PaymentMethodDTOs.swift */; };
 		EACC0E15DF5B4A71B754F4C7 /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8AC4F0248B4352AA110837 /* AddAddressViewController.swift */; };
 		EB0ADA8CF6964A73944A46CF /* NikePlusCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC65529D8F354C70ABBE8381 /* NikePlusCoordinator.swift */; };
 		EECB5E5480AB4B6DAA4B7891 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFC227B9104403D8A59B5F8 /* FeedViewModel.swift */; };
 		F1F42589EAFC47AF9F2A1381 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20766F56944E26B45E465C /* AddressCell.swift */; };
+		F1FFF3440D7BDDAEC3F43660 /* NikePlusActivityDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF6E49311B9C740B926E80 /* NikePlusActivityDTO.swift */; };
 		F6A88CCDFBF26D56182FB068 /* AuthLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBC146633A638812FBE55E0 /* AuthLinkCell.swift */; };
 		F6E7F2A2B81C4530BB79DE43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50148560276F65EF0C82E174 /* LoginViewController.swift */; };
 		F6EA2516783B40448AB7B513 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D962641944513907461D5 /* CartItemCell.swift */; };
@@ -98,15 +121,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04C68B9C8F7A6DBEC51CE158 /* PaymentMethodDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethodDTOs.swift; sourceTree = "<group>"; };
 		053D2F046F9C48C3BC889452 /* MyOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewModel.swift; sourceTree = "<group>"; };
 		0578FE34BE28E8D57F80053A /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		06119129A9D44F3BAFE3C41A /* MyCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardsViewController.swift; sourceTree = "<group>"; };
+		065EDD3B0FB8C3360F037A57 /* AuthDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthDTOs.swift; sourceTree = "<group>"; };
 		070C8341EC2F40A7BFC7EA4F /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		0AEA04D0A2B049D688D00FFD /* AddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressService.swift; sourceTree = "<group>"; };
 		0B20766F56944E26B45E465C /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		0EBE41E3E4AB4F6BB37FE463 /* NikePlusProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NikePlusProfile.swift; sourceTree = "<group>"; };
 		0F9C643BAA7749739C726606 /* AddCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModel.swift; sourceTree = "<group>"; };
 		120BF2ED2BB5442582B56437 /* OrdersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersService.swift; sourceTree = "<group>"; };
+		121C471C6DD2EA6D5B93E152 /* AppConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		17574869BB564443ABF2D2E4 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		177D409F5DF84AF08C2CF728 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		178331BBC39440419C83AAB3 /* NikePlusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NikePlusViewController.swift; sourceTree = "<group>"; };
@@ -114,15 +140,20 @@
 		1F8AD82A29B24BB792C84401 /* FavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesService.swift; sourceTree = "<group>"; };
 		1FBC146633A638812FBE55E0 /* AuthLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLinkCell.swift; sourceTree = "<group>"; };
 		22A6479660BF45229A9191C0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		25AF6E49311B9C740B926E80 /* NikePlusActivityDTO.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NikePlusActivityDTO.swift; sourceTree = "<group>"; };
 		2A51CA0985504DD39DDDB43B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D3CE70129744B4D8E859D43 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		2F06CEA56507494986BA99E2 /* ShoeDetailInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeDetailInfoCell.swift; sourceTree = "<group>"; };
 		2FCA94EBEA6642B2AF9D0A6B /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		30F45697C71358A7F46C3DEA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		344CC9C7F92B39C90332A612 /* Production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		357C06742E70494C88752AA6 /* ShoeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeImageViewController.swift; sourceTree = "<group>"; };
+		37EB3E816C5834DD0B4C608A /* UIViewController+Alert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		38CCA9289C20430AAF73C913 /* OrderHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryCell.swift; sourceTree = "<group>"; };
 		3AEB7E2956E04081B6AA4501 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		3B9977BC5DDE41C895EAEC19 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		41AEFBA5EBDB8995CC677B82 /* APIError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		480D3C234CF64F71AA5AD0DF /* APIClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		4F37E6F4F4EB43D7A396AD40 /* PaymentMethodsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsService.swift; sourceTree = "<group>"; };
 		4FF39BAFCC5D44A6B3D4E928 /* CartItemCountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemCountCell.swift; sourceTree = "<group>"; };
 		50148560276F65EF0C82E174 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -133,10 +164,12 @@
 		5D1C0D62871446D8994C3E3C /* ShoeImagesPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeImagesPageViewController.swift; sourceTree = "<group>"; };
 		5DFC227B9104403D8A59B5F8 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		63B347099F9B417FA30243C9 /* ShoeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeDetailViewController.swift; sourceTree = "<group>"; };
+		659686D6FBA97891B74978FE /* Date+ISO8601.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Date+ISO8601.swift"; sourceTree = "<group>"; };
 		6A1D999FDDEF41A59830C950 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		6A6F6601C3C74C6C82AA31F8 /* SuggestionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionTableCell.swift; sourceTree = "<group>"; };
 		6CF5D0FC5E7446D99C3C6255 /* AddAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewModel.swift; sourceTree = "<group>"; };
 		6DD144FD63B043D2AF4FE8AC /* ImageCarouselHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarouselHeaderView.swift; sourceTree = "<group>"; };
+		6EBCC41D53CCBF35C22BB1B3 /* AuthTokenInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthTokenInterceptor.swift; sourceTree = "<group>"; };
 		72C567B4844242D78F0996B1 /* SelectCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardViewController.swift; sourceTree = "<group>"; };
 		734CDDCEAE0440648F814870 /* BillingTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingTitleCell.swift; sourceTree = "<group>"; };
 		789983B59DC447B38D781D72 /* CartEmptyStateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartEmptyStateCell.swift; sourceTree = "<group>"; };
@@ -146,11 +179,17 @@
 		7FAA6B6ACDBC4DD7ACE436B4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		802E686C034849A881F09B8D /* OrderItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemCell.swift; sourceTree = "<group>"; };
 		8082A60474304152A1F2F6D8 /* PaymentMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
+		8928AEE42916EA3C27D45BBB /* KeychainTokenStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeychainTokenStore.swift; sourceTree = "<group>"; };
+		8BC52B9E8647366B7BDD1122 /* QA.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QA.xcconfig; sourceTree = "<group>"; };
+		8CCB684332D8E6DE7ECDBD17 /* NikePlusService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NikePlusService.swift; sourceTree = "<group>"; };
+		9158354C1A39395CAD54BE71 /* ProductsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProductsService.swift; sourceTree = "<group>"; };
 		925F913372E8456A9021E84F /* NikePlusHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NikePlusHeaderCell.swift; sourceTree = "<group>"; };
 		92D93F7A28004183B45149F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95620212D38445B04891BB30 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		956996DE8A691BC425054F74 /* FavoriteDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavoriteDTOs.swift; sourceTree = "<group>"; };
 		9666E893CF764B9FAB90C016 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9725AEDCA6964E4E8C45939B /* PaymentProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessingViewController.swift; sourceTree = "<group>"; };
+		975AEDC5A77EA3FEEAC22A1D /* ExpiryDateCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExpiryDateCell.swift; sourceTree = "<group>"; };
 		9ECD825D20604A31ADAA2E8D /* CartTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTotalCell.swift; sourceTree = "<group>"; };
 		A2E1AB30EA2C4CCFB5454FFF /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		A5E3B025227941F484DCEF5A /* MyAddressesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressesViewModel.swift; sourceTree = "<group>"; };
@@ -159,10 +198,17 @@
 		AAFE88A768004C4FB445900E /* NikePlusActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NikePlusActivityCell.swift; sourceTree = "<group>"; };
 		AB2129B198F0447FABA0EA25 /* OrderDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewModel.swift; sourceTree = "<group>"; };
 		AB7B8DE00C77489CA7B94EB6 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		AD4B306243507122D91CDE62 /* OrderDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderDTOs.swift; sourceTree = "<group>"; };
 		AE76976FBBC941EFBC412FED /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
 		B0BF005B11A34613980B57AA /* NikePlusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NikePlusViewModel.swift; sourceTree = "<group>"; };
+		B2174ED705F1FF70063E0553 /* RemoteAuthRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RemoteAuthRepository.swift; sourceTree = "<group>"; };
+		B84D0BBE6945019210E5095A /* ProductDTO.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProductDTO.swift; sourceTree = "<group>"; };
+		B8AABEE76A58FD03E6E8FA31 /* CardNumberCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CardNumberCell.swift; sourceTree = "<group>"; };
+		BB27CE476C0D9ACDB3635C63 /* AddressDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddressDTOs.swift; sourceTree = "<group>"; };
 		BD14DC2CCBDDEC739E67026F /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		BFD9B9298E41D1C1CC3BD46C /* APILogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APILogger.swift; sourceTree = "<group>"; };
 		C1B1D9F45FEB992DC5C25E21 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		C240AD3248B09FE7BD0E67E4 /* APIEndpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		C700012F30224CB483B6BEDB /* SelectCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardViewModel.swift; sourceTree = "<group>"; };
 		C8786AB0CAE34C5F8577B2CD /* MyAddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressesViewController.swift; sourceTree = "<group>"; };
 		CA8D6517D3DD42A88227B34E /* ActionButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonCell.swift; sourceTree = "<group>"; };
@@ -174,6 +220,7 @@
 		DA8AC4F0248B4352AA110837 /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
 		DFD0CC6F15B6430A9FAE60A0 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		E32D7C7D80034C1B99E76B0F /* ProductDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsCell.swift; sourceTree = "<group>"; };
+		E5AC365AE1B9C55B03014491 /* String+Luhn.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Luhn.swift"; sourceTree = "<group>"; };
 		E5C52E49103741CEB9A942A7 /* FeedShoeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedShoeCell.swift; sourceTree = "<group>"; };
 		E66900049BEA4781B2BDD69C /* Shoe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shoe.swift; sourceTree = "<group>"; };
 		E6BCE7A3DA3A4C56B881F05E /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
@@ -186,6 +233,8 @@
 		F508C9610F48291DFC74BEF0 /* DummyAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyAuthRepository.swift; sourceTree = "<group>"; };
 		F5495D1024AA42D19309B961 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		F57A6C00BE104A2A873EE5E5 /* ProfileMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuCell.swift; sourceTree = "<group>"; };
+		F7742548D734EF0AF9F8B768 /* CartDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CartDTOs.swift; sourceTree = "<group>"; };
+		F7F11B2E64F5DDB41203059B /* Localizable.xcstrings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +243,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				46C871B0300296FA00005621 /* Alamofire in Frameworks */,
-				46C871B2300296FA00005621 /* AlamofireDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,16 +289,16 @@
 		1D067EAB2A2946529C7DE27E /* Nike+Research */ = {
 			isa = PBXGroup;
 			children = (
-				2A51CA0985504DD39DDDB43B /* AppDelegate.swift */,
+				46C29CF2300330EF00E2EDCC /* App */,
 				9964033AD704475A89C31A44 /* Coordinators */,
 				A11FB44202EA4D4B86DBF169 /* Models */,
 				57DCF60EE05F4CC28BA37C64 /* Services */,
 				F543BDECCA4D4534AF7E807A /* ViewControllers */,
 				4479A1A44141468596E4BE35 /* ViewModels */,
 				34F1D05EDBAB40B387F0307F /* Views */,
-				92D93F7A28004183B45149F5 /* Assets.xcassets */,
-				8C77B9D931CD4FEEACB274E3 /* LaunchScreen.storyboard */,
-				55D789624B264BED8811E367 /* Info.plist */,
+				46C29CF3300330FD00E2EDCC /* Resources */,
+				53000439D860203DB1543B54 /* Configuration */,
+				EE3CFF632C7D3B5E75C5858B /* Extensions */,
 			);
 			path = "Nike+Research";
 			sourceTree = "<group>";
@@ -304,6 +352,35 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		46C29CF2300330EF00E2EDCC /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2A51CA0985504DD39DDDB43B /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		46C29CF3300330FD00E2EDCC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				92D93F7A28004183B45149F5 /* Assets.xcassets */,
+				8C77B9D931CD4FEEACB274E3 /* LaunchScreen.storyboard */,
+				F7F11B2E64F5DDB41203059B /* Localizable.xcstrings */,
+				55D789624B264BED8811E367 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		53000439D860203DB1543B54 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				121C471C6DD2EA6D5B93E152 /* AppConfig.swift */,
+				8BC52B9E8647366B7BDD1122 /* QA.xcconfig */,
+				344CC9C7F92B39C90332A612 /* Production.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		57DCF60EE05F4CC28BA37C64 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +392,10 @@
 				A6A25953B62362C5C7ECCDEE /* AuthRepository.swift */,
 				F508C9610F48291DFC74BEF0 /* DummyAuthRepository.swift */,
 				0578FE34BE28E8D57F80053A /* AuthService.swift */,
+				BF1246D1AFB276F2D1E343BC /* Networking */,
+				B2174ED705F1FF70063E0553 /* RemoteAuthRepository.swift */,
+				9158354C1A39395CAD54BE71 /* ProductsService.swift */,
+				8CCB684332D8E6DE7ECDBD17 /* NikePlusService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -380,6 +461,20 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		BF1246D1AFB276F2D1E343BC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EB79DC3E66C59E7C7377958E /* DTOs */,
+				C240AD3248B09FE7BD0E67E4 /* APIEndpoint.swift */,
+				41AEFBA5EBDB8995CC677B82 /* APIError.swift */,
+				8928AEE42916EA3C27D45BBB /* KeychainTokenStore.swift */,
+				6EBCC41D53CCBF35C22BB1B3 /* AuthTokenInterceptor.swift */,
+				480D3C234CF64F71AA5AD0DF /* APIClient.swift */,
+				BFD9B9298E41D1C1CC3BD46C /* APILogger.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		D4D17D504AAA43929F06B0D0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +501,8 @@
 				E725320BE46040D7AACE1C27 /* SuggestionCollectionCell.swift */,
 				6A6F6601C3C74C6C82AA31F8 /* SuggestionTableCell.swift */,
 				1FBC146633A638812FBE55E0 /* AuthLinkCell.swift */,
+				B8AABEE76A58FD03E6E8FA31 /* CardNumberCell.swift */,
+				975AEDC5A77EA3FEEAC22A1D /* ExpiryDateCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -429,6 +526,31 @@
 				3AEB7E2956E04081B6AA4501 /* FavoritesViewController.swift */,
 			);
 			path = Favorites;
+			sourceTree = "<group>";
+		};
+		EB79DC3E66C59E7C7377958E /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				065EDD3B0FB8C3360F037A57 /* AuthDTOs.swift */,
+				B84D0BBE6945019210E5095A /* ProductDTO.swift */,
+				F7742548D734EF0AF9F8B768 /* CartDTOs.swift */,
+				04C68B9C8F7A6DBEC51CE158 /* PaymentMethodDTOs.swift */,
+				AD4B306243507122D91CDE62 /* OrderDTOs.swift */,
+				956996DE8A691BC425054F74 /* FavoriteDTOs.swift */,
+				BB27CE476C0D9ACDB3635C63 /* AddressDTOs.swift */,
+				25AF6E49311B9C740B926E80 /* NikePlusActivityDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		EE3CFF632C7D3B5E75C5858B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				37EB3E816C5834DD0B4C608A /* UIViewController+Alert.swift */,
+				659686D6FBA97891B74978FE /* Date+ISO8601.swift */,
+				E5AC365AE1B9C55B03014491 /* String+Luhn.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F543BDECCA4D4534AF7E807A /* ViewControllers */ = {
@@ -488,6 +610,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				es,
 				Base,
 			);
 			mainGroup = 0D84DB5413C24FD99C56EF7C;
@@ -510,6 +633,7 @@
 			files = (
 				BC6CA5D400AC42D98FA3C447 /* Assets.xcassets in Resources */,
 				C5CE06F6B1D24812A78C82BA /* LaunchScreen.storyboard in Resources */,
+				BD0EB3499CED2AB0703C7D8B /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +728,29 @@
 				F6E7F2A2B81C4530BB79DE43 /* LoginViewController.swift in Sources */,
 				D5A4C4E58CC90816A274C179 /* RegisterViewController.swift in Sources */,
 				F6A88CCDFBF26D56182FB068 /* AuthLinkCell.swift in Sources */,
+				1C88223965150114D7F87584 /* AppConfig.swift in Sources */,
+				1F61FBC5E9ED4BECA9131B65 /* APIEndpoint.swift in Sources */,
+				B71078EE9CEF8811B3235E5C /* APIError.swift in Sources */,
+				6C32850CA4E48C8CA11FB055 /* KeychainTokenStore.swift in Sources */,
+				2F1EDA50DC0EDD7B5521BE73 /* AuthTokenInterceptor.swift in Sources */,
+				7F4FD3DAED7537DE03B565CB /* APIClient.swift in Sources */,
+				E0EFDAFBEA512C67D078A5B7 /* AuthDTOs.swift in Sources */,
+				39A1DCF4AD78A832BC27F928 /* ProductDTO.swift in Sources */,
+				BE8101F13F2A3CF6D89D8E11 /* CartDTOs.swift in Sources */,
+				EA04DB776120B83D0954DA36 /* PaymentMethodDTOs.swift in Sources */,
+				4DE39ACB2A03F74DF1290FFB /* OrderDTOs.swift in Sources */,
+				87F1ECF8827BE47A29FD84CE /* UIViewController+Alert.swift in Sources */,
+				6B07BC67B5332B51DA5C953D /* RemoteAuthRepository.swift in Sources */,
+				AF5103ED8E43A43EBEC48140 /* ProductsService.swift in Sources */,
+				117D8FD0240D10D2B10ED531 /* APILogger.swift in Sources */,
+				7AF49F91DDFDDF87B9307F15 /* FavoriteDTOs.swift in Sources */,
+				B2D2D0926E77D36DF26CE32A /* AddressDTOs.swift in Sources */,
+				F1FFF3440D7BDDAEC3F43660 /* NikePlusActivityDTO.swift in Sources */,
+				B8F2634584CF1F3F0A4C5FD9 /* Date+ISO8601.swift in Sources */,
+				B2B67EC3C98F268CEE096935 /* NikePlusService.swift in Sources */,
+				DC201898F8105AB8E9C5CDB6 /* CardNumberCell.swift in Sources */,
+				B894CF05F25DC7BB625D420E /* ExpiryDateCell.swift in Sources */,
+				38CF7ACC747E2C45617F8BEB /* String+Luhn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,19 +770,20 @@
 /* Begin XCBuildConfiguration section */
 		676C5AE218EA4F638D56D4E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BC52B9E8647366B7BDD1122 /* QA.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "Nike+Research/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_FILE = "Nike+Research/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikeapp.Nike-Research";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -646,6 +794,7 @@
 		};
 		A7BF025B114C4A0BA08CFBA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BC52B9E8647366B7BDD1122 /* QA.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -695,7 +844,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -708,19 +857,20 @@
 		};
 		C15923A8FE5C4E608D45F47F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 344CC9C7F92B39C90332A612 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "Nike+Research/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_FILE = "Nike+Research/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikeapp.Nike-Research";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -731,6 +881,7 @@
 		};
 		E3ACA62316674E4A97378D85 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 344CC9C7F92B39C90332A612 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -774,7 +925,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -823,11 +974,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 46C871AE300296FA00005621 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		46C871B1300296FA00005621 /* AlamofireDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 46C871AE300296FA00005621 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

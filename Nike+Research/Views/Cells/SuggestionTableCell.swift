@@ -5,7 +5,7 @@ final class SuggestionTableCell: UITableViewCell {
 
     private let titleLabel: UILabel = {
         let l = UILabel()
-        l.text = "YOU MIGHT ALSO LIKE"
+        l.text = String(localized: "YOU MIGHT ALSO LIKE")
         l.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 15) ?? .boldSystemFont(ofSize: 15)
         l.textAlignment = .center
         l.translatesAutoresizingMaskIntoConstraints = false

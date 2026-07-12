@@ -50,7 +50,7 @@ final class OrderItemCell: UITableViewCell {
 
     func configure(name: String, quantity: Int, lineTotal: String) {
         nameLabel.text = name
-        qtyLabel.text = "Qty: \(quantity)"
+        qtyLabel.text = "\(String(localized: "Qty:")) \(quantity)"
         totalLabel.text = lineTotal
     }
 }

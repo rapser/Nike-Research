@@ -35,26 +35,26 @@ final class LoginViewController: UITableViewController {
         switch Row(rawValue: indexPath.row)! {
         case .email:
             let cell = tableView.dequeueReusableCell(withIdentifier: BillingFormCell.reuseID, for: indexPath) as! BillingFormCell
-            cell.configure(placeholder: "Email", text: viewModel.email, keyboardType: .emailAddress)
+            cell.configure(placeholder: String(localized: "Email"), text: viewModel.email, keyboardType: .emailAddress)
             cell.textField.autocapitalizationType = .none
             cell.onTextChanged = { [weak self] text in self?.viewModel.email = text }
             return cell
 
         case .password:
             let cell = tableView.dequeueReusableCell(withIdentifier: BillingFormCell.reuseID, for: indexPath) as! BillingFormCell
-            cell.configure(placeholder: "Password", text: viewModel.password, keyboardType: .default, isSecure: true)
+            cell.configure(placeholder: String(localized: "Password"), text: viewModel.password, keyboardType: .default, isSecure: true)
             cell.onTextChanged = { [weak self] text in self?.viewModel.password = text }
             return cell
 
         case .login:
             let cell = tableView.dequeueReusableCell(withIdentifier: ActionButtonCell.reuseID, for: indexPath) as! ActionButtonCell
-            cell.configure(title: "LOG IN")
+            cell.configure(title: String(localized: "LOG IN"))
             cell.onActionTapped = { [weak self] in self?.handleLogin() }
             return cell
 
         case .signUpPrompt:
             let cell = tableView.dequeueReusableCell(withIdentifier: AuthLinkCell.reuseID, for: indexPath) as! AuthLinkCell
-            cell.configure(prompt: "Don't have an account?", actionTitle: "SIGN UP")
+            cell.configure(prompt: String(localized: "Don't have an account?"), actionTitle: String(localized: "SIGN UP"))
             return cell
         }
     }
@@ -70,14 +70,14 @@ final class LoginViewController: UITableViewController {
     private func handleLogin() {
         view.endEditing(true)
         guard viewModel.isValid else {
-            presentAlert(message: "Please enter a valid email and a password with at least 6 characters.")
+            presentAlert(title: String(localized: "Couldn't Log In"), message: String(localized: "Please enter a valid email and a password with at least 6 characters."))
             return
         }
         setLoading(true)
         viewModel.login { [weak self] error in
             self?.setLoading(false)
             if let error = error {
-                self?.presentAlert(message: error.localizedDescription)
+                self?.presentAlert(title: String(localized: "Couldn't Log In"), message: error.localizedDescription)
             } else {
                 self?.onLoginSuccess?()
             }
@@ -86,12 +86,6 @@ final class LoginViewController: UITableViewController {
 
     private func setLoading(_ loading: Bool) {
         guard let cell = tableView.cellForRow(at: IndexPath(row: Row.login.rawValue, section: 0)) as? ActionButtonCell else { return }
-        cell.configure(title: loading ? "LOGGING IN..." : "LOG IN", enabled: !loading)
-    }
-
-    private func presentAlert(message: String) {
-        let alert = UIAlertController(title: "Couldn't Log In", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+        cell.configure(title: loading ? String(localized: "LOGGING IN...") : String(localized: "LOG IN"), enabled: !loading)
     }
 }

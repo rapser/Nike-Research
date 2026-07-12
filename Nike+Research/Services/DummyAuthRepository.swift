@@ -50,6 +50,10 @@ final class DummyAuthRepository: AuthRepository {
         }
     }
 
+    func logout() {
+        // No server session to revoke — AuthService already clears the local session.
+    }
+
     private func persistAccounts() {
         guard let data = try? JSONEncoder().encode(registeredUsers) else { return }
         UserDefaults.standard.set(data, forKey: userDefaultsKey)

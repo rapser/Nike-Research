@@ -3,6 +3,7 @@ import UIKit
 final class MyAddressesViewController: UIViewController {
     private let viewModel: MyAddressesViewModel
     var onAddAddress: (() -> Void)?
+    var onEditAddress: ((Address) -> Void)?
 
     private lazy var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
@@ -24,13 +25,13 @@ final class MyAddressesViewController: UIViewController {
         icon.translatesAutoresizingMaskIntoConstraints = false
 
         let label = UILabel()
-        label.text = "NO ADDRESSES YET"
+        label.text = String(localized: "NO ADDRESSES YET")
         label.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20) ?? .boldSystemFont(ofSize: 20)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
 
         let sub = UILabel()
-        sub.text = "Add a shipping address to speed up checkout."
+        sub.text = String(localized: "Add a shipping address to speed up checkout.")
         sub.font = UIFont(name: "AvenirNext-Regular", size: 14) ?? .systemFont(ofSize: 14)
         sub.textColor = .gray
         sub.textAlignment = .center
@@ -93,7 +94,13 @@ final class MyAddressesViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        refresh()
+        viewModel.loadAddresses { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.presentAlert(title: String(localized: "Couldn't Load Addresses"), message: error.localizedDescription)
+            }
+            self.refresh()
+        }
     }
 
     private func refresh() {
@@ -122,14 +129,21 @@ extension MyAddressesViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            viewModel.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            if viewModel.isEmpty { refresh() }
+        guard editingStyle == .delete else { return }
+        viewModel.remove(at: indexPath.row) { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.presentAlert(title: String(localized: "Couldn't Remove Address"), message: error.localizedDescription)
+                tableView.reloadRows(at: [indexPath], with: .none)
+            } else {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                if self.viewModel.isEmpty { self.refresh() }
+            }
         }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: true)
+        onEditAddress?(viewModel.address(at: indexPath.row))
     }
 }

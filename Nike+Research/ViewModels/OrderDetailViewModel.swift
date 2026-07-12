@@ -4,8 +4,8 @@ final class OrderDetailViewModel {
     init(order: Order) { self.order = order }
 
     var title: String { order.number }
-    var date: String { "Placed on \(order.formattedDate)" }
-    var estimatedDelivery: String { "Estimated delivery: \(order.estimatedDelivery)" }
+    var date: String { "\(String(localized: "Placed on")) \(order.formattedDate)" }
+    var estimatedDelivery: String { "\(String(localized: "Estimated delivery:")) \(order.estimatedDelivery)" }
     var paymentDisplay: String { order.paymentMethod.maskedDisplay }
     var paymentSubtitle: String { order.paymentMethod.subtitle }
     var itemCount: Int { order.items.count }
@@ -14,6 +14,6 @@ final class OrderDetailViewModel {
 
     var subtotalText: String { String(format: "$%.2f", order.subtotal) }
     var taxText: String { String(format: "$%.2f", order.tax) }
-    var shippingText: String { "FREE" }
+    var shippingText: String { String(localized: "FREE") }
     var totalText: String { order.formattedTotal }
 }

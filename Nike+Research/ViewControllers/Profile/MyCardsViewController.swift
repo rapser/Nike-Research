@@ -32,7 +32,13 @@ final class MyCardsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        viewModel.loadCards { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.presentAlert(title: String(localized: "Couldn't Load Cards"), message: error.localizedDescription)
+            }
+            self.tableView.reloadData()
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,9 +55,14 @@ final class MyCardsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                              forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            viewModel.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+        guard editingStyle == .delete else { return }
+        viewModel.remove(at: indexPath.row) { [weak self] error in
+            if let error {
+                self?.presentAlert(title: String(localized: "Couldn't Remove Card"), message: error.localizedDescription)
+                tableView.reloadRows(at: [indexPath], with: .none)
+            } else {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
         }
     }
 

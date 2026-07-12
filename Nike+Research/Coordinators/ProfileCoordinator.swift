@@ -47,15 +47,27 @@ final class ProfileCoordinator: Coordinator {
     private func returnToProfile() {
         navigationController.popToRootViewController(animated: true)
         profileViewController?.refresh()
+        // Reflect this account's cart (badge included) and favorites without
+        // waiting for the user to visit those tabs first.
+        CartService.shared.fetchCart { _ in }
+        FavoritesService.shared.fetchFavorites { _ in }
     }
 
     private func confirmLogout() {
-        let alert = UIAlertController(title: "Log Out",
-                                      message: "Are you sure you want to log out?",
+        let alert = UIAlertController(title: String(localized: "Log Out"),
+                                      message: String(localized: "Are you sure you want to log out?"),
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Log Out", style: .destructive) { [weak self] _ in
+        alert.addAction(UIAlertAction(title: String(localized: "Cancel"), style: .cancel))
+        alert.addAction(UIAlertAction(title: String(localized: "Log Out"), style: .destructive) { [weak self] _ in
             AuthService.shared.logout()
+            // Drop every cached account-scoped list, so nothing keeps showing the
+            // signed-out account's data (or leaks it to whoever logs in next).
+            CartService.shared.clearAll()
+            FavoritesService.shared.clearAll()
+            AddressService.shared.clearAll()
+            PaymentMethodsService.shared.clearAll()
+            OrdersService.shared.clearAll()
+            NikePlusService.shared.clearAll()
             self?.profileViewController?.refresh()
         })
         navigationController.present(alert, animated: true)
@@ -94,11 +106,17 @@ final class ProfileCoordinator: Coordinator {
         let vm = MyAddressesViewModel()
         let vc = MyAddressesViewController(viewModel: vm)
         vc.onAddAddress = { [weak self] in self?.showAddAddress() }
+        vc.onEditAddress = { [weak self] address in self?.showEditAddress(address) }
         navigationController.pushViewController(vc, animated: true)
     }
 
     private func showAddAddress() {
         let vm = AddAddressViewModel()
+        navigationController.pushViewController(AddAddressViewController(viewModel: vm), animated: true)
+    }
+
+    private func showEditAddress(_ address: Address) {
+        let vm = AddAddressViewModel(editing: address)
         navigationController.pushViewController(AddAddressViewController(viewModel: vm), animated: true)
     }
 }

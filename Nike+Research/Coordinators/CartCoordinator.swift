@@ -52,7 +52,9 @@ final class CartCoordinator: Coordinator {
     private func showPaymentProcessing(order: Order) {
         let vc = PaymentProcessingViewController(order: order)
         vc.onPaymentComplete = { [weak self] in
-            OrdersService.shared.save(order)
+            // The order was already recorded server-side and inserted into
+            // OrdersService's local cache by checkout() itself — nothing left
+            // to persist here, this screen's delay is purely cosmetic.
             CartService.shared.clearAll()
             self?.showOrderConfirmation(order: order)
         }
