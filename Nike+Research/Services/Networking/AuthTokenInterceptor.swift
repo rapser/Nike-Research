@@ -21,7 +21,7 @@ final class AuthTokenInterceptor: RequestInterceptor, Sendable {
         var onSessionExpired: (() -> Void)?
     }
 
-    private let refreshSession = Session(eventMonitors: [APILogger()])
+    private let refreshSession = Session(configuration: .nikeAPI, eventMonitors: [APILogger()])
     private let state = Mutex(State())
 
     var onSessionExpired: (() -> Void)? {

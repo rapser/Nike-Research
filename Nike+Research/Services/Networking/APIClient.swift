@@ -10,8 +10,8 @@ final class APIClient {
     private init() {}
 
     private let baseURL = AppConfig.baseURL
-    private let authenticatedSession = Session(interceptor: AuthTokenInterceptor.shared, eventMonitors: [APILogger()])
-    private let publicSession = Session(eventMonitors: [APILogger()])
+    private let authenticatedSession = Session(configuration: .nikeAPI, interceptor: AuthTokenInterceptor.shared, eventMonitors: [APILogger()])
+    private let publicSession = Session(configuration: .nikeAPI, eventMonitors: [APILogger()])
 
     private func session(for endpoint: APIEndpoint) -> Session {
         endpoint.requiresAuth ? authenticatedSession : publicSession
