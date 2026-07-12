@@ -234,7 +234,7 @@
 		F5495D1024AA42D19309B961 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		F57A6C00BE104A2A873EE5E5 /* ProfileMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuCell.swift; sourceTree = "<group>"; };
 		F7742548D734EF0AF9F8B768 /* CartDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CartDTOs.swift; sourceTree = "<group>"; };
-		F7F11B2E64F5DDB41203059B /* Localizable.xcstrings */ = {isa = PBXFileReference; includeInIndex = 1; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		F7F11B2E64F5DDB41203059B /* Localizable.xcstrings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,19 +289,16 @@
 		1D067EAB2A2946529C7DE27E /* Nike+Research */ = {
 			isa = PBXGroup;
 			children = (
-				2A51CA0985504DD39DDDB43B /* AppDelegate.swift */,
+				46C29CF2300330EF00E2EDCC /* App */,
 				9964033AD704475A89C31A44 /* Coordinators */,
 				A11FB44202EA4D4B86DBF169 /* Models */,
 				57DCF60EE05F4CC28BA37C64 /* Services */,
 				F543BDECCA4D4534AF7E807A /* ViewControllers */,
 				4479A1A44141468596E4BE35 /* ViewModels */,
 				34F1D05EDBAB40B387F0307F /* Views */,
-				92D93F7A28004183B45149F5 /* Assets.xcassets */,
-				8C77B9D931CD4FEEACB274E3 /* LaunchScreen.storyboard */,
-				55D789624B264BED8811E367 /* Info.plist */,
+				46C29CF3300330FD00E2EDCC /* Resources */,
 				53000439D860203DB1543B54 /* Configuration */,
 				EE3CFF632C7D3B5E75C5858B /* Extensions */,
-				F7F11B2E64F5DDB41203059B /* Localizable.xcstrings */,
 			);
 			path = "Nike+Research";
 			sourceTree = "<group>";
@@ -353,6 +350,25 @@
 				BD14DC2CCBDDEC739E67026F /* RegisterViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		46C29CF2300330EF00E2EDCC /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2A51CA0985504DD39DDDB43B /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		46C29CF3300330FD00E2EDCC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				92D93F7A28004183B45149F5 /* Assets.xcassets */,
+				8C77B9D931CD4FEEACB274E3 /* LaunchScreen.storyboard */,
+				F7F11B2E64F5DDB41203059B /* Localizable.xcstrings */,
+				55D789624B264BED8811E367 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		53000439D860203DB1543B54 /* Configuration */ = {
@@ -760,7 +776,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "Nike+Research/Info.plist";
+				INFOPLIST_FILE = "Nike+Research/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -845,7 +861,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "Nike+Research/Info.plist";
+				INFOPLIST_FILE = "Nike+Research/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
