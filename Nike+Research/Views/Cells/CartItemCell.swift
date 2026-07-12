@@ -3,6 +3,8 @@ import UIKit
 final class CartItemCell: UITableViewCell {
     static let reuseID = "CartItemCell"
 
+    var onDecrementTapped: (() -> Void)?
+    var onIncrementTapped: (() -> Void)?
     var onRemoveTapped: (() -> Void)?
 
     private let shoeImageView: UIImageView = {
@@ -29,19 +31,48 @@ final class CartItemCell: UITableViewCell {
         return l
     }()
 
-    private let quantityLabel: UILabel = {
+    private lazy var decrementButton: UIButton = {
+        let b = UIButton(type: .system)
+        let cfg = UIImage.SymbolConfiguration(pointSize: 18, weight: .regular)
+        b.setImage(UIImage(systemName: "minus.circle", withConfiguration: cfg), for: .normal)
+        b.tintColor = .black
+        b.translatesAutoresizingMaskIntoConstraints = false
+        b.addTarget(self, action: #selector(decrementTapped), for: .touchUpInside)
+        return b
+    }()
+
+    private let quantityValueLabel: UILabel = {
         let l = UILabel()
-        l.font = UIFont(name: "AvenirNext-Regular", size: 12) ?? .systemFont(ofSize: 12)
-        l.textColor = .gray
+        l.font = UIFont(name: "AvenirNext-DemiBold", size: 14) ?? .boldSystemFont(ofSize: 14)
+        l.textAlignment = .center
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
 
-    private lazy var removeButton: UIButton = {
+    private lazy var incrementButton: UIButton = {
         let b = UIButton(type: .system)
-        b.setTitle("REMOVE", for: .normal)
-        b.titleLabel?.font = UIFont(name: "AvenirNext-Regular", size: 12) ?? .systemFont(ofSize: 12)
-        b.setTitleColor(.black, for: .normal)
+        let cfg = UIImage.SymbolConfiguration(pointSize: 18, weight: .regular)
+        b.setImage(UIImage(systemName: "plus.circle", withConfiguration: cfg), for: .normal)
+        b.tintColor = .black
+        b.translatesAutoresizingMaskIntoConstraints = false
+        b.addTarget(self, action: #selector(incrementTapped), for: .touchUpInside)
+        return b
+    }()
+
+    private lazy var stepperStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [decrementButton, quantityValueLabel, incrementButton])
+        stack.axis = .horizontal
+        stack.spacing = 8
+        stack.alignment = .center
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+
+    private lazy var trashButton: UIButton = {
+        let b = UIButton(type: .system)
+        let cfg = UIImage.SymbolConfiguration(pointSize: 18, weight: .regular)
+        b.setImage(UIImage(systemName: "trash", withConfiguration: cfg), for: .normal)
+        b.tintColor = .black
         b.translatesAutoresizingMaskIntoConstraints = false
         b.addTarget(self, action: #selector(removeTapped), for: .touchUpInside)
         return b
@@ -54,8 +85,8 @@ final class CartItemCell: UITableViewCell {
         contentView.addSubview(shoeImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(priceLabel)
-        contentView.addSubview(quantityLabel)
-        contentView.addSubview(removeButton)
+        contentView.addSubview(stepperStack)
+        contentView.addSubview(trashButton)
 
         NSLayoutConstraint.activate([
             shoeImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
@@ -64,19 +95,22 @@ final class CartItemCell: UITableViewCell {
             shoeImageView.heightAnchor.constraint(equalToConstant: 96),
             shoeImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -24),
 
+            trashButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            trashButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            trashButton.widthAnchor.constraint(equalToConstant: 24),
+            trashButton.heightAnchor.constraint(equalToConstant: 24),
+
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
             nameLabel.leadingAnchor.constraint(equalTo: shoeImageView.trailingAnchor, constant: 12),
-            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            nameLabel.trailingAnchor.constraint(equalTo: trashButton.leadingAnchor, constant: -8),
 
             priceLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
             priceLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
 
-            quantityLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 4),
-            quantityLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-
-            removeButton.topAnchor.constraint(equalTo: quantityLabel.bottomAnchor, constant: 8),
-            removeButton.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            removeButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -24)
+            stepperStack.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 10),
+            stepperStack.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            stepperStack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -20),
+            quantityValueLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 18)
         ])
     }
     required init?(coder: NSCoder) { fatalError() }
@@ -85,7 +119,15 @@ final class CartItemCell: UITableViewCell {
         shoeImageView.image = image
         nameLabel.text = name
         priceLabel.text = price
-        quantityLabel.text = "Qty: \(quantity)"
+        quantityValueLabel.text = "\(quantity)"
+    }
+
+    @objc private func decrementTapped() {
+        onDecrementTapped?()
+    }
+
+    @objc private func incrementTapped() {
+        onIncrementTapped?()
     }
 
     @objc private func removeTapped() {
@@ -95,6 +137,8 @@ final class CartItemCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         shoeImageView.image = nil
+        onDecrementTapped = nil
+        onIncrementTapped = nil
         onRemoveTapped = nil
     }
 }

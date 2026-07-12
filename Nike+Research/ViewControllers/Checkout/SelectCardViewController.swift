@@ -30,7 +30,13 @@ final class SelectCardViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        viewModel.loadCards { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.presentAlert(title: String(localized: "Couldn't Load Cards"), message: error.localizedDescription)
+            }
+            self.tableView.reloadData()
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int { 2 }
@@ -47,7 +53,7 @@ final class SelectCardViewController: UITableViewController {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: ActionButtonCell.reuseID, for: indexPath) as! ActionButtonCell
-            cell.configure(title: "+ ADD NEW CARD")
+            cell.configure(title: String(localized: "+ ADD NEW CARD"))
             cell.onActionTapped = { [weak self] in self?.viewModel.addNewCardTapped() }
             return cell
         }
@@ -66,9 +72,14 @@ final class SelectCardViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                              forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete && indexPath.section == Section.cards.rawValue {
-            viewModel.removeCard(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+        guard editingStyle == .delete, indexPath.section == Section.cards.rawValue else { return }
+        viewModel.removeCard(at: indexPath.row) { [weak self] error in
+            if let error {
+                self?.presentAlert(title: String(localized: "Couldn't Remove Card"), message: error.localizedDescription)
+                tableView.reloadRows(at: [indexPath], with: .none)
+            } else {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
         }
     }
 }

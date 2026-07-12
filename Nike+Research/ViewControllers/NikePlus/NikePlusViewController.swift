@@ -22,6 +22,20 @@ final class NikePlusViewController: UITableViewController {
         tableView.estimatedRowHeight = 80
         tableView.register(NikePlusHeaderCell.self, forCellReuseIdentifier: NikePlusHeaderCell.reuseID)
         tableView.register(NikePlusActivityCell.self, forCellReuseIdentifier: NikePlusActivityCell.reuseID)
+        viewModel.onActivitiesChanged = { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.loadActivities { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.presentAlert(title: String(localized: "Couldn't Load Nike+ Activity"), message: error.localizedDescription)
+            }
+            self.tableView.reloadData()
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,7 +68,7 @@ final class NikePlusViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        Section(rawValue: section) == .activities ? "YOUR ACTIVITY" : nil
+        Section(rawValue: section) == .activities ? String(localized: "YOUR ACTIVITY") : nil
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

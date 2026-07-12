@@ -20,6 +20,6 @@ final class CartTotalCell: UITableViewCell {
     required init?(coder: NSCoder) { fatalError() }
 
     func configure(total: String) {
-        totalRow.configure(label: "TOTAL", value: total)
+        totalRow.configure(label: String(localized: "TOTAL"), value: total)
     }
 }

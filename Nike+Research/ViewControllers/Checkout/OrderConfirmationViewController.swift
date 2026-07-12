@@ -14,7 +14,7 @@ final class OrderConfirmationViewController: UIViewController {
 
     private let titleLabel: UILabel = {
         let l = UILabel()
-        l.text = "ORDER CONFIRMED!"
+        l.text = String(localized: "ORDER CONFIRMED!")
         l.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 26) ?? .boldSystemFont(ofSize: 26)
         l.textAlignment = .center
         l.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +28,10 @@ final class OrderConfirmationViewController: UIViewController {
         l.textAlignment = .center
         l.numberOfLines = 0
         l.translatesAutoresizingMaskIntoConstraints = false
-        l.text = "Order \(order.number) placed successfully.\nEstimated delivery: \(order.estimatedDelivery)"
+        let orderWord = String(localized: "Order")
+        let placedSuccessfully = String(localized: "placed successfully.")
+        let estimatedDeliveryPrefix = String(localized: "Estimated delivery:")
+        l.text = "\(orderWord) \(order.number) \(placedSuccessfully)\n\(estimatedDeliveryPrefix) \(order.estimatedDelivery)"
         return l
     }()
 
@@ -38,13 +41,13 @@ final class OrderConfirmationViewController: UIViewController {
         l.textColor = .gray
         l.textAlignment = .center
         l.translatesAutoresizingMaskIntoConstraints = false
-        l.text = "Paid with \(order.paymentMethod.maskedDisplay)"
+        l.text = "\(String(localized: "Paid with")) \(order.paymentMethod.maskedDisplay)"
         return l
     }()
 
     private lazy var continueButton: UIButton = {
         let b = UIButton(type: .system)
-        b.setTitle("CONTINUE SHOPPING", for: .normal)
+        b.setTitle(String(localized: "CONTINUE SHOPPING"), for: .normal)
         b.setTitleColor(.white, for: .normal)
         b.backgroundColor = .black
         b.titleLabel?.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 17) ?? .boldSystemFont(ofSize: 17)
@@ -93,7 +96,7 @@ final class OrderConfirmationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "ORDER PLACED"
+        title = String(localized: "ORDER PLACED")
         navigationItem.hidesBackButton = true
     }
 

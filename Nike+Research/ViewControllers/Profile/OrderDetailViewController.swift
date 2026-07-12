@@ -46,10 +46,10 @@ final class OrderDetailViewController: UITableViewController {
         label.textColor = .gray
         label.translatesAutoresizingMaskIntoConstraints = false
         switch Section(rawValue: section)! {
-        case .info:    label.text = "ORDER DETAILS"
-        case .items:   label.text = "ITEMS"
-        case .payment: label.text = "PAYMENT"
-        case .summary: label.text = "SUMMARY"
+        case .info:    label.text = String(localized: "ORDER DETAILS")
+        case .items:   label.text = String(localized: "ITEMS")
+        case .payment: label.text = String(localized: "PAYMENT")
+        case .summary: label.text = String(localized: "SUMMARY")
         case .total:   return nil
         }
         header.addSubview(label)

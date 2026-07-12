@@ -25,11 +25,18 @@ final class FeedCoordinator: Coordinator {
 
     private func showDetail(for shoe: Shoe) {
         let viewModel = ShoeDetailViewModel(shoe: shoe)
-        viewModel.onAddToCart = { [weak self] shoe in
-            CartService.shared.add(shoe: shoe)
-            self?.appCoordinator?.updateCartBadge()
+        weak var weakDetailVC: ShoeDetailViewController?
+        viewModel.onAddToCart = { [weak self] shoe, quantity in
+            CartService.shared.add(shoe: shoe, quantity: quantity) { error in
+                if let error {
+                    weakDetailVC?.presentAlert(title: String(localized: "Couldn't Add to Cart"), message: error.localizedDescription)
+                } else {
+                    self?.appCoordinator?.updateCartBadge()
+                }
+            }
         }
         let detailVC = ShoeDetailViewController(viewModel: viewModel)
+        weakDetailVC = detailVC
         detailVC.onSuggestionSelected = { [weak self] suggested in
             self?.showDetail(for: suggested)
         }

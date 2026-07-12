@@ -51,6 +51,20 @@ final class AppCoordinator: Coordinator {
         tabBarController.viewControllers = [feedNav, cartNav, favNav, nikePlusNav, profileNav]
         tabBarController.tabBar.tintColor = .black
         window.rootViewController = tabBarController
+
+        // Every cart mutation (add/remove/update-quantity/clear/fetch, from any
+        // screen) routes through CartService, so this one subscription keeps the
+        // badge correct everywhere instead of updating it ad hoc per call site.
+        CartService.shared.onCartUpdate { [weak self] in
+            self?.updateCartBadge()
+        }
+        if AuthService.shared.isAuthenticated {
+            CartService.shared.fetchCart { _ in }
+            // Primes FavoritesService's cache so the heart on a shoe detail
+            // screen is correct even if the user hasn't visited the Favorites
+            // tab yet this launch.
+            FavoritesService.shared.fetchFavorites { _ in }
+        }
     }
 
     private func makeTabItem(image: String, selected: String) -> UITabBarItem {

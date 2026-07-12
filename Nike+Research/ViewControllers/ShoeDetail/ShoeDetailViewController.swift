@@ -48,6 +48,9 @@ final class ShoeDetailViewController: UIViewController {
         if !viewModel.images.isEmpty {
             setupHeader()
         }
+        viewModel.onQuantityChanged = { [weak self] in
+            self?.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -65,8 +68,14 @@ final class ShoeDetailViewController: UIViewController {
     }
 
     @objc private func favoriteTapped() {
-        viewModel.toggleFavorite()
-        setupFavoriteButton()
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        viewModel.toggleFavorite { [weak self] error in
+            guard let self else { return }
+            self.setupFavoriteButton()
+            if let error {
+                self.presentAlert(title: String(localized: "Couldn't Update Favorites"), message: error.localizedDescription)
+            }
+        }
     }
 
     private func setupHeader() {
@@ -118,7 +127,9 @@ extension ShoeDetailViewController: UITableViewDataSource {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: BuyButtonCell.reuseID, for: indexPath) as! BuyButtonCell
-            cell.configure(title: viewModel.buyButtonTitle)
+            cell.configure(title: viewModel.buyButtonTitle, quantity: viewModel.quantityText)
+            cell.onDecrementTapped = { [weak self] in self?.viewModel.decrementQuantity() }
+            cell.onIncrementTapped = { [weak self] in self?.viewModel.incrementQuantity() }
             cell.onBuyTapped = { [weak self] in self?.viewModel.addToCartTapped() }
             return cell
         case 2:

@@ -3,13 +3,16 @@ import Foundation
 enum CardType {
     case visa, mastercard, amex, discover, other
 
-    static func detect(from number: String) -> CardType {
-        let n = number.filter { $0.isNumber }
-        if n.hasPrefix("4") { return .visa }
-        if n.hasPrefix("5") || n.hasPrefix("2") { return .mastercard }
-        if n.hasPrefix("34") || n.hasPrefix("37") { return .amex }
-        if n.hasPrefix("6") { return .discover }
-        return .other
+    /// Backend already classifies the card (`cardBrand`) and never returns the
+    /// full number, so this only maps that string — it doesn't sniff digits anymore.
+    static func from(brand: String) -> CardType {
+        switch brand {
+        case "visa": return .visa
+        case "mastercard": return .mastercard
+        case "amex": return .amex
+        case "discover": return .discover
+        default: return .other
+        }
     }
 
     var displayName: String {
@@ -26,11 +29,12 @@ enum CardType {
 struct PaymentMethod: Equatable {
     let id: String
     let holderName: String
-    let cardNumber: String
+    let cardBrand: String
+    let cardLast4: String
     let expiryDate: String
 
-    var cardType: CardType { CardType.detect(from: cardNumber) }
-    var lastFour: String { String(cardNumber.filter { $0.isNumber }.suffix(4)) }
+    var cardType: CardType { CardType.from(brand: cardBrand) }
+    var lastFour: String { cardLast4 }
     var maskedDisplay: String { "\(cardType.displayName) •••• \(lastFour)" }
     var subtitle: String { "Expires \(expiryDate)  ·  \(holderName)" }
 

@@ -1,5 +1,5 @@
 final class ProfileViewModel {
-    var title: String { "MY ACCOUNT" }
+    var title: String { String(localized: "MY ACCOUNT") }
 
     var isAuthenticated: Bool { AuthService.shared.isAuthenticated }
     var memberName: String { AuthService.shared.currentUser?.name ?? "" }

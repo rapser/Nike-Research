@@ -13,7 +13,7 @@ final class PaymentProcessingViewController: UIViewController {
 
     private let titleLabel: UILabel = {
         let l = UILabel()
-        l.text = "PROCESSING PAYMENT"
+        l.text = String(localized: "PROCESSING PAYMENT")
         l.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 22) ?? .boldSystemFont(ofSize: 22)
         l.textAlignment = .center
         l.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +22,7 @@ final class PaymentProcessingViewController: UIViewController {
 
     private let subtitleLabel: UILabel = {
         let l = UILabel()
-        l.text = "Please do not close the app."
+        l.text = String(localized: "Please do not close the app.")
         l.font = UIFont(name: "AvenirNext-Regular", size: 14) ?? .systemFont(ofSize: 14)
         l.textColor = .gray
         l.textAlignment = .center
@@ -58,7 +58,7 @@ final class PaymentProcessingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "PROCESSING"
+        title = String(localized: "PROCESSING")
         navigationItem.hidesBackButton = true
         activityIndicator.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { [weak self] in

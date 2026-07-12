@@ -13,7 +13,7 @@ final class CartEmptyStateCell: UITableViewCell {
 
     private let titleLabel: UILabel = {
         let l = UILabel()
-        l.text = "YOUR BAG IS EMPTY"
+        l.text = String(localized: "YOUR BAG IS EMPTY")
         l.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20) ?? .boldSystemFont(ofSize: 20)
         l.textAlignment = .center
         l.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +22,7 @@ final class CartEmptyStateCell: UITableViewCell {
 
     private let subtitleLabel: UILabel = {
         let l = UILabel()
-        l.text = "Add items to your bag from the Feed tab."
+        l.text = String(localized: "Add items to your bag from the Feed tab.")
         l.font = UIFont(name: "AvenirNext-Regular", size: 14) ?? .systemFont(ofSize: 14)
         l.textColor = .gray
         l.textAlignment = .center

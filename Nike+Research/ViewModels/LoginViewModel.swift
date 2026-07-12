@@ -5,7 +5,7 @@ final class LoginViewModel {
     var password: String = ""
     var onLoginSucceeded: (() -> Void)?
 
-    var title: String { "LOG IN" }
+    var title: String { String(localized: "LOG IN") }
 
     var isValid: Bool {
         email.contains("@") && email.contains(".") && password.count >= 6

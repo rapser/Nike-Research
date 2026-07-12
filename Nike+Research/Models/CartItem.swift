@@ -1,4 +1,5 @@
 struct CartItem {
+    let id: String
     let shoe: Shoe
     var quantity: Int
 

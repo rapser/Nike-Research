@@ -29,9 +29,9 @@ final class CartSummaryCell: UITableViewCell {
     required init?(coder: NSCoder) { fatalError() }
 
     func configure(subtotal: String, shipping: String, tax: String) {
-        subtotalRow.configure(label: "SUBTOTAL", value: subtotal)
-        shippingRow.configure(label: "ESTIMATED SHIPPING", value: shipping)
-        taxRow.configure(label: "TAX", value: tax)
+        subtotalRow.configure(label: String(localized: "SUBTOTAL"), value: subtotal)
+        shippingRow.configure(label: String(localized: "ESTIMATED SHIPPING"), value: shipping)
+        taxRow.configure(label: String(localized: "TAX"), value: tax)
     }
 }
 

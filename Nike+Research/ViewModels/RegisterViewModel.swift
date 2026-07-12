@@ -7,7 +7,7 @@ final class RegisterViewModel {
     var confirmPassword: String = ""
     var onRegisterSucceeded: (() -> Void)?
 
-    var title: String { "SIGN UP" }
+    var title: String { String(localized: "SIGN UP") }
 
     var isValid: Bool {
         !name.isEmpty &&

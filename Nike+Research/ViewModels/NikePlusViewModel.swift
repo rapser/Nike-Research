@@ -1,15 +1,25 @@
 import UIKit
 
 final class NikePlusViewModel {
-    private let profile: NikePlusProfile = .dummy()
+    var onActivitiesChanged: (() -> Void)?
 
-    var title: String { "NIKE+" }
-    var memberName: String { profile.name }
-    var memberSince: String { profile.memberSince }
-    var avatarImage: UIImage? { UIImage(named: profile.avatarImageName) }
-    var activityCount: Int { profile.activities.count }
+    init() {
+        NikePlusService.shared.onActivitiesUpdated = { [weak self] in
+            self?.onActivitiesChanged?()
+        }
+    }
 
-    func activityTitle(at index: Int) -> String { profile.activities[index].title }
-    func activityValue(at index: Int) -> String { profile.activities[index].value }
-    func activityUnit(at index: Int) -> String { profile.activities[index].unit }
+    var title: String { String(localized: "NIKE+") }
+    var memberName: String { AuthService.shared.currentUser?.name ?? String(localized: "Guest") }
+    var memberSince: String { AuthService.shared.currentUser?.memberSince ?? "" }
+    var avatarImage: UIImage? { UIImage(named: "s1") }
+    var activityCount: Int { NikePlusService.shared.activities.count }
+
+    func loadActivities(completion: @escaping (Error?) -> Void) {
+        NikePlusService.shared.fetchActivities(completion: completion)
+    }
+
+    func activityTitle(at index: Int) -> String { NikePlusService.shared.activities[index].title }
+    func activityValue(at index: Int) -> String { NikePlusService.shared.activities[index].value }
+    func activityUnit(at index: Int) -> String { NikePlusService.shared.activities[index].unit }
 }

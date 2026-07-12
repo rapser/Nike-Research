@@ -26,13 +26,13 @@ final class FavoritesViewController: UIViewController {
         heartView.translatesAutoresizingMaskIntoConstraints = false
 
         let label = UILabel()
-        label.text = "NO FAVORITES YET"
+        label.text = String(localized: "NO FAVORITES YET")
         label.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20) ?? .boldSystemFont(ofSize: 20)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
 
         let sub = UILabel()
-        sub.text = "Tap the heart on any shoe to save it here."
+        sub.text = String(localized: "Tap the heart on any shoe to save it here.")
         sub.font = UIFont(name: "AvenirNext-Regular", size: 14) ?? .systemFont(ofSize: 14)
         sub.textColor = .gray
         sub.textAlignment = .center
@@ -92,7 +92,13 @@ final class FavoritesViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        refresh()
+        viewModel.loadFavorites { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.presentAlert(title: String(localized: "Couldn't Load Favorites"), message: error.localizedDescription)
+            }
+            self.refresh()
+        }
     }
 
     private func refresh() {

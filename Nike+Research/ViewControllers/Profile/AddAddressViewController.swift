@@ -14,7 +14,7 @@ final class AddAddressViewController: UIViewController {
 
     private let searchBar: UISearchBar = {
         let sb = UISearchBar()
-        sb.placeholder = "Search for an address"
+        sb.placeholder = String(localized: "Search for an address")
         sb.backgroundImage = UIImage()
         sb.searchBarStyle = .minimal
         sb.translatesAutoresizingMaskIntoConstraints = false
@@ -119,7 +119,11 @@ final class AddAddressViewController: UIViewController {
             self?.navigationController?.popViewController(animated: true)
         }
 
-        centerMapOnUS()
+        if let coord = viewModel.selectedCoordinate {
+            zoomMap(to: coord)
+        } else {
+            centerMapOnUS()
+        }
     }
 
     private func centerMapOnUS() {
@@ -183,7 +187,7 @@ extension AddAddressViewController: UITableViewDataSource {
         let row = Row(rawValue: indexPath.row)!
         if row == .save {
             let cell = tableView.dequeueReusableCell(withIdentifier: ActionButtonCell.reuseID, for: indexPath) as! ActionButtonCell
-            cell.configure(title: "SAVE ADDRESS", enabled: viewModel.isValid)
+            cell.configure(title: viewModel.saveButtonTitle, enabled: viewModel.isValid)
             cell.onActionTapped = { [weak self] in self?.handleSave() }
             return cell
         }
@@ -191,19 +195,19 @@ extension AddAddressViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: BillingFormCell.reuseID, for: indexPath) as! BillingFormCell
         switch row {
         case .street:
-            cell.configure(placeholder: "Street", text: viewModel.street)
+            cell.configure(placeholder: String(localized: "Street"), text: viewModel.street)
             cell.onTextChanged = { [weak self] in self?.viewModel.street = $0; self?.reloadSaveRow() }
         case .city:
-            cell.configure(placeholder: "City", text: viewModel.city)
+            cell.configure(placeholder: String(localized: "City"), text: viewModel.city)
             cell.onTextChanged = { [weak self] in self?.viewModel.city = $0; self?.reloadSaveRow() }
         case .state:
-            cell.configure(placeholder: "State / Province", text: viewModel.state)
+            cell.configure(placeholder: String(localized: "State / Province"), text: viewModel.state)
             cell.onTextChanged = { [weak self] in self?.viewModel.state = $0 }
         case .zip:
-            cell.configure(placeholder: "ZIP / Postal Code", text: viewModel.zipCode, keyboardType: .numberPad)
+            cell.configure(placeholder: String(localized: "ZIP / Postal Code"), text: viewModel.zipCode, keyboardType: .numberPad)
             cell.onTextChanged = { [weak self] in self?.viewModel.zipCode = $0; self?.reloadSaveRow() }
         case .country:
-            cell.configure(placeholder: "Country", text: viewModel.country)
+            cell.configure(placeholder: String(localized: "Country"), text: viewModel.country)
             cell.onTextChanged = { [weak self] in self?.viewModel.country = $0 }
         case .save: break
         }
@@ -238,15 +242,20 @@ extension AddAddressViewController: UITableViewDelegate {
 private extension AddAddressViewController {
     func handleSave() {
         guard viewModel.isValid else {
-            let alert = UIAlertController(
-                title: "Missing Information",
-                message: "Please fill in the street, city, and ZIP code.",
-                preferredStyle: .alert
-            )
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
+            presentAlert(title: String(localized: "Missing Information"), message: String(localized: "Please fill in the street, city, and ZIP code."))
             return
         }
-        viewModel.saveAddress()
+        setSaving(true)
+        viewModel.saveAddress { [weak self] error in
+            self?.setSaving(false)
+            if let error {
+                self?.presentAlert(title: String(localized: "Couldn't Save Address"), message: error.localizedDescription)
+            }
+        }
+    }
+
+    func setSaving(_ saving: Bool) {
+        guard let cell = formTableView.cellForRow(at: IndexPath(row: Row.save.rawValue, section: 0)) as? ActionButtonCell else { return }
+        cell.configure(title: saving ? String(localized: "SAVING...") : viewModel.saveButtonTitle, enabled: !saving && viewModel.isValid)
     }
 }

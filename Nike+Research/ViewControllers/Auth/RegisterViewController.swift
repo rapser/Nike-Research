@@ -35,38 +35,38 @@ final class RegisterViewController: UITableViewController {
         switch Row(rawValue: indexPath.row)! {
         case .name:
             let cell = tableView.dequeueReusableCell(withIdentifier: BillingFormCell.reuseID, for: indexPath) as! BillingFormCell
-            cell.configure(placeholder: "Full Name", text: viewModel.name, keyboardType: .default)
+            cell.configure(placeholder: String(localized: "Full Name"), text: viewModel.name, keyboardType: .default)
             cell.onTextChanged = { [weak self] text in self?.viewModel.name = text }
             return cell
 
         case .email:
             let cell = tableView.dequeueReusableCell(withIdentifier: BillingFormCell.reuseID, for: indexPath) as! BillingFormCell
-            cell.configure(placeholder: "Email", text: viewModel.email, keyboardType: .emailAddress)
+            cell.configure(placeholder: String(localized: "Email"), text: viewModel.email, keyboardType: .emailAddress)
             cell.textField.autocapitalizationType = .none
             cell.onTextChanged = { [weak self] text in self?.viewModel.email = text }
             return cell
 
         case .password:
             let cell = tableView.dequeueReusableCell(withIdentifier: BillingFormCell.reuseID, for: indexPath) as! BillingFormCell
-            cell.configure(placeholder: "Password", text: viewModel.password, keyboardType: .default, isSecure: true)
+            cell.configure(placeholder: String(localized: "Password"), text: viewModel.password, keyboardType: .default, isSecure: true)
             cell.onTextChanged = { [weak self] text in self?.viewModel.password = text }
             return cell
 
         case .confirmPassword:
             let cell = tableView.dequeueReusableCell(withIdentifier: BillingFormCell.reuseID, for: indexPath) as! BillingFormCell
-            cell.configure(placeholder: "Confirm Password", text: viewModel.confirmPassword, keyboardType: .default, isSecure: true)
+            cell.configure(placeholder: String(localized: "Confirm Password"), text: viewModel.confirmPassword, keyboardType: .default, isSecure: true)
             cell.onTextChanged = { [weak self] text in self?.viewModel.confirmPassword = text }
             return cell
 
         case .register:
             let cell = tableView.dequeueReusableCell(withIdentifier: ActionButtonCell.reuseID, for: indexPath) as! ActionButtonCell
-            cell.configure(title: "CREATE ACCOUNT")
+            cell.configure(title: String(localized: "CREATE ACCOUNT"))
             cell.onActionTapped = { [weak self] in self?.handleRegister() }
             return cell
 
         case .logInPrompt:
             let cell = tableView.dequeueReusableCell(withIdentifier: AuthLinkCell.reuseID, for: indexPath) as! AuthLinkCell
-            cell.configure(prompt: "Already have an account?", actionTitle: "LOG IN")
+            cell.configure(prompt: String(localized: "Already have an account?"), actionTitle: String(localized: "LOG IN"))
             return cell
         }
     }
@@ -82,7 +82,7 @@ final class RegisterViewController: UITableViewController {
     private func handleRegister() {
         view.endEditing(true)
         guard viewModel.isValid else {
-            presentAlert(message: "Please fill in all fields. Password must be at least 6 characters and match its confirmation.")
+            presentAlert(message: String(localized: "Please fill in all fields. Password must be at least 6 characters and match its confirmation."))
             return
         }
         setLoading(true)
@@ -98,12 +98,12 @@ final class RegisterViewController: UITableViewController {
 
     private func setLoading(_ loading: Bool) {
         guard let cell = tableView.cellForRow(at: IndexPath(row: Row.register.rawValue, section: 0)) as? ActionButtonCell else { return }
-        cell.configure(title: loading ? "CREATING ACCOUNT..." : "CREATE ACCOUNT", enabled: !loading)
+        cell.configure(title: loading ? String(localized: "CREATING ACCOUNT...") : String(localized: "CREATE ACCOUNT"), enabled: !loading)
     }
 
     private func presentAlert(message: String) {
-        let alert = UIAlertController(title: "Couldn't Create Account", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        let alert = UIAlertController(title: String(localized: "Couldn't Create Account"), message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: String(localized: "OK"), style: .default))
         present(alert, animated: true)
     }
 }
