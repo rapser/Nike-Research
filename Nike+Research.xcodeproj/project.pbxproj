@@ -61,7 +61,6 @@
 		8C117A9074BE42BE996D2CB5 /* ImageCarouselHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD144FD63B043D2AF4FE8AC /* ImageCarouselHeaderView.swift */; };
 		8DEC3D059E6649CCB77F1DCE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070C8341EC2F40A7BFC7EA4F /* AddCardViewController.swift */; };
 		8E74244ED0CD4EE48A6CDB8C /* NikePlusActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFE88A768004C4FB445900E /* NikePlusActivityCell.swift */; };
-		935010E599EA8950E48E475E /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = DADE907E2C674A974F9D6269 /* APIConfig.plist */; };
 		9672C2C8E2A5416ABBBD28F0 /* CartSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F297A99A1A3D4843B12682F7 /* CartSummaryCell.swift */; };
 		99397304CBE445E5AEE9A29B /* OrderItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E686C034849A881F09B8D /* OrderItemCell.swift */; };
 		9CE6A8E6A0564B63957A6D8F /* BillingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734CDDCEAE0440648F814870 /* BillingTitleCell.swift */; };
@@ -147,6 +146,7 @@
 		2F06CEA56507494986BA99E2 /* ShoeDetailInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeDetailInfoCell.swift; sourceTree = "<group>"; };
 		2FCA94EBEA6642B2AF9D0A6B /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		30F45697C71358A7F46C3DEA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		344CC9C7F92B39C90332A612 /* Production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		357C06742E70494C88752AA6 /* ShoeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeImageViewController.swift; sourceTree = "<group>"; };
 		37EB3E816C5834DD0B4C608A /* UIViewController+Alert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		38CCA9289C20430AAF73C913 /* OrderHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryCell.swift; sourceTree = "<group>"; };
@@ -180,6 +180,7 @@
 		802E686C034849A881F09B8D /* OrderItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemCell.swift; sourceTree = "<group>"; };
 		8082A60474304152A1F2F6D8 /* PaymentMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		8928AEE42916EA3C27D45BBB /* KeychainTokenStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeychainTokenStore.swift; sourceTree = "<group>"; };
+		8BC52B9E8647366B7BDD1122 /* QA.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QA.xcconfig; sourceTree = "<group>"; };
 		8CCB684332D8E6DE7ECDBD17 /* NikePlusService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NikePlusService.swift; sourceTree = "<group>"; };
 		9158354C1A39395CAD54BE71 /* ProductsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProductsService.swift; sourceTree = "<group>"; };
 		925F913372E8456A9021E84F /* NikePlusHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NikePlusHeaderCell.swift; sourceTree = "<group>"; };
@@ -217,7 +218,6 @@
 		D7860C38932B4A72AF9F11D5 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		D89D962641944513907461D5 /* CartItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
 		DA8AC4F0248B4352AA110837 /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
-		DADE907E2C674A974F9D6269 /* APIConfig.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = "<group>"; };
 		DFD0CC6F15B6430A9FAE60A0 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		E32D7C7D80034C1B99E76B0F /* ProductDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsCell.swift; sourceTree = "<group>"; };
 		E5AC365AE1B9C55B03014491 /* String+Luhn.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Luhn.swift"; sourceTree = "<group>"; };
@@ -375,7 +375,8 @@
 			isa = PBXGroup;
 			children = (
 				121C471C6DD2EA6D5B93E152 /* AppConfig.swift */,
-				DADE907E2C674A974F9D6269 /* APIConfig.plist */,
+				8BC52B9E8647366B7BDD1122 /* QA.xcconfig */,
+				344CC9C7F92B39C90332A612 /* Production.xcconfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -632,7 +633,6 @@
 			files = (
 				BC6CA5D400AC42D98FA3C447 /* Assets.xcassets in Resources */,
 				C5CE06F6B1D24812A78C82BA /* LaunchScreen.storyboard in Resources */,
-				935010E599EA8950E48E475E /* APIConfig.plist in Resources */,
 				BD0EB3499CED2AB0703C7D8B /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -770,6 +770,7 @@
 /* Begin XCBuildConfiguration section */
 		676C5AE218EA4F638D56D4E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BC52B9E8647366B7BDD1122 /* QA.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -793,6 +794,7 @@
 		};
 		A7BF025B114C4A0BA08CFBA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BC52B9E8647366B7BDD1122 /* QA.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -855,6 +857,7 @@
 		};
 		C15923A8FE5C4E608D45F47F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 344CC9C7F92B39C90332A612 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -878,6 +881,7 @@
 		};
 		E3ACA62316674E4A97378D85 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 344CC9C7F92B39C90332A612 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

@@ -1,18 +1,17 @@
 import Alamofire
 import Foundation
 
-/// Reads `APIConfig.plist` once at startup. Swap the `BaseURL` value in that
-/// plist (dev → `http://localhost:3000`, prod → the Render URL) without touching code.
+/// Reads the `APIBaseURL` Info.plist key, which Xcode resolves at build time
+/// from the active Build Configuration's `.xcconfig` (`QA.xcconfig` for
+/// Debug → localhost, `Production.xcconfig` for Release → Render) — no code
+/// change needed to switch environments, just the build configuration.
 enum AppConfig {
     static let baseURL: URL = {
         guard
-            let url = Bundle.main.url(forResource: "APIConfig", withExtension: "plist"),
-            let data = try? Data(contentsOf: url),
-            let plist = try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: String],
-            let baseURLString = plist["BaseURL"],
+            let baseURLString = Bundle.main.object(forInfoDictionaryKey: "APIBaseURL") as? String,
             let baseURL = URL(string: baseURLString)
         else {
-            fatalError("APIConfig.plist is missing or malformed — expected a BaseURL string key.")
+            fatalError("APIBaseURL is missing or malformed in Info.plist — check that the active Build Configuration has a base .xcconfig with API_BASE_URL set.")
         }
         return baseURL
     }()
