@@ -23,9 +23,6 @@ final class SelectCardViewController: UITableViewController {
         viewModel.onCardsChanged = { [weak self] in
             self?.tableView.reloadData()
         }
-        viewModel.onAddNewCard = { [weak self] in
-            self?.tableView.reloadData()
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
