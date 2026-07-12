@@ -78,6 +78,17 @@ final class ShoeDetailViewController: UIViewController {
         }
     }
 
+    private var buyButtonCell: BuyButtonCell? {
+        tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? BuyButtonCell
+    }
+
+    private func handleBuyTapped() {
+        buyButtonCell?.setLoading(true)
+        viewModel.addToCartTapped { [weak self] _ in
+            self?.buyButtonCell?.setLoading(false)
+        }
+    }
+
     private func setupHeader() {
         headerView.pageControl.numberOfPages = viewModel.images.count
 
@@ -130,7 +141,7 @@ extension ShoeDetailViewController: UITableViewDataSource {
             cell.configure(title: viewModel.buyButtonTitle, quantity: viewModel.quantityText)
             cell.onDecrementTapped = { [weak self] in self?.viewModel.decrementQuantity() }
             cell.onIncrementTapped = { [weak self] in self?.viewModel.incrementQuantity() }
-            cell.onBuyTapped = { [weak self] in self?.viewModel.addToCartTapped() }
+            cell.onBuyTapped = { [weak self] in self?.handleBuyTapped() }
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProductDetailsCell.reuseID, for: indexPath) as! ProductDetailsCell

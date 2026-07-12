@@ -55,11 +55,20 @@ final class BuyButtonCell: UITableViewCell {
         return b
     }()
 
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.color = .white
+        indicator.hidesWhenStopped = true
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         contentView.addSubview(stepperStack)
         contentView.addSubview(buyButton)
+        buyButton.addSubview(loadingIndicator)
         NSLayoutConstraint.activate([
             stepperStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             stepperStack.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -69,7 +78,10 @@ final class BuyButtonCell: UITableViewCell {
             buyButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             buyButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             buyButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-            buyButton.heightAnchor.constraint(equalToConstant: 44)
+            buyButton.heightAnchor.constraint(equalToConstant: 44),
+
+            loadingIndicator.centerXAnchor.constraint(equalTo: buyButton.centerXAnchor),
+            loadingIndicator.centerYAnchor.constraint(equalTo: buyButton.centerYAnchor)
         ])
     }
     required init?(coder: NSCoder) { fatalError() }
@@ -77,6 +89,18 @@ final class BuyButtonCell: UITableViewCell {
     func configure(title: String, quantity: String) {
         buyButton.setTitle(title, for: .normal)
         quantityLabel.text = quantity
+    }
+
+    func setLoading(_ loading: Bool) {
+        buyButton.isUserInteractionEnabled = !loading
+        decrementButton.isUserInteractionEnabled = !loading
+        incrementButton.isUserInteractionEnabled = !loading
+        buyButton.titleLabel?.alpha = loading ? 0 : 1
+        if loading {
+            loadingIndicator.startAnimating()
+        } else {
+            loadingIndicator.stopAnimating()
+        }
     }
 
     @objc private func decrementTapped() {

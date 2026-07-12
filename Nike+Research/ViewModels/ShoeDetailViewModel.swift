@@ -2,7 +2,7 @@ import UIKit
 
 final class ShoeDetailViewModel {
     let shoe: Shoe
-    var onAddToCart: ((Shoe, Int) -> Void)?
+    var onAddToCart: ((Shoe, Int, @escaping (Error?) -> Void) -> Void)?
     var onFavoriteToggled: (() -> Void)?
     var onQuantityChanged: (() -> Void)?
 
@@ -44,8 +44,8 @@ final class ShoeDetailViewModel {
         quantity -= 1
     }
 
-    func addToCartTapped() {
-        onAddToCart?(shoe, quantity)
+    func addToCartTapped(completion: @escaping (Error?) -> Void) {
+        onAddToCart?(shoe, quantity, completion)
     }
 
     func toggleFavorite(completion: @escaping (Error?) -> Void) {
