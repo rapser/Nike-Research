@@ -20,7 +20,8 @@ ViewController ←→ ViewModel ←→ Service (singleton) ←→ APIClient ←�
 ```
 
 - **Coordinators** (`NikeResearch/Coordinators/`) manejan la navegación entre pantallas y son quienes conectan los closures de los ViewModels (ej. `onAddToCart`, `onCheckoutFailed`) con las acciones reales (llamadas a servicios, push/pop de ViewControllers, alerts).
-- **Services** (`NikeResearch/Services/`) son singletons con una propiedad cacheada (ej. `CartService.items`) leída sincrónicamente por los ViewModels, más un patrón **multicast observer** (`onXUpdate(_ observer:)`, no un solo closure) para notificar cambios a múltiples suscriptores sin que se pisen entre sí. Todos hoy están respaldados por la API real — nada vive solo en memoria: `CartService`, `FavoritesService`, `AddressService`, `PaymentMethodsService`, `OrdersService`, `NikePlusService`, `ProductsService`.
+- **Services** (`NikeResearch/Services/`) son singletons con una propiedad cacheada (ej. `CartService.items`) leída sincrónicamente por los ViewModels, más un patrón **multicast observer** (`onXUpdate(_ observer:)`, no un solo closure) para notificar cambios a múltiples suscriptores sin que se pisen entre sí. Todos están respaldados por la API real — nada vive solo en memoria: `CartService`, `FavoritesService`, `AddressService`, `PaymentMethodsService`, `OrdersService`, `NikePlusService`, `ProductsService`. El servicio es la fuente de verdad: los ViewModels leen de su caché en vez de guardar una copia propia.
+- **Estado de carga**: los ViewModels que consultan la API exponen un `LoadState` (`loading` / `loaded` / `empty` / `failed`) y un `onStateChanged`. Hace falta el caso `loading` porque la caché de los servicios arranca vacía, y sin él no se puede distinguir "todavía no respondió el servidor" de "está vacío de verdad" — el empty state se mostraba durante toda la petición. La vista compartida es `Views/Components/LoadingOverlayView`.
 - **`AuthService`** es la excepción con capa de abstracción: usa un protocolo `AuthRepository`, implementado por `RemoteAuthRepository` (real, producción) o `DummyAuthRepository` (datos locales, sin red).
 - **`Services/Networking/`** — capa de red compartida por todos los servicios:
   - `APIClient` — dos `Session` de Alamofire (una autenticada con `AuthTokenInterceptor`, otra pública para login/register/products/health), métodos genéricos `request<T: Decodable>(...)` con completion.
@@ -47,7 +48,7 @@ El timeout de las tres `Session` de Alamofire está en 90s (`URLSessionConfigura
 ## Funcionalidades
 
 - **Auth**: login/registro contra la API real, tokens en Keychain, refresh automático, logout limpia todo el caché de datos de cuenta (carrito, favoritos, direcciones, tarjetas, pedidos, Nike+).
-- **Catálogo (Feed) + Detalle de producto**: datos reales desde `GET /products`, selector de cantidad, botón de compra con loader mientras se agrega al carrito.
+- **Catálogo (Feed) + Detalle de producto**: datos reales desde `GET /products`, selector de cantidad, botón de compra con loader mientras se agrega al carrito. El carrusel de sugerencias del detalle sale del mismo catálogo, excluyendo el producto que se está viendo.
 - **Carrito**: agregar/quitar/ajustar cantidad, persistido en el servidor, badge del tab con el conteo actualizado en cada mutación y al iniciar sesión.
 - **Favoritos**: persistidos en el servidor, sobreviven logout/reinstalación.
 - **Direcciones**: agregar, **editar** (`PATCH`), eliminar; búsqueda de dirección con MapKit.
@@ -60,18 +61,23 @@ El timeout de las tres `Session` de Alamofire está en 90s (`URLSessionConfigura
 
 ```
 NikeResearch/
-  App/              # AppDelegate, punto de entrada
-  Configuration/     # AppConfig.swift, QA.xcconfig, Production.xcconfig
-  Coordinators/      # navegación por flujo (Feed, Cart, Favorites, Profile, App)
-  Models/            # Shoe, CartItem, PaymentMethod, Address, Order, etc.
+  App/                # AppDelegate (config del proceso) + SceneDelegate (ventana y AppCoordinator)
+  Configuration/      # AppConfig.swift, QA.xcconfig, Production.xcconfig
+  Coordinators/       # navegación por flujo (Feed, Cart, Favorites, Profile, App)
+  Models/             # Shoe, CartItem, PaymentMethod, Address, Order, etc.
   Services/           # singletons de datos + Services/Networking/ (capa HTTP)
-  ViewModels/         # un ViewModel por pantalla
+  ViewModels/         # un ViewModel por pantalla, + LoadState
   ViewControllers/    # Auth, Feed, ShoeDetail, Cart, Checkout, Favorites, NikePlus, Profile
   Views/Cells/        # celdas reutilizables de tabla/colección
-  Extensions/         # helpers (alertas, Luhn, parseo de fechas ISO8601)
+  Views/Components/   # vistas compartidas (LoadingOverlayView, ImageCarouselHeaderView)
+  Extensions/         # helpers (alertas, Luhn, fechas ISO8601, formateo de moneda)
   Resources/          # Info.plist, Assets.xcassets
   Localizable.xcstrings
 ```
+
+La app adopta el ciclo de vida de `UIScene`: la ventana y el `AppCoordinator` los crea el `SceneDelegate`, no el `AppDelegate`. La escena se declara en `UIApplicationSceneManifest` (`Info.plist`), con una sola ventana (`UIApplicationSupportsMultipleScenes = false`).
+
+`Version` y `Build` salen de `MARKETING_VERSION` y `CURRENT_PROJECT_VERSION`, referenciados desde el `Info.plist` como `$(MARKETING_VERSION)` / `$(CURRENT_PROJECT_VERSION)`. Editarlos en Xcode (o en los `.xcconfig`) se refleja en el archive; no hay que tocar el plist a mano.
 
 ## Backend
 
