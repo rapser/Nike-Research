@@ -13,12 +13,7 @@ final class FeedViewController: UIViewController {
         return tv
     }()
 
-    private let loadingIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.color = .black
-        return indicator
-    }()
+    private let loadingView = LoadingOverlayView()
 
     init(viewModel: FeedViewModel) {
         self.viewModel = viewModel
@@ -30,16 +25,13 @@ final class FeedViewController: UIViewController {
         view = UIView()
         view.backgroundColor = .white
         view.addSubview(tableView)
-        view.addSubview(loadingIndicator)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
-            loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        loadingView.pin(to: view)
     }
 
     override func viewDidLoad() {
@@ -48,20 +40,22 @@ final class FeedViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         tableView.dataSource = self
         tableView.delegate = self
+        viewModel.onStateChanged = { [weak self] in
+            self?.render()
+        }
         loadShoes()
     }
 
     private func loadShoes() {
-        loadingIndicator.startAnimating()
         viewModel.loadShoes { [weak self] error in
-            guard let self else { return }
-            self.loadingIndicator.stopAnimating()
-            if let error {
-                self.presentAlert(title: String(localized: "Couldn't Load Products"), message: error.localizedDescription)
-            } else {
-                self.tableView.reloadData()
-            }
+            guard let self, let error else { return }
+            self.presentAlert(title: String(localized: "Couldn't Load Products"), message: error.localizedDescription)
         }
+    }
+
+    private func render() {
+        loadingView.isLoading = viewModel.state == .loading
+        tableView.reloadData()
     }
 }
 

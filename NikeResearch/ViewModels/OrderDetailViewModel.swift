@@ -12,8 +12,8 @@ final class OrderDetailViewModel {
 
     func item(at index: Int) -> OrderItem { order.items[index] }
 
-    var subtotalText: String { String(format: "$%.2f", order.subtotal) }
-    var taxText: String { String(format: "$%.2f", order.tax) }
+    var subtotalText: String { CurrencyFormatter.string(from: order.subtotal) }
+    var taxText: String { CurrencyFormatter.string(from: order.tax) }
     var shippingText: String { String(localized: "FREE") }
     var totalText: String { order.formattedTotal }
 }

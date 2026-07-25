@@ -2,6 +2,7 @@ import UIKit
 
 final class MyOrdersViewController: UIViewController {
     private let viewModel: MyOrdersViewModel
+    private let loadingView = LoadingOverlayView()
     var onOrderSelected: ((Order) -> Void)?
 
     private lazy var tableView: UITableView = {
@@ -74,6 +75,7 @@ final class MyOrdersViewController: UIViewController {
             emptyView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             emptyView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        loadingView.pin(to: view)
     }
 
     override func viewDidLoad() {
@@ -82,6 +84,7 @@ final class MyOrdersViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         viewModel.onOrdersChanged = { [weak self] in self?.refresh() }
+        viewModel.onStateChanged = { [weak self] in self?.refresh() }
         refresh()
     }
 
@@ -98,8 +101,11 @@ final class MyOrdersViewController: UIViewController {
 
     private func refresh() {
         tableView.reloadData()
-        emptyView.isHidden = !viewModel.isEmpty
-        tableView.isHidden = viewModel.isEmpty
+        // El empty state solo aparece cuando la respuesta llegó vacía de verdad, no
+        // mientras la petición sigue en vuelo.
+        loadingView.isLoading = viewModel.state == .loading
+        emptyView.isHidden = viewModel.state != .empty
+        tableView.isHidden = viewModel.state == .empty
     }
 }
 

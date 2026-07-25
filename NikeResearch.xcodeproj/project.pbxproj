@@ -65,6 +65,10 @@
 		99397304CBE445E5AEE9A29B /* OrderItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E686C034849A881F09B8D /* OrderItemCell.swift */; };
 		9CE6A8E6A0564B63957A6D8F /* BillingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734CDDCEAE0440648F814870 /* BillingTitleCell.swift */; };
 		9DBF545E2DC240D7931DCB30 /* SelectCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C567B4844242D78F0996B1 /* SelectCardViewController.swift */; };
+		A1C0FF0000000000000001BB /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000001AA /* CurrencyFormatter.swift */; };
+		A1C0FF0000000000000002BB /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000002AA /* LoadState.swift */; };
+		A1C0FF0000000000000003BB /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000003AA /* LoadingOverlayView.swift */; };
+		A1C0FF0000000000000004BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000004AA /* SceneDelegate.swift */; };
 		A786965BEAC548988637743B /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BCE7A3DA3A4C56B881F05E /* CartService.swift */; };
 		A7A320EAAF0B4CD9B447AE39 /* CartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB73B0AA317459FB5373B50 /* CartCoordinator.swift */; };
 		A7E1755EEFD64AAB9B10B23D /* ShoeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357C06742E70494C88752AA6 /* ShoeImageViewController.swift */; };
@@ -191,6 +195,10 @@
 		9725AEDCA6964E4E8C45939B /* PaymentProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessingViewController.swift; sourceTree = "<group>"; };
 		975AEDC5A77EA3FEEAC22A1D /* ExpiryDateCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExpiryDateCell.swift; sourceTree = "<group>"; };
 		9ECD825D20604A31ADAA2E8D /* CartTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTotalCell.swift; sourceTree = "<group>"; };
+		A1C0FF0000000000000001AA /* CurrencyFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
+		A1C0FF0000000000000002AA /* LoadState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
+		A1C0FF0000000000000003AA /* LoadingOverlayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
+		A1C0FF0000000000000004AA /* SceneDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A2E1AB30EA2C4CCFB5454FFF /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		A5E3B025227941F484DCEF5A /* MyAddressesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressesViewModel.swift; sourceTree = "<group>"; };
 		A6A25953B62362C5C7ECCDEE /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
@@ -332,6 +340,7 @@
 		4479A1A44141468596E4BE35 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A1C0FF0000000000000002AA /* LoadState.swift */,
 				6CF5D0FC5E7446D99C3C6255 /* AddAddressViewModel.swift */,
 				0F9C643BAA7749739C726606 /* AddCardViewModel.swift */,
 				AB7B8DE00C77489CA7B94EB6 /* CartViewModel.swift */,
@@ -355,6 +364,7 @@
 		46C29CF2300330EF00E2EDCC /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A1C0FF0000000000000004AA /* SceneDelegate.swift */,
 				2A51CA0985504DD39DDDB43B /* AppDelegate.swift */,
 			);
 			path = App;
@@ -441,6 +451,7 @@
 		9A5278042D5A4213A62783CE /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A1C0FF0000000000000003AA /* LoadingOverlayView.swift */,
 				6DD144FD63B043D2AF4FE8AC /* ImageCarouselHeaderView.swift */,
 			);
 			path = Components;
@@ -546,6 +557,7 @@
 		EE3CFF632C7D3B5E75C5858B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A1C0FF0000000000000001AA /* CurrencyFormatter.swift */,
 				37EB3E816C5834DD0B4C608A /* UIViewController+Alert.swift */,
 				659686D6FBA97891B74978FE /* Date+ISO8601.swift */,
 				E5AC365AE1B9C55B03014491 /* String+Luhn.swift */,
@@ -644,6 +656,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C0FF0000000000000004BB /* SceneDelegate.swift in Sources */,
+				A1C0FF0000000000000003BB /* LoadingOverlayView.swift in Sources */,
+				A1C0FF0000000000000002BB /* LoadState.swift in Sources */,
+				A1C0FF0000000000000001BB /* CurrencyFormatter.swift in Sources */,
 				6345AF89B184463EB65D6071 /* AppDelegate.swift in Sources */,
 				BD03A8B614A54E37B7B2E5ED /* AppCoordinator.swift in Sources */,
 				A7A320EAAF0B4CD9B447AE39 /* CartCoordinator.swift in Sources */,
@@ -775,7 +791,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 8AJBS923B3;
 				INFOPLIST_FILE = NikeResearch/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
@@ -864,7 +880,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 8AJBS923B3;
 				INFOPLIST_FILE = NikeResearch/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";

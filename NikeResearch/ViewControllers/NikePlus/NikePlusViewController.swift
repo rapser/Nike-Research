@@ -1,6 +1,7 @@
 import UIKit
 
 final class NikePlusViewController: UITableViewController {
+    private let loadingView = LoadingOverlayView()
     private let viewModel: NikePlusViewModel
 
     private enum Section: Int, CaseIterable {
@@ -22,6 +23,12 @@ final class NikePlusViewController: UITableViewController {
         tableView.estimatedRowHeight = 80
         tableView.register(NikePlusHeaderCell.self, forCellReuseIdentifier: NikePlusHeaderCell.reuseID)
         tableView.register(NikePlusActivityCell.self, forCellReuseIdentifier: NikePlusActivityCell.reuseID)
+        loadingView.useAsBackground(of: tableView)
+        viewModel.onStateChanged = { [weak self] in
+            guard let self else { return }
+            self.loadingView.isLoading = self.viewModel.state == .loading
+            self.tableView.reloadData()
+        }
         viewModel.onActivitiesChanged = { [weak self] in
             self?.tableView.reloadData()
         }

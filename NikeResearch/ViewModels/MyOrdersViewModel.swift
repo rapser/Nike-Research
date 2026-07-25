@@ -1,5 +1,10 @@
 final class MyOrdersViewModel {
     var onOrdersChanged: (() -> Void)?
+    var onStateChanged: (() -> Void)?
+
+    private(set) var state: LoadState = .loading {
+        didSet { onStateChanged?() }
+    }
 
     init() {
         OrdersService.shared.onOrdersUpdated = { [weak self] in
@@ -13,7 +18,12 @@ final class MyOrdersViewModel {
     var isEmpty: Bool { orders.isEmpty }
 
     func loadOrders(completion: @escaping (Error?) -> Void) {
-        OrdersService.shared.fetchOrders(completion: completion)
+        state = .loading
+        OrdersService.shared.fetchOrders { [weak self] error in
+            guard let self else { return }
+            self.state = error != nil ? .failed : (self.isEmpty ? .empty : .loaded)
+            completion(error)
+        }
     }
 
     func order(at index: Int) -> Order { orders[index] }

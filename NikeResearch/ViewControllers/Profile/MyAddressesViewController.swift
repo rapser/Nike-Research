@@ -2,6 +2,7 @@ import UIKit
 
 final class MyAddressesViewController: UIViewController {
     private let viewModel: MyAddressesViewModel
+    private let loadingView = LoadingOverlayView()
     var onAddAddress: (() -> Void)?
     var onEditAddress: ((Address) -> Void)?
 
@@ -75,6 +76,7 @@ final class MyAddressesViewController: UIViewController {
             emptyView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             emptyView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        loadingView.pin(to: view)
     }
 
     override func viewDidLoad() {
@@ -89,6 +91,7 @@ final class MyAddressesViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         viewModel.onAddressesChanged = { [weak self] in self?.refresh() }
+        viewModel.onStateChanged = { [weak self] in self?.refresh() }
         refresh()
     }
 
@@ -105,8 +108,11 @@ final class MyAddressesViewController: UIViewController {
 
     private func refresh() {
         tableView.reloadData()
-        emptyView.isHidden = !viewModel.isEmpty
-        tableView.isHidden = viewModel.isEmpty
+        // El empty state solo aparece cuando la respuesta llegó vacía de verdad, no
+        // mientras la petición sigue en vuelo.
+        loadingView.isLoading = viewModel.state == .loading
+        emptyView.isHidden = viewModel.state != .empty
+        tableView.isHidden = viewModel.state == .empty
     }
 
     @objc private func addTapped() { onAddAddress?() }

@@ -15,6 +15,8 @@ final class FavoritesViewController: UIViewController {
         return cv
     }()
 
+    private let loadingView = LoadingOverlayView()
+
     private lazy var emptyView: UIView = {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -77,6 +79,7 @@ final class FavoritesViewController: UIViewController {
             emptyView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             emptyView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        loadingView.pin(to: view)
     }
 
     override func viewDidLoad() {
@@ -85,6 +88,9 @@ final class FavoritesViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         viewModel.onFavoritesChanged = { [weak self] in
+            self?.refresh()
+        }
+        viewModel.onStateChanged = { [weak self] in
             self?.refresh()
         }
         refresh()
@@ -103,8 +109,11 @@ final class FavoritesViewController: UIViewController {
 
     private func refresh() {
         collectionView.reloadData()
-        emptyView.isHidden = !viewModel.isEmpty
-        collectionView.isHidden = viewModel.isEmpty
+        // El empty state solo aparece cuando la respuesta llegó vacía de verdad, no
+        // mientras la petición sigue en vuelo.
+        loadingView.isLoading = viewModel.state == .loading
+        emptyView.isHidden = viewModel.state != .empty
+        collectionView.isHidden = viewModel.state == .empty
     }
 }
 

@@ -1,5 +1,10 @@
 final class MyAddressesViewModel {
     var onAddressesChanged: (() -> Void)?
+    var onStateChanged: (() -> Void)?
+
+    private(set) var state: LoadState = .loading {
+        didSet { onStateChanged?() }
+    }
 
     init() {
         AddressService.shared.onAddressesUpdate { [weak self] in
@@ -13,7 +18,12 @@ final class MyAddressesViewModel {
     var isEmpty: Bool { addresses.isEmpty }
 
     func loadAddresses(completion: @escaping (Error?) -> Void) {
-        AddressService.shared.fetchAddresses(completion: completion)
+        state = .loading
+        AddressService.shared.fetchAddresses { [weak self] error in
+            guard let self else { return }
+            self.state = error != nil ? .failed : (self.isEmpty ? .empty : .loaded)
+            completion(error)
+        }
     }
 
     func address(at index: Int) -> Address { addresses[index] }

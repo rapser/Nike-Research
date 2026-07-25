@@ -32,5 +32,5 @@ final class CheckoutViewModel {
         }
     }
 
-    private func format(_ value: Double) -> String { String(format: "$%.2f", value) }
+    private func format(_ value: Double) -> String { CurrencyFormatter.string(from: value) }
 }
