@@ -8,16 +8,19 @@ final class ProfileViewController: UIViewController {
     var onLoginTapped: (() -> Void)?
     var onSignUpTapped: (() -> Void)?
     var onLogoutTapped: (() -> Void)?
+    var onAppearanceTapped: (() -> Void)?
 
     private enum Row {
-        case myCards, myOrders, myAddresses, logOut
+        case myCards, myOrders, myAddresses, appearance, logOut
         case login, signUp
     }
 
+    /// La apariencia es un ajuste del dispositivo, no de la cuenta, así que aparece
+    /// tanto con sesión iniciada como sin ella.
     private var rows: [Row] {
         viewModel.isAuthenticated
-            ? [.myCards, .myOrders, .myAddresses, .logOut]
-            : [.login, .signUp]
+            ? [.myCards, .myOrders, .myAddresses, .appearance, .logOut]
+            : [.login, .signUp, .appearance]
     }
 
     private lazy var tableView: UITableView = {
@@ -183,6 +186,10 @@ extension ProfileViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: ProfileMenuCell.reuseID, for: indexPath) as! ProfileMenuCell
             cell.configure(title: String(localized: "MY ADDRESSES"), sfSymbol: "location")
             return cell
+        case .appearance:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ProfileMenuCell.reuseID, for: indexPath) as! ProfileMenuCell
+            cell.configure(title: String(localized: "APPEARANCE"), sfSymbol: "circle.lefthalf.filled")
+            return cell
         case .logOut:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProfileMenuCell.reuseID, for: indexPath) as! ProfileMenuCell
             cell.configure(title: String(localized: "LOG OUT"), sfSymbol: "rectangle.portrait.and.arrow.right")
@@ -208,6 +215,7 @@ extension ProfileViewController: UITableViewDelegate {
         case .myCards: onMyCardsTapped?()
         case .myOrders: onMyOrdersTapped?()
         case .myAddresses: onMyAddressesTapped?()
+        case .appearance: onAppearanceTapped?()
         case .logOut: onLogoutTapped?()
         case .login, .signUp: break
         }

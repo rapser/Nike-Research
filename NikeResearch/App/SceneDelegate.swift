@@ -21,6 +21,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let win = UIWindow(windowScene: windowScene)
         window = win
 
+        // Antes de mostrar nada, para que la app no arranque en el modo del sistema y
+        // salte al elegido por el usuario un instante después.
+        win.overrideUserInterfaceStyle = AppearanceService.shared.mode.userInterfaceStyle
+
         let coordinator = AppCoordinator(window: win)
         appCoordinator = coordinator
         coordinator.start()

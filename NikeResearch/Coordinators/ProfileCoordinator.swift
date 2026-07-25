@@ -24,6 +24,7 @@ final class ProfileCoordinator: Coordinator {
         vc.onLoginTapped = { [weak self] in self?.showLogin() }
         vc.onSignUpTapped = { [weak self] in self?.showRegister() }
         vc.onLogoutTapped = { [weak self] in self?.confirmLogout() }
+        vc.onAppearanceTapped = { [weak self] in self?.showAppearance() }
         profileViewController = vc
         navigationController.viewControllers = [vc]
     }
@@ -108,6 +109,11 @@ final class ProfileCoordinator: Coordinator {
         vc.onAddAddress = { [weak self] in self?.showAddAddress() }
         vc.onEditAddress = { [weak self] address in self?.showEditAddress(address) }
         navigationController.pushViewController(vc, animated: true)
+    }
+
+    private func showAppearance() {
+        let vm = AppearanceViewModel()
+        navigationController.pushViewController(AppearanceViewController(viewModel: vm), animated: true)
     }
 
     private func showAddAddress() {

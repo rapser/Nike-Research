@@ -49,6 +49,23 @@
         }
       }
     },
+    "APPEARANCE": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "APPEARANCE"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "APARIENCIA"
+          }
+        }
+      }
+    },
     "Add a shipping address to speed up checkout.": {
       "localizations": {
         "en": {
@@ -109,6 +126,40 @@
           "stringUnit": {
             "state": "translated",
             "value": "¿Seguro que quieres cerrar sesión?"
+          }
+        }
+      }
+    },
+    "Automatic": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automático"
+          }
+        }
+      }
+    },
+    "Automatic follows the appearance of your device.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic follows the appearance of your device."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automático sigue la apariencia de tu dispositivo."
           }
         }
       }
@@ -657,6 +708,23 @@
         }
       }
     },
+    "Dark": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dark"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oscuro"
+          }
+        }
+      }
+    },
     "Don't have an account?": {
       "localizations": {
         "en": {
@@ -957,6 +1025,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "INICIANDO SESIÓN..."
+          }
+        }
+      }
+    },
+    "Light": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Light"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claro"
           }
         }
       }
