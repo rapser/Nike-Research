@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1C0FF0000000000000004BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000004AA /* SceneDelegate.swift */; };
 		A1C0FF0000000000000003BB /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000003AA /* LoadingOverlayView.swift */; };
 		A1C0FF0000000000000002BB /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000002AA /* LoadState.swift */; };
 		A1C0FF0000000000000001BB /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000001AA /* CurrencyFormatter.swift */; };
@@ -124,6 +125,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A1C0FF0000000000000004AA /* SceneDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A1C0FF0000000000000003AA /* LoadingOverlayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		A1C0FF0000000000000002AA /* LoadState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
 		A1C0FF0000000000000001AA /* CurrencyFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 		46C29CF2300330EF00E2EDCC /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A1C0FF0000000000000004AA /* SceneDelegate.swift */,
 				2A51CA0985504DD39DDDB43B /* AppDelegate.swift */,
 			);
 			path = App;
@@ -653,6 +656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C0FF0000000000000004BB /* SceneDelegate.swift in Sources */,
 				A1C0FF0000000000000003BB /* LoadingOverlayView.swift in Sources */,
 				A1C0FF0000000000000002BB /* LoadState.swift in Sources */,
 				A1C0FF0000000000000001BB /* CurrencyFormatter.swift in Sources */,

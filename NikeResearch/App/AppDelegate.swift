@@ -3,23 +3,20 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    private var appCoordinator: AppCoordinator?
-
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         applyGlobalAppearance()
         configureNetworking()
-
-        let win = UIWindow(frame: UIScreen.main.bounds)
-        window = win
-
-        let coordinator = AppCoordinator(window: win)
-        appCoordinator = coordinator
-        coordinator.start()
-
-        win.makeKeyAndVisible()
         return true
+    }
+
+    /// La ventana y el `AppCoordinator` ya no se crean aquí: con el ciclo de vida de
+    /// `UIScene` los posee el `SceneDelegate`. Aquí solo queda la configuración que es
+    /// del proceso entero y no de una ventana concreta.
+    func application(_ application: UIApplication,
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     private func applyGlobalAppearance() {
