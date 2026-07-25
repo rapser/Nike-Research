@@ -13,7 +13,7 @@ final class ProductDetailsCell: UITableViewCell {
     private let chevron: UIImageView = {
         let cfg = UIImage.SymbolConfiguration(pointSize: 12, weight: .medium)
         let iv = UIImageView(image: UIImage(systemName: "chevron.down", withConfiguration: cfg))
-        iv.tintColor = .black
+        iv.tintColor = .label
         iv.setContentHuggingPriority(.required, for: .horizontal)
         return iv
     }()
@@ -21,7 +21,7 @@ final class ProductDetailsCell: UITableViewCell {
     private let detailLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        l.textColor = .darkGray
+        l.textColor = .secondaryLabel
         l.numberOfLines = 0
         l.isHidden = true
         return l

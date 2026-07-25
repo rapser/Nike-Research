@@ -15,7 +15,7 @@ final class ShoeDetailInfoCell: UITableViewCell {
     private let descriptionLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        l.textColor = .darkGray
+        l.textColor = .secondaryLabel
         l.textAlignment = .center
         l.numberOfLines = 0
         l.translatesAutoresizingMaskIntoConstraints = false

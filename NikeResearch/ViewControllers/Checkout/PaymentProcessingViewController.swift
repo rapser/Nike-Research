@@ -6,7 +6,7 @@ final class PaymentProcessingViewController: UIViewController {
 
     private let activityIndicator: UIActivityIndicatorView = {
         let ai = UIActivityIndicatorView(style: .large)
-        ai.color = .black
+        ai.color = .label
         ai.translatesAutoresizingMaskIntoConstraints = false
         return ai
     }()
@@ -24,7 +24,7 @@ final class PaymentProcessingViewController: UIViewController {
         let l = UILabel()
         l.text = String(localized: "Please do not close the app.")
         l.font = UIFont(name: "AvenirNext-Regular", size: 14) ?? .systemFont(ofSize: 14)
-        l.textColor = .gray
+        l.textColor = .secondaryLabel
         l.textAlignment = .center
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
@@ -38,7 +38,7 @@ final class PaymentProcessingViewController: UIViewController {
 
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(activityIndicator)
         view.addSubview(titleLabel)
         view.addSubview(subtitleLabel)

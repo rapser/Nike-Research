@@ -15,7 +15,7 @@ final class CardNumberCell: UITableViewCell {
         let l = UILabel()
         l.text = String(localized: "CARD NUMBER")
         l.font = UIFont(name: "AvenirNext-Regular", size: 12) ?? .systemFont(ofSize: 12)
-        l.textColor = .gray
+        l.textColor = .secondaryLabel
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -32,7 +32,7 @@ final class CardNumberCell: UITableViewCell {
 
     private let separator: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        v.backgroundColor = .separator
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()

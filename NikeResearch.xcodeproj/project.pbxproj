@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1C0FF0000000000000005BB /* UIColor+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000005AA /* UIColor+Theme.swift */; };
 		02E6B2C479DC45EC83DBEF78 /* ShoeDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F06CEA56507494986BA99E2 /* ShoeDetailInfoCell.swift */; };
 		0495EE028920412A977FDBFD /* MyAddressesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E3B025227941F484DCEF5A /* MyAddressesViewModel.swift */; };
 		0EBF3244712747CAA36E0258 /* FavoriteShoeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D484FB21BB5E4F4BA729289F /* FavoriteShoeCell.swift */; };
@@ -125,6 +126,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A1C0FF0000000000000005AA /* UIColor+Theme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Theme.swift"; sourceTree = "<group>"; };
 		04C68B9C8F7A6DBEC51CE158 /* PaymentMethodDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethodDTOs.swift; sourceTree = "<group>"; };
 		053D2F046F9C48C3BC889452 /* MyOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewModel.swift; sourceTree = "<group>"; };
 		0578FE34BE28E8D57F80053A /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 		EE3CFF632C7D3B5E75C5858B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A1C0FF0000000000000005AA /* UIColor+Theme.swift */,
 				A1C0FF0000000000000001AA /* CurrencyFormatter.swift */,
 				37EB3E816C5834DD0B4C608A /* UIViewController+Alert.swift */,
 				659686D6FBA97891B74978FE /* Date+ISO8601.swift */,
@@ -656,6 +659,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C0FF0000000000000005BB /* UIColor+Theme.swift in Sources */,
 				A1C0FF0000000000000004BB /* SceneDelegate.swift in Sources */,
 				A1C0FF0000000000000003BB /* LoadingOverlayView.swift in Sources */,
 				A1C0FF0000000000000002BB /* LoadState.swift in Sources */,

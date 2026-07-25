@@ -6,7 +6,7 @@ final class CartEmptyStateCell: UITableViewCell {
     private let bagImageView: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "icon-bag"))
         iv.contentMode = .scaleAspectFit
-        iv.tintColor = UIColor.black.withAlphaComponent(0.15)
+        iv.tintColor = .quaternaryLabel
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -24,7 +24,7 @@ final class CartEmptyStateCell: UITableViewCell {
         let l = UILabel()
         l.text = String(localized: "Add items to your bag from the Feed tab.")
         l.font = UIFont(name: "AvenirNext-Regular", size: 14) ?? .systemFont(ofSize: 14)
-        l.textColor = .gray
+        l.textColor = .secondaryLabel
         l.textAlignment = .center
         l.numberOfLines = 0
         l.translatesAutoresizingMaskIntoConstraints = false
