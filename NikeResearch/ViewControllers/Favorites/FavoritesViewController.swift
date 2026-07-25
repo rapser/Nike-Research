@@ -10,7 +10,7 @@ final class FavoritesViewController: UIViewController {
         layout.minimumInteritemSpacing = 1
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.backgroundColor = .white
+        cv.backgroundColor = .systemBackground
         cv.register(FavoriteShoeCell.self, forCellWithReuseIdentifier: FavoriteShoeCell.reuseID)
         return cv
     }()
@@ -24,7 +24,7 @@ final class FavoritesViewController: UIViewController {
         let heartView = UIImageView()
         let cfg = UIImage.SymbolConfiguration(pointSize: 48, weight: .ultraLight)
         heartView.image = UIImage(systemName: "heart", withConfiguration: cfg)
-        heartView.tintColor = UIColor.black.withAlphaComponent(0.15)
+        heartView.tintColor = .quaternaryLabel
         heartView.translatesAutoresizingMaskIntoConstraints = false
 
         let label = UILabel()
@@ -36,7 +36,7 @@ final class FavoritesViewController: UIViewController {
         let sub = UILabel()
         sub.text = String(localized: "Tap the heart on any shoe to save it here.")
         sub.font = UIFont(name: "AvenirNext-Regular", size: 14) ?? .systemFont(ofSize: 14)
-        sub.textColor = .gray
+        sub.textColor = .secondaryLabel
         sub.textAlignment = .center
         sub.numberOfLines = 0
         sub.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +65,7 @@ final class FavoritesViewController: UIViewController {
 
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
         view.addSubview(emptyView)
         NSLayoutConstraint.activate([

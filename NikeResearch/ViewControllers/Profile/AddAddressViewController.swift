@@ -25,7 +25,6 @@ final class AddAddressViewController: UIViewController {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.isHidden = true
-        tv.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.4).cgColor
         tv.layer.borderWidth = 1
         tv.layer.cornerRadius = 8
         tv.rowHeight = 60
@@ -58,7 +57,7 @@ final class AddAddressViewController: UIViewController {
 
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
 
         view.addSubview(mapView)
         view.addSubview(searchBar)
@@ -87,9 +86,20 @@ final class AddAddressViewController: UIViewController {
         ])
     }
 
+    private func updateResultsBorder() {
+        resultsTableView.layer.borderColor = UIColor.separator.cgColor
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = viewModel.title
+
+        // El borde es un `CGColor`, un valor ya resuelto que no se reevalúa al cambiar
+        // de claro a oscuro, así que hay que volver a aplicarlo a mano.
+        updateResultsBorder()
+        registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (vc: Self, _) in
+            vc.updateResultsBorder()
+        }
 
         searchBar.delegate = self
         formTableView.dataSource = self

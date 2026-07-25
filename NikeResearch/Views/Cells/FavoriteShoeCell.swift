@@ -22,7 +22,7 @@ final class FavoriteShoeCell: UICollectionViewCell {
     private let priceLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 12) ?? .systemFont(ofSize: 12)
-        l.textColor = .darkGray
+        l.textColor = .secondaryLabel
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()

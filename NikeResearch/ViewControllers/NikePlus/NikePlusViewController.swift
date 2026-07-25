@@ -18,7 +18,7 @@ final class NikePlusViewController: UITableViewController {
         super.viewDidLoad()
         title = viewModel.title
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .systemBackground
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 80
         tableView.register(NikePlusHeaderCell.self, forCellReuseIdentifier: NikePlusHeaderCell.reuseID)

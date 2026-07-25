@@ -23,7 +23,7 @@ final class ProfileViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.backgroundColor = .white
+        tv.backgroundColor = .systemBackground
         tv.separatorStyle = .none
         tv.rowHeight = UITableView.automaticDimension
         tv.estimatedRowHeight = 60
@@ -40,7 +40,7 @@ final class ProfileViewController: UIViewController {
 
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -74,12 +74,12 @@ final class ProfileViewController: UIViewController {
 
     private func makeSignedInHeaderView() -> UIView {
         let container = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 160))
-        container.backgroundColor = .white
+        container.backgroundColor = .systemBackground
 
         let avatarView = UIImageView()
         let cfg = UIImage.SymbolConfiguration(pointSize: 42, weight: .thin)
         avatarView.image = UIImage(systemName: "person.circle", withConfiguration: cfg)
-        avatarView.tintColor = .black
+        avatarView.tintColor = .label
         avatarView.translatesAutoresizingMaskIntoConstraints = false
 
         let nameLabel = UILabel()
@@ -91,14 +91,14 @@ final class ProfileViewController: UIViewController {
         let emailLabel = UILabel()
         emailLabel.text = viewModel.memberEmail
         emailLabel.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        emailLabel.textColor = .gray
+        emailLabel.textColor = .secondaryLabel
         emailLabel.textAlignment = .center
         emailLabel.translatesAutoresizingMaskIntoConstraints = false
 
         let sinceLabel = UILabel()
         sinceLabel.text = viewModel.memberSince
         sinceLabel.font = UIFont(name: "AvenirNext-Regular", size: 12) ?? .systemFont(ofSize: 12)
-        sinceLabel.textColor = UIColor.black.withAlphaComponent(0.4)
+        sinceLabel.textColor = .tertiaryLabel
         sinceLabel.textAlignment = .center
         sinceLabel.translatesAutoresizingMaskIntoConstraints = false
 
@@ -125,12 +125,12 @@ final class ProfileViewController: UIViewController {
 
     private func makeSignedOutHeaderView() -> UIView {
         let container = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 180))
-        container.backgroundColor = .white
+        container.backgroundColor = .systemBackground
 
         let iconView = UIImageView()
         let cfg = UIImage.SymbolConfiguration(pointSize: 48, weight: .thin)
         iconView.image = UIImage(systemName: "person.circle", withConfiguration: cfg)
-        iconView.tintColor = UIColor.black.withAlphaComponent(0.4)
+        iconView.tintColor = .tertiaryLabel
         iconView.translatesAutoresizingMaskIntoConstraints = false
 
         let titleLabel = UILabel()
@@ -142,7 +142,7 @@ final class ProfileViewController: UIViewController {
         let subtitleLabel = UILabel()
         subtitleLabel.text = String(localized: "Log in to see your orders, cards and addresses.")
         subtitleLabel.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        subtitleLabel.textColor = .gray
+        subtitleLabel.textColor = .secondaryLabel
         subtitleLabel.textAlignment = .center
         subtitleLabel.numberOfLines = 2
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false

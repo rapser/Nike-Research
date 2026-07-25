@@ -6,7 +6,7 @@ final class ProfileMenuCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         accessoryType = .disclosureIndicator
-        tintColor = .black
+        tintColor = .label
         textLabel?.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 16) ?? .boldSystemFont(ofSize: 16)
     }
     required init?(coder: NSCoder) { fatalError() }
@@ -15,6 +15,6 @@ final class ProfileMenuCell: UITableViewCell {
         textLabel?.text = title
         let cfg = UIImage.SymbolConfiguration(pointSize: 20, weight: .light)
         imageView?.image = UIImage(systemName: sfSymbol, withConfiguration: cfg)
-        imageView?.tintColor = .black
+        imageView?.tintColor = .label
     }
 }
