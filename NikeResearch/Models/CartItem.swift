@@ -4,5 +4,5 @@ struct CartItem {
     var quantity: Int
 
     var lineTotal: Double { shoe.price * Double(quantity) }
-    var formattedLineTotal: String { "$\(Int(lineTotal))" }
+    var formattedLineTotal: String { CurrencyFormatter.string(from: lineTotal) }
 }

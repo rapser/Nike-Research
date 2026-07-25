@@ -5,8 +5,8 @@ struct OrderItem {
     let shoePrice: Double
     let quantity: Int
 
-    var formattedPrice: String { "$\(Int(shoePrice))" }
-    var formattedLineTotal: String { String(format: "$%.2f", shoePrice * Double(quantity)) }
+    var formattedPrice: String { CurrencyFormatter.string(from: shoePrice) }
+    var formattedLineTotal: String { CurrencyFormatter.string(from: shoePrice * Double(quantity)) }
 }
 
 struct Order {
@@ -20,7 +20,7 @@ struct Order {
     let paymentMethod: PaymentMethod
     let placedAt: Date
 
-    var formattedTotal: String { String(format: "$%.2f", total) }
+    var formattedTotal: String { CurrencyFormatter.string(from: total) }
 
     var formattedDate: String {
         let f = DateFormatter()

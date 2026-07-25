@@ -2,6 +2,11 @@ import UIKit
 
 final class NikePlusViewModel {
     var onActivitiesChanged: (() -> Void)?
+    var onStateChanged: (() -> Void)?
+
+    private(set) var state: LoadState = .loading {
+        didSet { onStateChanged?() }
+    }
 
     init() {
         NikePlusService.shared.onActivitiesUpdated = { [weak self] in
@@ -16,7 +21,12 @@ final class NikePlusViewModel {
     var activityCount: Int { NikePlusService.shared.activities.count }
 
     func loadActivities(completion: @escaping (Error?) -> Void) {
-        NikePlusService.shared.fetchActivities(completion: completion)
+        state = .loading
+        NikePlusService.shared.fetchActivities { [weak self] error in
+            guard let self else { return }
+            self.state = error != nil ? .failed : (self.activityCount == 0 ? .empty : .loaded)
+            completion(error)
+        }
     }
 
     func activityTitle(at index: Int) -> String { NikePlusService.shared.activities[index].title }

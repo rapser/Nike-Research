@@ -1,5 +1,10 @@
 final class MyCardsViewModel {
     var onCardsChanged: (() -> Void)?
+    var onStateChanged: (() -> Void)?
+
+    private(set) var state: LoadState = .loading {
+        didSet { onStateChanged?() }
+    }
 
     init() {
         PaymentMethodsService.shared.onCardsUpdate { [weak self] in
@@ -12,7 +17,12 @@ final class MyCardsViewModel {
     var count: Int { cards.count }
 
     func loadCards(completion: @escaping (Error?) -> Void) {
-        PaymentMethodsService.shared.fetchAll(completion: completion)
+        state = .loading
+        PaymentMethodsService.shared.fetchAll { [weak self] error in
+            guard let self else { return }
+            self.state = error != nil ? .failed : (self.count == 0 ? .empty : .loaded)
+            completion(error)
+        }
     }
 
     func card(at index: Int) -> PaymentMethod { cards[index] }
