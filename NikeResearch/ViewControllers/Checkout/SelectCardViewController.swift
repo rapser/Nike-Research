@@ -1,6 +1,7 @@
 import UIKit
 
 final class SelectCardViewController: UITableViewController {
+    private let loadingView = LoadingOverlayView()
     private let viewModel: SelectCardViewModel
 
     private enum Section: Int { case cards, addNew }
@@ -20,6 +21,12 @@ final class SelectCardViewController: UITableViewController {
         tableView.register(PaymentCardCell.self, forCellReuseIdentifier: PaymentCardCell.reuseID)
         tableView.register(ActionButtonCell.self, forCellReuseIdentifier: ActionButtonCell.reuseID)
 
+        loadingView.useAsBackground(of: tableView)
+        viewModel.onStateChanged = { [weak self] in
+            guard let self else { return }
+            self.loadingView.isLoading = self.viewModel.state == .loading
+            self.tableView.reloadData()
+        }
         viewModel.onCardsChanged = { [weak self] in
             self?.tableView.reloadData()
         }

@@ -2,6 +2,7 @@ import UIKit
 
 final class CartViewController: UITableViewController {
     private let viewModel: CartViewModel
+    private let loadingView = LoadingOverlayView()
 
     private enum Section: Int, CaseIterable {
         case header, items, empty, summary, total, checkout
@@ -29,9 +30,15 @@ final class CartViewController: UITableViewController {
         tableView.register(ActionButtonCell.self, forCellReuseIdentifier: ActionButtonCell.reuseID)
         navigationItem.rightBarButtonItem = clearButton
 
+        loadingView.useAsBackground(of: tableView)
         viewModel.onCartChanged = { [weak self] in
             self?.updateClearButton()
             self?.tableView.reloadData()
+        }
+        viewModel.onStateChanged = { [weak self] in
+            guard let self else { return }
+            self.loadingView.isLoading = self.viewModel.state == .loading
+            self.tableView.reloadData()
         }
     }
 
@@ -72,12 +79,12 @@ final class CartViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section)! {
-        case .header:   return 1
-        case .items:    return viewModel.isEmpty ? 0 : viewModel.itemCount
-        case .empty:    return viewModel.isEmpty ? 1 : 0
-        case .summary:  return viewModel.isEmpty ? 0 : 1
-        case .total:    return viewModel.isEmpty ? 0 : 1
-        case .checkout: return viewModel.isEmpty ? 0 : 1
+        case .header:   return viewModel.state == .loading ? 0 : 1
+        case .items:    return viewModel.showsContent ? viewModel.itemCount : 0
+        case .empty:    return viewModel.showsEmptyState ? 1 : 0
+        case .summary:  return viewModel.showsContent ? 1 : 0
+        case .total:    return viewModel.showsContent ? 1 : 0
+        case .checkout: return viewModel.showsContent ? 1 : 0
         }
     }
 

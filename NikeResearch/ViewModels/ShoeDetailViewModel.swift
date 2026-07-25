@@ -20,16 +20,46 @@ final class ShoeDetailViewModel {
 
     var buyButtonTitle: String {
         let total = shoe.price * Double(quantity)
-        let totalText = "$\(Int(total))"
+        let totalText = CurrencyFormatter.string(from: total)
         let buyWord = String(localized: "BUY")
         return quantity > 1 ? "\(buyWord) \(quantity)  \(totalText)" : "\(buyWord)  \(totalText)"
     }
 
     var images: [UIImage] { shoe.images }
-    var suggestions: [Shoe] { Shoe.fetchShoes() }
+
+    /// Antes esto era `Shoe.fetchShoes()`: un catálogo hardcodeado de 2017 que nunca
+    /// consultaba la API. Se cachea en vez de recalcularse porque los tres accesores de
+    /// abajo se llaman una vez por celda durante el scroll.
+    private(set) var suggestions: [Shoe] = []
     var suggestionCount: Int { suggestions.count }
 
     var isFavorite: Bool { FavoritesService.shared.isFavorite(shoe) }
+
+    /// No se suscribe a `onProductsUpdate` a propósito: el detalle se instancia de nuevo
+    /// en cada push (y el carrusel de sugerencias lleva a otro detalle), así que
+    /// suscribirse acumularía observers que nadie da de baja.
+    func loadSuggestions(completion: @escaping (Error?) -> Void) {
+        if !ProductsService.shared.products.isEmpty {
+            applySuggestions()
+            completion(nil)
+            return
+        }
+        // Se puede llegar aquí desde Favoritos sin haber abierto el Feed nunca, así que
+        // no se puede asumir que el catálogo ya esté cargado.
+        ProductsService.shared.fetchProducts { [weak self] result in
+            switch result {
+            case .success:
+                self?.applySuggestions()
+                completion(nil)
+            case .failure(let error):
+                completion(error)
+            }
+        }
+    }
+
+    private func applySuggestions() {
+        suggestions = ProductsService.shared.products.filter { $0.uid != shoe.uid }
+    }
 
     func suggestionImage(at index: Int) -> UIImage? { suggestions[index].images.first }
     func suggestionName(at index: Int) -> String { suggestions[index].name }

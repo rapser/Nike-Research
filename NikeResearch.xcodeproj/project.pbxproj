@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1C0FF0000000000000003BB /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000003AA /* LoadingOverlayView.swift */; };
+		A1C0FF0000000000000002BB /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000002AA /* LoadState.swift */; };
+		A1C0FF0000000000000001BB /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000001AA /* CurrencyFormatter.swift */; };
 		02E6B2C479DC45EC83DBEF78 /* ShoeDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F06CEA56507494986BA99E2 /* ShoeDetailInfoCell.swift */; };
 		0495EE028920412A977FDBFD /* MyAddressesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E3B025227941F484DCEF5A /* MyAddressesViewModel.swift */; };
 		0EBF3244712747CAA36E0258 /* FavoriteShoeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D484FB21BB5E4F4BA729289F /* FavoriteShoeCell.swift */; };
@@ -121,6 +124,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A1C0FF0000000000000003AA /* LoadingOverlayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
+		A1C0FF0000000000000002AA /* LoadState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
+		A1C0FF0000000000000001AA /* CurrencyFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		04C68B9C8F7A6DBEC51CE158 /* PaymentMethodDTOs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethodDTOs.swift; sourceTree = "<group>"; };
 		053D2F046F9C48C3BC889452 /* MyOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewModel.swift; sourceTree = "<group>"; };
 		0578FE34BE28E8D57F80053A /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -332,6 +338,7 @@
 		4479A1A44141468596E4BE35 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A1C0FF0000000000000002AA /* LoadState.swift */,
 				6CF5D0FC5E7446D99C3C6255 /* AddAddressViewModel.swift */,
 				0F9C643BAA7749739C726606 /* AddCardViewModel.swift */,
 				AB7B8DE00C77489CA7B94EB6 /* CartViewModel.swift */,
@@ -441,6 +448,7 @@
 		9A5278042D5A4213A62783CE /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A1C0FF0000000000000003AA /* LoadingOverlayView.swift */,
 				6DD144FD63B043D2AF4FE8AC /* ImageCarouselHeaderView.swift */,
 			);
 			path = Components;
@@ -546,6 +554,7 @@
 		EE3CFF632C7D3B5E75C5858B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A1C0FF0000000000000001AA /* CurrencyFormatter.swift */,
 				37EB3E816C5834DD0B4C608A /* UIViewController+Alert.swift */,
 				659686D6FBA97891B74978FE /* Date+ISO8601.swift */,
 				E5AC365AE1B9C55B03014491 /* String+Luhn.swift */,
@@ -644,6 +653,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C0FF0000000000000003BB /* LoadingOverlayView.swift in Sources */,
+				A1C0FF0000000000000002BB /* LoadState.swift in Sources */,
+				A1C0FF0000000000000001BB /* CurrencyFormatter.swift in Sources */,
 				6345AF89B184463EB65D6071 /* AppDelegate.swift in Sources */,
 				BD03A8B614A54E37B7B2E5ED /* AppCoordinator.swift in Sources */,
 				A7A320EAAF0B4CD9B447AE39 /* CartCoordinator.swift in Sources */,

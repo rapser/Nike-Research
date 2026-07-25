@@ -51,6 +51,23 @@ final class ShoeDetailViewController: UIViewController {
         viewModel.onQuantityChanged = { [weak self] in
             self?.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
         }
+        loadSuggestions()
+    }
+
+    private func loadSuggestions() {
+        viewModel.loadSuggestions { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.presentAlert(title: String(localized: "Couldn't Load Products"), message: error.localizedDescription)
+                return
+            }
+            // `reloadData` y no `reloadRows`: si el catálogo ya estaba cacheado esto
+            // corre síncrono dentro de `viewDidLoad`, antes del primer layout de la
+            // tabla, y recargar una fila suelta ahí no es seguro. Hace falta recargar
+            // —no solo la collection interna— porque el alto de la fila depende de
+            // `suggestionCount`.
+            self.tableView.reloadData()
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -163,6 +180,9 @@ extension ShoeDetailViewController: UITableViewDataSource {
 extension ShoeDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 3 {
+            // Sin sugerencias todavía (o si fallaron) la fila se colapsa, en vez de
+            // reservar el alto del título para una rejilla vacía.
+            guard viewModel.suggestionCount > 0 else { return 0 }
             let itemWidth = (view.bounds.width - 10 - 5) / 2
             let rows = ceil(Double(viewModel.suggestionCount) / 2.0)
             let labelHeight: CGFloat = 60

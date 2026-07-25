@@ -1,6 +1,7 @@
 import UIKit
 
 final class MyCardsViewController: UITableViewController {
+    private let loadingView = LoadingOverlayView()
     private let viewModel: MyCardsViewModel
     var onAddCard: (() -> Void)?
 
@@ -25,6 +26,12 @@ final class MyCardsViewController: UITableViewController {
             action: #selector(addTapped)
         )
 
+        loadingView.useAsBackground(of: tableView)
+        viewModel.onStateChanged = { [weak self] in
+            guard let self else { return }
+            self.loadingView.isLoading = self.viewModel.state == .loading
+            self.tableView.reloadData()
+        }
         viewModel.onCardsChanged = { [weak self] in
             self?.tableView.reloadData()
         }
