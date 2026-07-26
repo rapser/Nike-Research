@@ -21,8 +21,20 @@ final class CartViewModel {
     /// Durante la carga no se muestra ni el contenido ni la celda de "carrito vacío":
     /// la caché arranca en `[]`, así que `isEmpty` por sí solo no distingue "vacío" de
     /// "todavía no ha respondido el servidor".
-    var showsEmptyState: Bool { state == .empty }
-    var showsContent: Bool { state != .loading && !isEmpty }
+    var showsEmptyState: Bool { state == .empty || state == .signedOut }
+    var showsContent: Bool { state != .loading && state != .signedOut && !isEmpty }
+
+    /// Un invitado no tiene el carrito vacío: no tiene carrito.
+    var emptyTitle: String {
+        state == .signedOut
+            ? String(localized: "SIGN IN TO SEE YOUR BAG")
+            : String(localized: "YOUR BAG IS EMPTY")
+    }
+    var emptyMessage: String {
+        state == .signedOut
+            ? String(localized: "Log in to add items to your bag.")
+            : String(localized: "Add items to your bag from the Feed tab.")
+    }
 
     var itemCountText: String {
         let n = CartService.shared.totalItemCount
@@ -36,6 +48,13 @@ final class CartViewModel {
     var totalText: String { format(CartService.shared.total) }
 
     func loadCart(completion: @escaping (Error?) -> Void) {
+        // Sin sesión no se llama a la API: esta pantalla vive detrás de una ruta
+        // protegida y la petición solo devolvería un 401.
+        guard AuthService.shared.isAuthenticated else {
+            state = .signedOut
+            completion(nil)
+            return
+        }
         state = .loading
         CartService.shared.fetchCart { [weak self] error in
             guard let self else { return }

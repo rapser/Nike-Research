@@ -17,29 +17,41 @@ final class FavoritesViewController: UIViewController {
 
     private let loadingView = LoadingOverlayView()
 
+    /// Guardados como propiedades porque su contenido cambia: el estado vacío de un
+    /// invitado no dice lo mismo que el de alguien con sesión y sin favoritos.
+    private let emptyIconView: UIImageView = {
+        let iv = UIImageView()
+        iv.tintColor = .quaternaryLabel
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+
+    private let emptyTitleLabel: UILabel = {
+        let l = UILabel()
+        l.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20) ?? .boldSystemFont(ofSize: 20)
+        l.textAlignment = .center
+        l.numberOfLines = 0
+        l.translatesAutoresizingMaskIntoConstraints = false
+        return l
+    }()
+
+    private let emptyMessageLabel: UILabel = {
+        let l = UILabel()
+        l.font = UIFont(name: "AvenirNext-Regular", size: 14) ?? .systemFont(ofSize: 14)
+        l.textColor = .secondaryLabel
+        l.textAlignment = .center
+        l.numberOfLines = 0
+        l.translatesAutoresizingMaskIntoConstraints = false
+        return l
+    }()
+
     private lazy var emptyView: UIView = {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
 
-        let heartView = UIImageView()
-        let cfg = UIImage.SymbolConfiguration(pointSize: 48, weight: .ultraLight)
-        heartView.image = UIImage(systemName: "heart", withConfiguration: cfg)
-        heartView.tintColor = .quaternaryLabel
-        heartView.translatesAutoresizingMaskIntoConstraints = false
-
-        let label = UILabel()
-        label.text = String(localized: "NO FAVORITES YET")
-        label.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20) ?? .boldSystemFont(ofSize: 20)
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        let sub = UILabel()
-        sub.text = String(localized: "Tap the heart on any shoe to save it here.")
-        sub.font = UIFont(name: "AvenirNext-Regular", size: 14) ?? .systemFont(ofSize: 14)
-        sub.textColor = .secondaryLabel
-        sub.textAlignment = .center
-        sub.numberOfLines = 0
-        sub.translatesAutoresizingMaskIntoConstraints = false
+        let heartView = emptyIconView
+        let label = emptyTitleLabel
+        let sub = emptyMessageLabel
 
         container.addSubview(heartView)
         container.addSubview(label)
@@ -112,8 +124,14 @@ final class FavoritesViewController: UIViewController {
         // El empty state solo aparece cuando la respuesta llegó vacía de verdad, no
         // mientras la petición sigue en vuelo.
         loadingView.isLoading = viewModel.state == .loading
-        emptyView.isHidden = viewModel.state != .empty
-        collectionView.isHidden = viewModel.state == .empty
+
+        let cfg = UIImage.SymbolConfiguration(pointSize: 48, weight: .ultraLight)
+        emptyIconView.image = UIImage(systemName: viewModel.emptySymbol, withConfiguration: cfg)
+        emptyTitleLabel.text = viewModel.emptyTitle
+        emptyMessageLabel.text = viewModel.emptyMessage
+
+        emptyView.isHidden = !viewModel.showsEmptyState
+        collectionView.isHidden = viewModel.showsEmptyState
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1C0FF0000000000000009BB /* SignedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000009AA /* SignedOutView.swift */; };
 		A1C0FF0000000000000008BB /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000008AA /* AppearanceViewController.swift */; };
 		A1C0FF0000000000000007BB /* AppearanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000007AA /* AppearanceViewModel.swift */; };
 		A1C0FF0000000000000006BB /* AppearanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000006AA /* AppearanceService.swift */; };
@@ -129,6 +130,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A1C0FF0000000000000009AA /* SignedOutView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignedOutView.swift; sourceTree = "<group>"; };
 		A1C0FF0000000000000008AA /* AppearanceViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = "<group>"; };
 		A1C0FF0000000000000007AA /* AppearanceViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppearanceViewModel.swift; sourceTree = "<group>"; };
 		A1C0FF0000000000000006AA /* AppearanceService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppearanceService.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 		9A5278042D5A4213A62783CE /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A1C0FF0000000000000009AA /* SignedOutView.swift */,
 				A1C0FF0000000000000003AA /* LoadingOverlayView.swift */,
 				6DD144FD63B043D2AF4FE8AC /* ImageCarouselHeaderView.swift */,
 			);
@@ -668,6 +671,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C0FF0000000000000009BB /* SignedOutView.swift in Sources */,
 				A1C0FF0000000000000008BB /* AppearanceViewController.swift in Sources */,
 				A1C0FF0000000000000007BB /* AppearanceViewModel.swift in Sources */,
 				A1C0FF0000000000000006BB /* AppearanceService.swift in Sources */,

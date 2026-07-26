@@ -1028,6 +1028,57 @@
         }
       }
     },
+    "Log in to add items to your bag.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log in to add items to your bag."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inicia sesión para agregar productos a tu bolsa."
+          }
+        }
+      }
+    },
+    "Log in to continue.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log in to continue."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inicia sesión para continuar."
+          }
+        }
+      }
+    },
+    "Log in to save shoes to your favorites.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log in to save shoes to your favorites."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inicia sesión para guardar zapatillas en tus favoritos."
+          }
+        }
+      }
+    },
     "Log in to see your orders, cards and addresses.": {
       "localizations": {
         "en": {
@@ -1040,6 +1091,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Inicia sesión para ver tus pedidos, tarjetas y direcciones."
+          }
+        }
+      }
+    },
+    "Log in to track your runs and progress.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log in to track your runs and progress."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inicia sesión para registrar tus carreras y tu progreso."
           }
         }
       }
@@ -1696,6 +1764,57 @@
           "stringUnit": {
             "state": "translated",
             "value": "SELECCIONAR TARJETA"
+          }
+        }
+      }
+    },
+    "SIGN IN TO SEE YOUR ACTIVITY": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIGN IN TO SEE YOUR ACTIVITY"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "INICIA SESIÓN PARA VER TU ACTIVIDAD"
+          }
+        }
+      }
+    },
+    "SIGN IN TO SEE YOUR BAG": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIGN IN TO SEE YOUR BAG"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "INICIA SESIÓN PARA VER TU BOLSA"
+          }
+        }
+      }
+    },
+    "SIGN IN TO SEE YOUR FAVORITES": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIGN IN TO SEE YOUR FAVORITES"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "INICIA SESIÓN PARA VER TUS FAVORITOS"
           }
         }
       }

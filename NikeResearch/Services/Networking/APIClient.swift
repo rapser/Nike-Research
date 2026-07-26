@@ -21,11 +21,30 @@ final class APIClient {
         baseURL.appendingPathComponent(endpoint.path)
     }
 
+    /// Corta cualquier llamada a una ruta protegida cuando no hay sesión, antes de tocar
+    /// la red. Sin esto, un invitado dispara un 401 que además despierta al
+    /// `AuthTokenInterceptor` a refrescar un token que no existe.
+    ///
+    /// Es la red de seguridad: lo correcto es que las pantallas ni lo intenten (ver los
+    /// `guard` de los ViewModels), pero esto garantiza que ninguna ruta protegida se
+    /// escape, incluidas las que se añadan después. Devuelve en el hilo principal y de
+    /// forma asíncrona para que los llamadores vean la misma semántica que con una
+    /// respuesta real de red.
+    private func rejectUnauthenticated<T>(
+        _ endpoint: APIEndpoint,
+        completion: @escaping (Result<T, APIError>) -> Void
+    ) -> Bool {
+        guard endpoint.requiresAuth, !AuthService.shared.isAuthenticated else { return false }
+        DispatchQueue.main.async { completion(.failure(.notAuthenticated)) }
+        return true
+    }
+
     func request<T: Decodable>(
         _ endpoint: APIEndpoint,
         decode: T.Type,
         completion: @escaping (Result<T, APIError>) -> Void
     ) {
+        guard !rejectUnauthenticated(endpoint, completion: completion) else { return }
         session(for: endpoint)
             .request(url(for: endpoint), method: endpoint.method)
             .validate()
@@ -38,6 +57,7 @@ final class APIClient {
         decode: T.Type,
         completion: @escaping (Result<T, APIError>) -> Void
     ) {
+        guard !rejectUnauthenticated(endpoint, completion: completion) else { return }
         session(for: endpoint)
             .request(url(for: endpoint), method: endpoint.method, parameters: body, encoder: JSONParameterEncoder.default)
             .validate()
@@ -50,6 +70,7 @@ final class APIClient {
         body: B,
         completion: @escaping (Result<Void, APIError>) -> Void
     ) {
+        guard !rejectUnauthenticated(endpoint, completion: completion) else { return }
         session(for: endpoint)
             .request(url(for: endpoint), method: endpoint.method, parameters: body, encoder: JSONParameterEncoder.default)
             .validate()

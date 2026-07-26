@@ -2,6 +2,7 @@ import UIKit
 
 final class NikePlusViewController: UITableViewController {
     private let loadingView = LoadingOverlayView()
+    private let signedOutView = SignedOutView()
     private let viewModel: NikePlusViewModel
 
     private enum Section: Int, CaseIterable {
@@ -23,11 +24,9 @@ final class NikePlusViewController: UITableViewController {
         tableView.estimatedRowHeight = 80
         tableView.register(NikePlusHeaderCell.self, forCellReuseIdentifier: NikePlusHeaderCell.reuseID)
         tableView.register(NikePlusActivityCell.self, forCellReuseIdentifier: NikePlusActivityCell.reuseID)
-        loadingView.useAsBackground(of: tableView)
+        signedOutView.configure(title: viewModel.signedOutTitle, message: viewModel.signedOutMessage)
         viewModel.onStateChanged = { [weak self] in
-            guard let self else { return }
-            self.loadingView.isLoading = self.viewModel.state == .loading
-            self.tableView.reloadData()
+            self?.render()
         }
         viewModel.onActivitiesChanged = { [weak self] in
             self?.tableView.reloadData()
@@ -45,11 +44,25 @@ final class NikePlusViewController: UITableViewController {
         }
     }
 
+    /// El loader y el mensaje de invitado se turnan como `backgroundView`: son estados
+    /// excluyentes, porque sin sesión no se llega a cargar nada.
+    private func render() {
+        if viewModel.isSignedOut {
+            signedOutView.useAsBackground(of: tableView)
+        } else {
+            loadingView.useAsBackground(of: tableView)
+            loadingView.isLoading = viewModel.state == .loading
+        }
+        tableView.reloadData()
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         Section.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Sin sesión no se muestra la ficha de perfil vacía: solo el mensaje de fondo.
+        guard !viewModel.isSignedOut else { return 0 }
         switch Section(rawValue: section)! {
         case .profile:    return 1
         case .activities: return viewModel.activityCount

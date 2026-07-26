@@ -18,6 +18,13 @@ final class MyOrdersViewModel {
     var isEmpty: Bool { orders.isEmpty }
 
     func loadOrders(completion: @escaping (Error?) -> Void) {
+        // Sin sesión no se llama a la API: esta pantalla vive detrás de una ruta
+        // protegida y la petición solo devolvería un 401.
+        guard AuthService.shared.isAuthenticated else {
+            state = .signedOut
+            completion(nil)
+            return
+        }
         state = .loading
         OrdersService.shared.fetchOrders { [weak self] error in
             guard let self else { return }

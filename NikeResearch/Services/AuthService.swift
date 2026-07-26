@@ -34,10 +34,14 @@ final class AuthService {
         }
     }
 
+    /// El orden importa: `/auth/logout` es una ruta protegida, y `APIClient` descarta las
+    /// llamadas protegidas cuando no hay sesión. Si se limpiara `currentUser` primero, la
+    /// petición se rechazaría en el cliente y el refresh token seguiría siendo válido en
+    /// el servidor. Se revoca primero y se limpia el estado local después.
     func logout() {
+        repository.logout()
         currentUser = nil
         UserDefaults.standard.removeObject(forKey: userDefaultsKey)
-        repository.logout()
     }
 
     private func handle(result: Result<User, AuthError>, completion: @escaping (Result<User, AuthError>) -> Void) {

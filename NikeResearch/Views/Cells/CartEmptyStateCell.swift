@@ -13,16 +13,15 @@ final class CartEmptyStateCell: UITableViewCell {
 
     private let titleLabel: UILabel = {
         let l = UILabel()
-        l.text = String(localized: "YOUR BAG IS EMPTY")
         l.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 20) ?? .boldSystemFont(ofSize: 20)
         l.textAlignment = .center
+        l.numberOfLines = 0
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
 
     private let subtitleLabel: UILabel = {
         let l = UILabel()
-        l.text = String(localized: "Add items to your bag from the Feed tab.")
         l.font = UIFont(name: "AvenirNext-Regular", size: 14) ?? .systemFont(ofSize: 14)
         l.textColor = .secondaryLabel
         l.textAlignment = .center
@@ -54,4 +53,11 @@ final class CartEmptyStateCell: UITableViewCell {
         ])
     }
     required init?(coder: NSCoder) { fatalError() }
+
+    /// El texto lo decide el ViewModel: cambia si el carrito está vacío o si no hay
+    /// sesión, que no son lo mismo.
+    func configure(title: String, message: String) {
+        titleLabel.text = title
+        subtitleLabel.text = message
+    }
 }
