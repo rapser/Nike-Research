@@ -9,14 +9,16 @@ final class LoadingOverlayView: UIView {
     private let indicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.color = .black
+        // `.label` y no `.black`: en modo oscuro un spinner negro sobre fondo oscuro
+        // era invisible, que es justo el momento en que hace falta verlo.
+        indicator.color = .label
         return indicator
     }()
 
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         isHidden = true
         addSubview(indicator)
         NSLayoutConstraint.activate([

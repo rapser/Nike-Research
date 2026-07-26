@@ -6,7 +6,7 @@ final class NikePlusActivityCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 11) ?? .systemFont(ofSize: 11)
-        l.textColor = .gray
+        l.textColor = .secondaryLabel
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -21,7 +21,7 @@ final class NikePlusActivityCell: UITableViewCell {
     private let unitLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        l.textColor = .darkGray
+        l.textColor = .secondaryLabel
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -47,7 +47,7 @@ final class NikePlusActivityCell: UITableViewCell {
         ])
 
         let separator = UIView()
-        separator.backgroundColor = UIColor.black.withAlphaComponent(0.08)
+        separator.backgroundColor = .separator
         separator.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(separator)
         NSLayoutConstraint.activate([

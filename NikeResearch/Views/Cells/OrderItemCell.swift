@@ -14,7 +14,7 @@ final class OrderItemCell: UITableViewCell {
     private let qtyLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 12) ?? .systemFont(ofSize: 12)
-        l.textColor = .gray
+        l.textColor = .secondaryLabel
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()

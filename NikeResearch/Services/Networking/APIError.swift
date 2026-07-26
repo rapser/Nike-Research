@@ -44,4 +44,14 @@ struct APIError: Decodable, LocalizedError {
     /// (e.g. the server is unreachable, or returns something unexpected).
     static let network = APIError(code: "NETWORK_ERROR", message: "No se pudo conectar con el servidor. Revisa tu conexión e intenta de nuevo.")
     static let decoding = APIError(code: "DECODING_ERROR", message: "Ocurrió un error inesperado procesando la respuesta del servidor.")
+
+    /// Se produce en el cliente, sin llegar a salir a la red: una ruta protegida se pidió
+    /// sin sesión. El mensaje está pensado para mostrarse tal cual al usuario cuando un
+    /// invitado intenta una acción que requiere cuenta (agregar al carrito, marcar
+    /// favorito), así que va localizado en vez de fijo en español como los de arriba.
+    static var notAuthenticated: APIError {
+        APIError(code: "NOT_AUTHENTICATED",
+                 message: String(localized: "Log in to continue."),
+                 type: "auth_error")
+    }
 }

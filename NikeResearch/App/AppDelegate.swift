@@ -19,9 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
+    /// `.label` en vez de `.black`: en modo oscuro un tint negro dejaba los íconos del
+    /// tab bar y los botones de navegación invisibles sobre la barra oscura.
     private func applyGlobalAppearance() {
-        UITabBar.appearance().tintColor = .black
-        UINavigationBar.appearance().tintColor = .black
+        UITabBar.appearance().tintColor = .label
+        UINavigationBar.appearance().tintColor = .label
         UINavigationBar.appearance().isTranslucent = false
     }
 

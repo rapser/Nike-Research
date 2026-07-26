@@ -11,7 +11,7 @@ final class FavoritesCoordinator: Coordinator {
             .font: UIFont(name: "AvenirNextCondensed-DemiBold", size: 17) ?? .systemFont(ofSize: 17, weight: .semibold)
         ]
         navigationController.navigationBar.isTranslucent = false
-        navigationController.navigationBar.tintColor = .black
+        navigationController.navigationBar.tintColor = .label
     }
 
     func start() {

@@ -7,7 +7,7 @@ final class AuthLinkCell: UITableViewCell {
     private let promptLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        l.textColor = .gray
+        l.textColor = .secondaryLabel
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -15,7 +15,7 @@ final class AuthLinkCell: UITableViewCell {
     private let actionLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 13) ?? .boldSystemFont(ofSize: 13)
-        l.textColor = .black
+        l.textColor = .label
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()

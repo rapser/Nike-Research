@@ -8,7 +8,6 @@ final class NikePlusHeaderCell: UITableViewCell {
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.borderWidth = 2
-        iv.layer.borderColor = UIColor.black.cgColor
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -24,7 +23,7 @@ final class NikePlusHeaderCell: UITableViewCell {
     private let memberSinceLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        l.textColor = .darkGray
+        l.textColor = .secondaryLabel
         l.textAlignment = .center
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
@@ -36,6 +35,15 @@ final class NikePlusHeaderCell: UITableViewCell {
         contentView.addSubview(avatarImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(memberSinceLabel)
+
+        // Un `CGColor` es un valor resuelto: no se reevalúa solo al cambiar de claro a
+        // oscuro, a diferencia de un `UIColor` semántico asignado a `textColor` o
+        // `tintColor`. Por eso el borde del avatar se vuelve a aplicar a mano cada vez
+        // que cambia el modo.
+        updateAvatarBorder()
+        registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (cell: Self, _) in
+            cell.updateAvatarBorder()
+        }
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 32),
             avatarImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -57,6 +65,10 @@ final class NikePlusHeaderCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.height / 2
+    }
+
+    private func updateAvatarBorder() {
+        avatarImageView.layer.borderColor = UIColor.label.cgColor
     }
 
     func configure(image: UIImage?, name: String, memberSince: String) {

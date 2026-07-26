@@ -13,7 +13,7 @@ final class OrderHistoryCell: UITableViewCell {
     private let dateLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        l.textColor = .darkGray
+        l.textColor = .secondaryLabel
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()

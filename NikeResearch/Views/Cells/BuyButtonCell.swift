@@ -11,7 +11,7 @@ final class BuyButtonCell: UITableViewCell {
         let b = UIButton(type: .system)
         let cfg = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular)
         b.setImage(UIImage(systemName: "minus.circle", withConfiguration: cfg), for: .normal)
-        b.tintColor = .black
+        b.tintColor = .label
         b.translatesAutoresizingMaskIntoConstraints = false
         b.addTarget(self, action: #selector(decrementTapped), for: .touchUpInside)
         return b
@@ -29,7 +29,7 @@ final class BuyButtonCell: UITableViewCell {
         let b = UIButton(type: .system)
         let cfg = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular)
         b.setImage(UIImage(systemName: "plus.circle", withConfiguration: cfg), for: .normal)
-        b.tintColor = .black
+        b.tintColor = .label
         b.translatesAutoresizingMaskIntoConstraints = false
         b.addTarget(self, action: #selector(incrementTapped), for: .touchUpInside)
         return b
@@ -46,8 +46,8 @@ final class BuyButtonCell: UITableViewCell {
 
     private lazy var buyButton: UIButton = {
         let b = UIButton(type: .system)
-        b.backgroundColor = .black
-        b.setTitleColor(.white, for: .normal)
+        b.backgroundColor = .label
+        b.setTitleColor(.systemBackground, for: .normal)
         b.titleLabel?.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 17) ?? .boldSystemFont(ofSize: 17)
         b.layer.cornerRadius = 3
         b.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +57,7 @@ final class BuyButtonCell: UITableViewCell {
 
     private lazy var loadingIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
-        indicator.color = .white
+        indicator.color = .systemBackground
         indicator.hidesWhenStopped = true
         indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator

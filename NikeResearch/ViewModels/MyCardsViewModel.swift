@@ -17,6 +17,13 @@ final class MyCardsViewModel {
     var count: Int { cards.count }
 
     func loadCards(completion: @escaping (Error?) -> Void) {
+        // Sin sesión no se llama a la API: esta pantalla vive detrás de una ruta
+        // protegida y la petición solo devolvería un 401.
+        guard AuthService.shared.isAuthenticated else {
+            state = .signedOut
+            completion(nil)
+            return
+        }
         state = .loading
         PaymentMethodsService.shared.fetchAll { [weak self] error in
             guard let self else { return }
