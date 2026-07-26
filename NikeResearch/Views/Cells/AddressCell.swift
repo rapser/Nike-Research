@@ -13,7 +13,7 @@ final class AddressCell: UITableViewCell {
     private let detailLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        l.textColor = .darkGray
+        l.textColor = .secondaryLabel
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -21,7 +21,7 @@ final class AddressCell: UITableViewCell {
     private let iconView: UIImageView = {
         let cfg = UIImage.SymbolConfiguration(pointSize: 20, weight: .light)
         let iv = UIImageView(image: UIImage(systemName: "mappin.circle", withConfiguration: cfg))
-        iv.tintColor = .black
+        iv.tintColor = .label
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()

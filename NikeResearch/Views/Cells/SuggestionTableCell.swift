@@ -18,7 +18,7 @@ final class SuggestionTableCell: UITableViewCell {
         layout.minimumInteritemSpacing = 2.5
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.backgroundColor = .white
+        cv.backgroundColor = .systemBackground
         cv.isScrollEnabled = false
         cv.register(SuggestionCollectionCell.self, forCellWithReuseIdentifier: SuggestionCollectionCell.reuseID)
         return cv

@@ -39,7 +39,7 @@ final class LabelValueRow: UIView {
     private let titleLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        l.textColor = .darkGray
+        l.textColor = .secondaryLabel
         return l
     }()
     private let valueLabel: UILabel = {

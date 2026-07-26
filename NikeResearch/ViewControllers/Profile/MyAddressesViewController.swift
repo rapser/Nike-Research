@@ -22,7 +22,7 @@ final class MyAddressesViewController: UIViewController {
 
         let cfg = UIImage.SymbolConfiguration(pointSize: 48, weight: .ultraLight)
         let icon = UIImageView(image: UIImage(systemName: "mappin.and.ellipse", withConfiguration: cfg))
-        icon.tintColor = UIColor.black.withAlphaComponent(0.15)
+        icon.tintColor = .quaternaryLabel
         icon.translatesAutoresizingMaskIntoConstraints = false
 
         let label = UILabel()
@@ -34,7 +34,7 @@ final class MyAddressesViewController: UIViewController {
         let sub = UILabel()
         sub.text = String(localized: "Add a shipping address to speed up checkout.")
         sub.font = UIFont(name: "AvenirNext-Regular", size: 14) ?? .systemFont(ofSize: 14)
-        sub.textColor = .gray
+        sub.textColor = .secondaryLabel
         sub.textAlignment = .center
         sub.numberOfLines = 0
         sub.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +63,7 @@ final class MyAddressesViewController: UIViewController {
 
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(tableView)
         view.addSubview(emptyView)
         NSLayoutConstraint.activate([

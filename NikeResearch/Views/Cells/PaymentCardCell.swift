@@ -6,7 +6,7 @@ final class PaymentCardCell: UITableViewCell {
     private let iconView: UIImageView = {
         let cfg = UIImage.SymbolConfiguration(pointSize: 26, weight: .thin)
         let iv = UIImageView(image: UIImage(systemName: "creditcard", withConfiguration: cfg))
-        iv.tintColor = .black
+        iv.tintColor = .label
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -21,7 +21,7 @@ final class PaymentCardCell: UITableViewCell {
     private let subtitleLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        l.textColor = .darkGray
+        l.textColor = .secondaryLabel
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -29,7 +29,7 @@ final class PaymentCardCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        tintColor = .black
+        tintColor = .label
         contentView.addSubview(iconView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(subtitleLabel)

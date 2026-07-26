@@ -12,7 +12,7 @@ final class ShoeImageViewController: UIViewController {
     override func loadView() {
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .white
+        imageView.backgroundColor = .productCanvas
         view = imageView
     }
 }

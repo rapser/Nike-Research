@@ -7,7 +7,7 @@ final class OrderConfirmationViewController: UIViewController {
     private let checkmarkView: UIImageView = {
         let cfg = UIImage.SymbolConfiguration(pointSize: 64, weight: .thin)
         let iv = UIImageView(image: UIImage(systemName: "checkmark.circle", withConfiguration: cfg))
-        iv.tintColor = .black
+        iv.tintColor = .label
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -24,7 +24,7 @@ final class OrderConfirmationViewController: UIViewController {
     private lazy var orderLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 14) ?? .systemFont(ofSize: 14)
-        l.textColor = .darkGray
+        l.textColor = .secondaryLabel
         l.textAlignment = .center
         l.numberOfLines = 0
         l.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +38,7 @@ final class OrderConfirmationViewController: UIViewController {
     private lazy var paymentLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        l.textColor = .gray
+        l.textColor = .secondaryLabel
         l.textAlignment = .center
         l.translatesAutoresizingMaskIntoConstraints = false
         l.text = "\(String(localized: "Paid with")) \(order.paymentMethod.maskedDisplay)"
@@ -48,8 +48,8 @@ final class OrderConfirmationViewController: UIViewController {
     private lazy var continueButton: UIButton = {
         let b = UIButton(type: .system)
         b.setTitle(String(localized: "CONTINUE SHOPPING"), for: .normal)
-        b.setTitleColor(.white, for: .normal)
-        b.backgroundColor = .black
+        b.setTitleColor(.systemBackground, for: .normal)
+        b.backgroundColor = .label
         b.titleLabel?.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 17) ?? .boldSystemFont(ofSize: 17)
         b.layer.cornerRadius = 3
         b.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +65,7 @@ final class OrderConfirmationViewController: UIViewController {
 
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(checkmarkView)
         view.addSubview(titleLabel)
         view.addSubview(orderLabel)

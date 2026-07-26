@@ -40,10 +40,10 @@ final class OrderDetailViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView()
-        header.backgroundColor = .white
+        header.backgroundColor = .systemBackground
         let label = UILabel()
         label.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 13) ?? .boldSystemFont(ofSize: 13)
-        label.textColor = .gray
+        label.textColor = .secondaryLabel
         label.translatesAutoresizingMaskIntoConstraints = false
         switch Section(rawValue: section)! {
         case .info:    label.text = String(localized: "ORDER DETAILS")

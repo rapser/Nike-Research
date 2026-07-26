@@ -10,4 +10,8 @@ enum LoadState {
     case loaded
     case empty
     case failed
+    /// No hay sesión, así que no se pidió nada: estas pantallas viven detrás de rutas
+    /// protegidas y un invitado no tiene datos que mostrar. Es distinto de `empty`
+    /// ("tienes cuenta y está vacío") y de `failed` ("se intentó y falló").
+    case signedOut
 }

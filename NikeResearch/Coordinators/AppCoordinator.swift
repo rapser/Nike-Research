@@ -49,7 +49,7 @@ final class AppCoordinator: Coordinator {
         profileNav.tabBarItem = makeSymbolTabItem(symbol: "person", selectedSymbol: "person.fill")
 
         tabBarController.viewControllers = [feedNav, cartNav, favNav, nikePlusNav, profileNav]
-        tabBarController.tabBar.tintColor = .black
+        tabBarController.tabBar.tintColor = .label
         window.rootViewController = tabBarController
 
         // Every cart mutation (add/remove/update-quantity/clear/fetch, from any

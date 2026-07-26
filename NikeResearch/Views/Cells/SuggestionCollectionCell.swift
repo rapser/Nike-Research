@@ -22,7 +22,7 @@ final class SuggestionCollectionCell: UICollectionViewCell {
     private let priceLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 11) ?? .systemFont(ofSize: 11)
-        l.textColor = .darkGray
+        l.textColor = .secondaryLabel
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()

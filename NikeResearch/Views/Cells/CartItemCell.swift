@@ -26,7 +26,7 @@ final class CartItemCell: UITableViewCell {
     private let priceLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont(name: "AvenirNext-Regular", size: 13) ?? .systemFont(ofSize: 13)
-        l.textColor = .darkGray
+        l.textColor = .secondaryLabel
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -35,7 +35,7 @@ final class CartItemCell: UITableViewCell {
         let b = UIButton(type: .system)
         let cfg = UIImage.SymbolConfiguration(pointSize: 18, weight: .regular)
         b.setImage(UIImage(systemName: "minus.circle", withConfiguration: cfg), for: .normal)
-        b.tintColor = .black
+        b.tintColor = .label
         b.translatesAutoresizingMaskIntoConstraints = false
         b.addTarget(self, action: #selector(decrementTapped), for: .touchUpInside)
         return b
@@ -53,7 +53,7 @@ final class CartItemCell: UITableViewCell {
         let b = UIButton(type: .system)
         let cfg = UIImage.SymbolConfiguration(pointSize: 18, weight: .regular)
         b.setImage(UIImage(systemName: "plus.circle", withConfiguration: cfg), for: .normal)
-        b.tintColor = .black
+        b.tintColor = .label
         b.translatesAutoresizingMaskIntoConstraints = false
         b.addTarget(self, action: #selector(incrementTapped), for: .touchUpInside)
         return b
@@ -72,7 +72,7 @@ final class CartItemCell: UITableViewCell {
         let b = UIButton(type: .system)
         let cfg = UIImage.SymbolConfiguration(pointSize: 18, weight: .regular)
         b.setImage(UIImage(systemName: "trash", withConfiguration: cfg), for: .normal)
-        b.tintColor = .black
+        b.tintColor = .label
         b.translatesAutoresizingMaskIntoConstraints = false
         b.addTarget(self, action: #selector(removeTapped), for: .touchUpInside)
         return b

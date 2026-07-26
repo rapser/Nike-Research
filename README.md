@@ -9,6 +9,7 @@ App iOS de e-commerce estilo Nike (catálogo, carrito, checkout, favoritos, dire
 - [Alamofire](https://github.com/Alamofire/Alamofire) para networking, con completion handlers (sin async/await ni Combine, para no mezclar paradigmas de concurrencia en el mismo código)
 - `Synchronization.Mutex` (Swift 6) para estado concurrente real (`Sendable` sin `@unchecked`)
 - `Localizable.xcstrings` (String Catalog) — español e inglés, toda la UI localizada
+- Modo claro y oscuro en toda la app, con colores semánticos (`.label`, `.systemBackground`, …) y no literales
 - MapKit para búsqueda/selección de direcciones
 
 ## Arquitectura
@@ -21,7 +22,8 @@ ViewController ←→ ViewModel ←→ Service (singleton) ←→ APIClient ←�
 
 - **Coordinators** (`NikeResearch/Coordinators/`) manejan la navegación entre pantallas y son quienes conectan los closures de los ViewModels (ej. `onAddToCart`, `onCheckoutFailed`) con las acciones reales (llamadas a servicios, push/pop de ViewControllers, alerts).
 - **Services** (`NikeResearch/Services/`) son singletons con una propiedad cacheada (ej. `CartService.items`) leída sincrónicamente por los ViewModels, más un patrón **multicast observer** (`onXUpdate(_ observer:)`, no un solo closure) para notificar cambios a múltiples suscriptores sin que se pisen entre sí. Todos están respaldados por la API real — nada vive solo en memoria: `CartService`, `FavoritesService`, `AddressService`, `PaymentMethodsService`, `OrdersService`, `NikePlusService`, `ProductsService`. El servicio es la fuente de verdad: los ViewModels leen de su caché en vez de guardar una copia propia.
-- **Estado de carga**: los ViewModels que consultan la API exponen un `LoadState` (`loading` / `loaded` / `empty` / `failed`) y un `onStateChanged`. Hace falta el caso `loading` porque la caché de los servicios arranca vacía, y sin él no se puede distinguir "todavía no respondió el servidor" de "está vacío de verdad" — el empty state se mostraba durante toda la petición. La vista compartida es `Views/Components/LoadingOverlayView`.
+- **Estado de carga**: los ViewModels que consultan la API exponen un `LoadState` (`loading` / `loaded` / `empty` / `failed` / `signedOut`) y un `onStateChanged`. Hace falta el caso `loading` porque la caché de los servicios arranca vacía, y sin él no se puede distinguir "todavía no respondió el servidor" de "está vacío de verdad" — el empty state se mostraba durante toda la petición. `signedOut` distingue además "no has iniciado sesión" de "tu lista está vacía". Vistas compartidas: `Views/Components/LoadingOverlayView` y `SignedOutView`.
+- **Sesión y rutas protegidas**: un invitado solo consume `/products`, que es público. `APIClient` descarta antes de tocar la red cualquier petición a una ruta protegida cuando no hay sesión (`APIError.notAuthenticated`), y los ViewModels ni la intentan: ponen `state = .signedOut`. Son dos capas a propósito — los ViewModels dan el comportamiento correcto y el `APIClient` es la red de seguridad que cubre también las rutas que se añadan después.
 - **`AuthService`** es la excepción con capa de abstracción: usa un protocolo `AuthRepository`, implementado por `RemoteAuthRepository` (real, producción) o `DummyAuthRepository` (datos locales, sin red).
 - **`Services/Networking/`** — capa de red compartida por todos los servicios:
   - `APIClient` — dos `Session` de Alamofire (una autenticada con `AuthTokenInterceptor`, otra pública para login/register/products/health), métodos genéricos `request<T: Decodable>(...)` con completion.
@@ -55,6 +57,8 @@ El timeout de las tres `Session` de Alamofire está en 90s (`URLSessionConfigura
 - **Tarjetas**: número validado con algoritmo de Luhn, se muestra enmascarado (`**** 1234`) tras completarlo, selector de mes/año nativo (`UIPickerView`), el backend nunca recibe ni devuelve el número completo (solo `cardBrand` + `cardLast4`).
 - **Checkout**: `PaymentGateway` mockeado en el backend — tarjetas terminadas en `0002` simulan un rechazo.
 - **Historial y detalle de pedidos**, **actividad Nike+**, **perfil**.
+- **Apariencia**: pantalla en Mi cuenta para elegir entre Sistema, Claro y Oscuro. La elección se persiste en `UserDefaults` y se aplica con un cross-dissolve. "Sistema" usa `.unspecified`, que devuelve el control al ajuste del dispositivo en lugar de fijar un estilo, así que sigue el cambio automático al anochecer. Es un ajuste del dispositivo y no de la cuenta: sobrevive al logout y está disponible con sesión y sin ella.
+- **Modo invitado**: sin sesión, Carrito, Favoritos y Nike+ invitan a iniciar sesión en vez de mostrar listas vacías, y no se hace ninguna llamada a la API salvo el catálogo.
 - Toda la UI está localizada a español/inglés (`Localizable.xcstrings`), respeta el idioma del dispositivo.
 
 ## Estructura del proyecto
@@ -69,8 +73,8 @@ NikeResearch/
   ViewModels/         # un ViewModel por pantalla, + LoadState
   ViewControllers/    # Auth, Feed, ShoeDetail, Cart, Checkout, Favorites, NikePlus, Profile
   Views/Cells/        # celdas reutilizables de tabla/colección
-  Views/Components/   # vistas compartidas (LoadingOverlayView, ImageCarouselHeaderView)
-  Extensions/         # helpers (alertas, Luhn, fechas ISO8601, formateo de moneda)
+  Views/Components/   # vistas compartidas (LoadingOverlayView, SignedOutView, ImageCarouselHeaderView)
+  Extensions/         # helpers (alertas, Luhn, fechas ISO8601, formateo de moneda, colores de tema)
   Resources/          # Info.plist, Assets.xcassets
   Localizable.xcstrings
 ```

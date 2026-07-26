@@ -125,7 +125,9 @@ final class CartViewController: UITableViewController {
             return cell
 
         case .empty:
-            return tableView.dequeueReusableCell(withIdentifier: CartEmptyStateCell.reuseID, for: indexPath) as! CartEmptyStateCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CartEmptyStateCell.reuseID, for: indexPath) as! CartEmptyStateCell
+            cell.configure(title: viewModel.emptyTitle, message: viewModel.emptyMessage)
+            return cell
 
         case .summary:
             let cell = tableView.dequeueReusableCell(withIdentifier: CartSummaryCell.reuseID, for: indexPath) as! CartSummaryCell
