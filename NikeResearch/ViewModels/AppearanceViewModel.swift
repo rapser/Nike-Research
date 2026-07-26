@@ -4,7 +4,7 @@ final class AppearanceViewModel {
     private let modes = AppearanceMode.allCases
 
     var title: String { String(localized: "APPEARANCE") }
-    var footer: String { String(localized: "Automatic follows the appearance of your device.") }
+    var footer: String { String(localized: "System uses the appearance set on your device.") }
     var count: Int { modes.count }
 
     func title(at index: Int) -> String { modes[index].title }
