@@ -1,8 +1,8 @@
-import UIKit
+import Foundation
 
-/// Catálogo servido por `GET /products`. Las imágenes siguen resolviéndose del asset
-/// catalog del bundle (`UIImage(named:)`) — el backend devuelve los mismos nombres de
-/// asset con los que fue sembrado, no URLs remotas.
+/// Catálogo servido por `GET /products`. El backend devuelve URLs absolutas del CDN de
+/// nike.com.pe: las imágenes se descargan en runtime (ver `UIImageView.setRemoteImage`),
+/// ya no salen del asset catalog del bundle.
 ///
 /// Misma forma que `CartService`/`FavoritesService`: propiedad cacheada + observers
 /// multicast. Antes era el único servicio sin caché, lo que obligaba a `FeedViewModel`
@@ -39,11 +39,24 @@ final class ProductsService {
     /// No hay `clearAll()` a propósito: a diferencia del carrito o los favoritos, el
     /// catálogo no es dato de la cuenta, así que no hay nada que limpiar al cerrar sesión.
 
+    /// `URL(string:)` no basta: con un nombre de asset del catálogo viejo (`"s1"`)
+    /// devuelve una URL relativa sin esquema en vez de `nil`, así que el `compactMap`
+    /// la dejaba pasar y la celda se quedaba en blanco intentando descargarla. Solo se
+    /// aceptan URLs absolutas http(s).
+    private static func imageURL(from source: String) -> URL? {
+        guard let url = URL(string: source),
+              let scheme = url.scheme?.lowercased(),
+              scheme == "https" || scheme == "http",
+              url.host != nil
+        else { return nil }
+        return url
+    }
+
     static func toShoe(_ dto: ProductDTO) -> Shoe {
         Shoe(
             uid: dto.id,
             name: dto.name,
-            images: dto.images.compactMap { UIImage(named: $0) },
+            imageURLs: dto.images.compactMap(Self.imageURL(from:)),
             price: dto.price,
             description: dto.description,
             detail: dto.detail

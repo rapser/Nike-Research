@@ -1,15 +1,15 @@
 import UIKit
 
 final class ShoeImagesPageViewController: UIPageViewController {
-    private let images: [UIImage]
+    private let imageURLs: [URL]
     var onPageChanged: ((Int) -> Void)?
 
     private lazy var controllers: [ShoeImageViewController] = {
-        images.map { ShoeImageViewController(image: $0) }
+        imageURLs.map { ShoeImageViewController(imageURL: $0) }
     }()
 
-    init(images: [UIImage]) {
-        self.images = images
+    init(imageURLs: [URL]) {
+        self.imageURLs = imageURLs
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
     }
     required init?(coder: NSCoder) { fatalError() }

@@ -67,7 +67,7 @@ extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedShoeCell.reuseID, for: indexPath) as! FeedShoeCell
         let shoe = viewModel.shoe(at: indexPath.row)
-        cell.configure(image: shoe.images.first, name: shoe.name, price: shoe.formattedPrice)
+        cell.configure(imageURL: shoe.imageURLs.first, name: shoe.name, price: shoe.formattedPrice)
         return cell
     }
 }

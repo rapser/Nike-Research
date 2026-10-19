@@ -115,8 +115,8 @@ final class CartItemCell: UITableViewCell {
     }
     required init?(coder: NSCoder) { fatalError() }
 
-    func configure(image: UIImage?, name: String, price: String, quantity: Int) {
-        shoeImageView.image = image
+    func configure(imageURL: URL?, name: String, price: String, quantity: Int) {
+        shoeImageView.setRemoteImage(imageURL)
         nameLabel.text = name
         priceLabel.text = price
         quantityValueLabel.text = "\(quantity)"
@@ -136,7 +136,7 @@ final class CartItemCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        shoeImageView.image = nil
+        shoeImageView.setRemoteImage(nil)
         onDecrementTapped = nil
         onIncrementTapped = nil
         onRemoveTapped = nil
