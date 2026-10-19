@@ -1,17 +1,8 @@
 # Changelog
 
-## [Unreleased] — `feature/catalogo-30-productos`
+## [1.0.0] — build 4 — 2026-10-18
 
-### Fixed
-
-- **Carrusel con una sola imagen**: el catálogo pasó a 30 productos y ya no todos traen varias vistas (una gorra o una camiseta pueden tener una). El carrusel es cíclico, así que con una sola imagen devolvía el mismo controlador como anterior y siguiente, dejando a `UIPageViewController` con la misma instancia dos veces y el gesto roto. Ahora, con una sola vista, simplemente no hay páginas vecinas.
-- `UIPageControl.hidesForSinglePage`: un punto solo no informa nada.
-
-### Verified
-
-- `xcodebuild build -scheme NikeResearch-QA` pasa.
-
-## [Unreleased] — `feature/catalogo-peru`
+El catálogo pasa a ser el real de [nike.com.pe](https://www.nike.com.pe/), con precios en soles e imágenes descargadas del CDN de la tienda en vez de empaquetadas en el app.
 
 ### Added
 
@@ -20,19 +11,24 @@
 
 ### Changed
 
-- **Catálogo de nike.com.pe**: pasa de 4 productos dummy a los **15 productos reales** de la tienda peruana (el seed del backend ya no siembra los dummy). Nombres y precios son los de nike.com.pe.
+- **Catálogo de nike.com.pe**: los 4 productos dummy se reemplazan por el catálogo real de la tienda peruana (30 productos entre calzado, ropa de fútbol y entrenamiento, y accesorios). El catálogo lo sirve `GET /products`, así que crece sin tocar el app.
 - **Precios en soles**: `CurrencyFormatter` emite `S/ 1,234.50` en vez de `$1.234,50`. La locale del formatter queda fija en `es_PE` y ya no sigue la del dispositivo — la tienda es peruana y los precios de la API son soles, así que un iPhone en inglés o en español de España debe mostrar el mismo separador de miles (coma) y decimal (punto).
-- **Imágenes por descarga**: `Shoe.images: [UIImage]` (resueltas con `UIImage(named:)` del asset catalog) pasa a `Shoe.imageURLs: [URL]`, que vienen del CDN de nike.com.pe en `GET /products`. Afecta a Feed, Favoritos, Carrito, el carrusel del detalle y las sugerencias: todas las celdas reciben ahora `imageURL:` en vez de `image:`.
+- **Imágenes por descarga**: `Shoe.images: [UIImage]` (resueltas con `UIImage(named:)` del asset catalog) pasa a `Shoe.imageURLs: [URL]`, que vienen del CDN de nike.com.pe. Afecta a Feed, Favoritos, Carrito, el carrusel del detalle y las sugerencias: todas las celdas reciben ahora `imageURL:` en vez de `image:`.
+
+### Fixed
+
+- **Imágenes que no son URLs**: `ProductsService` descarta todo lo que no sea una URL absoluta http(s). `URL(string:)` no devuelve `nil` con un nombre de asset del catálogo viejo (`"s1"`): construye una URL relativa sin esquema, así que el `compactMap` la dejaba pasar y la celda se quedaba en blanco intentando descargarla.
+- **Carrusel con una sola imagen**: no todos los productos traen varias vistas (una gorra, una camiseta o unas canilleras pueden tener una). El carrusel es cíclico, así que con una sola imagen devolvía el mismo controlador como anterior y siguiente, dejando a `UIPageViewController` con la misma instancia dos veces y el gesto roto. Ahora, con una sola vista, no hay páginas vecinas, y el `UIPageControl` se oculta (`hidesForSinglePage`).
 
 ### Verified
 
-- `xcodebuild build -scheme NikeResearch-QA` pasa sin warnings nuevos.
+- `xcodebuild build -scheme NikeResearch-QA` y `-scheme NikeResearch` (Release) pasan sin warnings nuevos.
 
 ### Pendiente
 
-- Los 26 imagesets de producto del asset catalog (`Assets.xcassets/products/`, ~4 MB) quedaron sin uso salvo `s1`, que Nike+ usa de avatar. Borrarlos requiere un permiso que la sesión no tenía.
+- Los 26 imagesets de producto del asset catalog (`Assets.xcassets/products/`, ~4 MB) quedaron sin uso salvo `s1`, que Nike+ usa de avatar. Conviene borrarlos antes del próximo envío.
 
-## [Unreleased]
+## [1.0.0] — build 3
 
 Migración completa del app de datos dummy en memoria a la API real (`nike-store-api`), más mejoras de UX y localización completa.
 
