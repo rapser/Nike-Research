@@ -24,9 +24,10 @@ El catálogo pasa a ser el real de [nike.com.pe](https://www.nike.com.pe/), con 
 
 - `xcodebuild build -scheme NikeResearch-QA` y `-scheme NikeResearch` (Release) pasan sin warnings nuevos.
 
-### Pendiente
+### Removed
 
-- Los 26 imagesets de producto del asset catalog (`Assets.xcassets/products/`, ~4 MB) quedaron sin uso salvo `s1`, que Nike+ usa de avatar. Conviene borrarlos antes del próximo envío.
+- **Los 27 imagesets de producto del asset catalog** (`Assets.xcassets/products/`): con el catálogo servido por URL ya no se usaban. El catálogo de assets baja de 5.1 MB a 896 KB.
+- Con ellos se fue `s1`, la foto del catálogo que Nike+ usaba como avatar —el backend no expone foto de perfil—, así que `NikePlusHeaderCell` dibuja ahora su propio placeholder (`person.fill` centrado en el círculo) cuando no hay imagen.
 
 ## [1.0.0] — build 3
 

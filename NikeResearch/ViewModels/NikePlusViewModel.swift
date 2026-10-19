@@ -17,7 +17,10 @@ final class NikePlusViewModel {
     var title: String { String(localized: "NIKE+") }
     var memberName: String { AuthService.shared.currentUser?.name ?? String(localized: "Guest") }
     var memberSince: String { AuthService.shared.currentUser?.memberSince ?? "" }
-    var avatarImage: UIImage? { UIImage(named: "s1") }
+    /// El backend no expone foto de perfil, y la que se usaba antes era una foto del
+    /// catálogo empaquetada en el bundle (el asset `s1`), que dejó de existir cuando el
+    /// catálogo pasó a servirse por URL. La celda pone su propio placeholder.
+    var avatarImage: UIImage? { nil }
     var activityCount: Int { NikePlusService.shared.activities.count }
 
     /// Sin sesión no hay perfil ni actividad que mostrar, así que la pantalla se reduce
