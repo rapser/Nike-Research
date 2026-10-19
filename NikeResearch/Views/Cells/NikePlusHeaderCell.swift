@@ -71,8 +71,23 @@ final class NikePlusHeaderCell: UITableViewCell {
         avatarImageView.layer.borderColor = UIColor.label.cgColor
     }
 
+    /// Sin foto de perfil se dibuja una silueta centrada en el círculo. No sirve
+    /// `scaleAspectFill` para el símbolo: lo recortaría hasta dejarlo irreconocible.
+    private func setAvatar(_ image: UIImage?) {
+        if let image {
+            avatarImageView.image = image
+            avatarImageView.contentMode = .scaleAspectFill
+            avatarImageView.tintColor = nil
+        } else {
+            let cfg = UIImage.SymbolConfiguration(pointSize: 44, weight: .regular)
+            avatarImageView.image = UIImage(systemName: "person.fill", withConfiguration: cfg)
+            avatarImageView.contentMode = .center
+            avatarImageView.tintColor = .secondaryLabel
+        }
+    }
+
     func configure(image: UIImage?, name: String, memberSince: String) {
-        avatarImageView.image = image
+        setAvatar(image)
         nameLabel.text = name
         memberSinceLabel.text = memberSince
     }
