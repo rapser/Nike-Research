@@ -51,7 +51,7 @@ El timeout de las tres `Session` de Alamofire está en 90s (`URLSessionConfigura
 ## Funcionalidades
 
 - **Auth**: login/registro contra la API real, tokens en Keychain, refresh automático, logout limpia todo el caché de datos de cuenta (carrito, favoritos, direcciones, tarjetas, pedidos, Nike+).
-- **Catálogo (Feed) + Detalle de producto**: los 14 productos de [nike.com.pe](https://www.nike.com.pe/) desde `GET /products`, con precios en soles (`S/`) e imágenes descargadas del CDN de la tienda (6 vistas por producto en el carrusel del detalle), selector de cantidad, botón de compra con loader mientras se agrega al carrito. El carrusel de sugerencias del detalle sale del mismo catálogo, excluyendo el producto que se está viendo.
+- **Catálogo (Feed) + Detalle de producto**: los 15 productos de [nike.com.pe](https://www.nike.com.pe/) desde `GET /products`, con precios en soles (`S/`) e imágenes descargadas del CDN de la tienda (6 vistas por producto en el carrusel del detalle), selector de cantidad, botón de compra con loader mientras se agrega al carrito. El carrusel de sugerencias del detalle sale del mismo catálogo, excluyendo el producto que se está viendo.
 - **Carrito**: agregar/quitar/ajustar cantidad, persistido en el servidor, badge del tab con el conteo actualizado en cada mutación y al iniciar sesión.
 - **Favoritos**: persistidos en el servidor, sobreviven logout/reinstalación.
 - **Direcciones**: agregar, **editar** (`PATCH`), eliminar; búsqueda de dirección con MapKit.
