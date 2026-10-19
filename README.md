@@ -7,6 +7,7 @@ App iOS de e-commerce estilo Nike (catálogo, carrito, checkout, favoritos, dire
 - Swift 6, UIKit (sin SwiftUI), iOS 18+
 - MVVM + Coordinators — sin framework de DI, los ViewModels/Coordinators llaman a servicios singleton (`XService.shared`)
 - [Alamofire](https://github.com/Alamofire/Alamofire) para networking, con completion handlers (sin async/await ni Combine, para no mezclar paradigmas de concurrencia en el mismo código)
+- [Kingfisher](https://github.com/onevcat/Kingfisher) para descargar y cachear las imágenes del catálogo (el backend devuelve URLs del CDN de nike.com.pe, no assets del bundle)
 - `Synchronization.Mutex` (Swift 6) para estado concurrente real (`Sendable` sin `@unchecked`)
 - `Localizable.xcstrings` (String Catalog) — español e inglés, toda la UI localizada
 - Modo claro y oscuro en toda la app, con colores semánticos (`.label`, `.systemBackground`, …) y no literales
@@ -50,7 +51,7 @@ El timeout de las tres `Session` de Alamofire está en 90s (`URLSessionConfigura
 ## Funcionalidades
 
 - **Auth**: login/registro contra la API real, tokens en Keychain, refresh automático, logout limpia todo el caché de datos de cuenta (carrito, favoritos, direcciones, tarjetas, pedidos, Nike+).
-- **Catálogo (Feed) + Detalle de producto**: datos reales desde `GET /products`, selector de cantidad, botón de compra con loader mientras se agrega al carrito. El carrusel de sugerencias del detalle sale del mismo catálogo, excluyendo el producto que se está viendo.
+- **Catálogo (Feed) + Detalle de producto**: los 30 productos de [nike.com.pe](https://www.nike.com.pe/) desde `GET /products`, con precios en soles (`S/`) e imágenes descargadas del CDN de la tienda (hasta 6 vistas por producto en el carrusel del detalle), selector de cantidad, botón de compra con loader mientras se agrega al carrito. El carrusel de sugerencias del detalle sale del mismo catálogo, excluyendo el producto que se está viendo.
 - **Carrito**: agregar/quitar/ajustar cantidad, persistido en el servidor, badge del tab con el conteo actualizado en cada mutación y al iniciar sesión.
 - **Favoritos**: persistidos en el servidor, sobreviven logout/reinstalación.
 - **Direcciones**: agregar, **editar** (`PATCH`), eliminar; búsqueda de dirección con MapKit.

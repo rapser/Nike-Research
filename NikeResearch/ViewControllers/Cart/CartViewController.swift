@@ -98,7 +98,7 @@ final class CartViewController: UITableViewController {
         case .items:
             let cell = tableView.dequeueReusableCell(withIdentifier: CartItemCell.reuseID, for: indexPath) as! CartItemCell
             let item = viewModel.items[indexPath.row]
-            cell.configure(image: item.shoe.images.first, name: item.shoe.name,
+            cell.configure(imageURL: item.shoe.imageURLs.first, name: item.shoe.name,
                            price: item.shoe.formattedPrice, quantity: item.quantity)
             let idx = indexPath.row
             cell.onDecrementTapped = { [weak self] in

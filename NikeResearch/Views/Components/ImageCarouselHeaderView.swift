@@ -10,6 +10,8 @@ final class ImageCarouselHeaderView: UIView {
 
     let pageControl: UIPageControl = {
         let pc = UIPageControl()
+        // Un solo punto no informa nada, y ahora hay productos con una sola vista.
+        pc.hidesForSinglePage = true
         pc.currentPageIndicatorTintColor = .onProductCanvas
         pc.pageIndicatorTintColor = UIColor.onProductCanvas.withAlphaComponent(0.2)
         pc.translatesAutoresizingMaskIntoConstraints = false

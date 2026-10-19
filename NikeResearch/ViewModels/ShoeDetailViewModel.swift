@@ -25,7 +25,7 @@ final class ShoeDetailViewModel {
         return quantity > 1 ? "\(buyWord) \(quantity)  \(totalText)" : "\(buyWord)  \(totalText)"
     }
 
-    var images: [UIImage] { shoe.images }
+    var imageURLs: [URL] { shoe.imageURLs }
 
     /// Antes esto era `Shoe.fetchShoes()`: un catálogo hardcodeado de 2017 que nunca
     /// consultaba la API. Se cachea en vez de recalcularse porque los tres accesores de
@@ -61,7 +61,7 @@ final class ShoeDetailViewModel {
         suggestions = ProductsService.shared.products.filter { $0.uid != shoe.uid }
     }
 
-    func suggestionImage(at index: Int) -> UIImage? { suggestions[index].images.first }
+    func suggestionImageURL(at index: Int) -> URL? { suggestions[index].imageURLs.first }
     func suggestionName(at index: Int) -> String { suggestions[index].name }
     func suggestionPrice(at index: Int) -> String { suggestions[index].formattedPrice }
 

@@ -143,7 +143,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteShoeCell.reuseID, for: indexPath) as! FavoriteShoeCell
         let shoe = viewModel.shoe(at: indexPath.item)
-        cell.configure(image: shoe.images.first, name: shoe.name, price: shoe.formattedPrice)
+        cell.configure(imageURL: shoe.imageURLs.first, name: shoe.name, price: shoe.formattedPrice)
         return cell
     }
 }

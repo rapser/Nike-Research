@@ -57,15 +57,15 @@ final class FeedShoeCell: UITableViewCell {
         ])
     }
 
-    func configure(image: UIImage?, name: String, price: String) {
-        shoeImageView.image = image
+    func configure(imageURL: URL?, name: String, price: String) {
+        shoeImageView.setRemoteImage(imageURL)
         nameLabel.text = name
         priceLabel.text = price
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        shoeImageView.image = nil
+        shoeImageView.setRemoteImage(nil)
         nameLabel.text = nil
         priceLabel.text = nil
     }
