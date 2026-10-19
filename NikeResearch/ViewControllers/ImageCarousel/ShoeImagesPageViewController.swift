@@ -24,10 +24,16 @@ final class ShoeImagesPageViewController: UIPageViewController {
     }
 }
 
+/// El carrusel es cíclico, pero con una sola imagen no puede serlo: devolver el mismo
+/// controlador como anterior y siguiente deja a `UIPageViewController` mostrando dos
+/// veces la misma instancia y el gesto se rompe. No todos los productos del catálogo
+/// traen varias vistas —una gorra o una camiseta pueden tener una sola—, así que ahí
+/// simplemente no hay páginas vecinas.
 extension ShoeImagesPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let current = viewController as? ShoeImageViewController,
+        guard controllers.count > 1,
+              let current = viewController as? ShoeImageViewController,
               let idx = controllers.firstIndex(of: current) else { return nil }
         let prev = idx == 0 ? controllers.count - 1 : idx - 1
         return controllers[prev]
@@ -35,7 +41,8 @@ extension ShoeImagesPageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let current = viewController as? ShoeImageViewController,
+        guard controllers.count > 1,
+              let current = viewController as? ShoeImageViewController,
               let idx = controllers.firstIndex(of: current) else { return nil }
         let next = (idx + 1) % controllers.count
         return controllers[next]

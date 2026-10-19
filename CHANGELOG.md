@@ -1,5 +1,16 @@
 # Changelog
 
+## [Unreleased] — `feature/catalogo-30-productos`
+
+### Fixed
+
+- **Carrusel con una sola imagen**: el catálogo pasó a 30 productos y ya no todos traen varias vistas (una gorra o una camiseta pueden tener una). El carrusel es cíclico, así que con una sola imagen devolvía el mismo controlador como anterior y siguiente, dejando a `UIPageViewController` con la misma instancia dos veces y el gesto roto. Ahora, con una sola vista, simplemente no hay páginas vecinas.
+- `UIPageControl.hidesForSinglePage`: un punto solo no informa nada.
+
+### Verified
+
+- `xcodebuild build -scheme NikeResearch-QA` pasa.
+
 ## [Unreleased] — `feature/catalogo-peru`
 
 ### Added
