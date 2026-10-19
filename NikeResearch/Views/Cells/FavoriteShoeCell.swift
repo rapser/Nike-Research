@@ -49,14 +49,14 @@ final class FavoriteShoeCell: UICollectionViewCell {
     }
     required init?(coder: NSCoder) { fatalError() }
 
-    func configure(image: UIImage?, name: String, price: String) {
-        imageView.image = image
+    func configure(imageURL: URL?, name: String, price: String) {
+        imageView.setRemoteImage(imageURL)
         nameLabel.text = name
         priceLabel.text = price
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.image = nil
+        imageView.setRemoteImage(nil)
     }
 }

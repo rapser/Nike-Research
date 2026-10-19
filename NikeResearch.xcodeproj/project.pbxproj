@@ -36,6 +36,7 @@
 		433EAA67DE0F4D1C8C8B6D1F /* ActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D6517D3DD42A88227B34E /* ActionButtonCell.swift */; };
 		439C14ED85284F78B70E3BAC /* OrderHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CCA9289C20430AAF73C913 /* OrderHistoryCell.swift */; };
 		46C871B0300296FA00005621 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 46C871AF300296FA00005621 /* Alamofire */; };
+		46C871B2300296FA00005623 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 46C871B1300296FA00005622 /* Kingfisher */; };
 		4916ED97BA10478B82C4E4D0 /* SelectCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700012F30224CB483B6BEDB /* SelectCardViewModel.swift */; };
 		4D09D0890B2C418DAFC9B09E /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AD82A29B24BB792C84401 /* FavoritesService.swift */; };
 		4DE39ACB2A03F74DF1290FFB /* OrderDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4B306243507122D91CDE62 /* OrderDTOs.swift */; };
@@ -71,6 +72,7 @@
 		9CE6A8E6A0564B63957A6D8F /* BillingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734CDDCEAE0440648F814870 /* BillingTitleCell.swift */; };
 		9DBF545E2DC240D7931DCB30 /* SelectCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C567B4844242D78F0996B1 /* SelectCardViewController.swift */; };
 		A1C0FF0000000000000001BB /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000001AA /* CurrencyFormatter.swift */; };
+		A1C0FF00000000000000F1BB /* UIImageView+RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF00000000000000F1AA /* UIImageView+RemoteImage.swift */; };
 		A1C0FF0000000000000002BB /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000002AA /* LoadState.swift */; };
 		A1C0FF0000000000000003BB /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000003AA /* LoadingOverlayView.swift */; };
 		A1C0FF0000000000000004BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FF0000000000000004AA /* SceneDelegate.swift */; };
@@ -206,6 +208,7 @@
 		975AEDC5A77EA3FEEAC22A1D /* ExpiryDateCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExpiryDateCell.swift; sourceTree = "<group>"; };
 		9ECD825D20604A31ADAA2E8D /* CartTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTotalCell.swift; sourceTree = "<group>"; };
 		A1C0FF0000000000000001AA /* CurrencyFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
+		A1C0FF00000000000000F1AA /* UIImageView+RemoteImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImageView+RemoteImage.swift"; sourceTree = "<group>"; };
 		A1C0FF0000000000000002AA /* LoadState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
 		A1C0FF0000000000000003AA /* LoadingOverlayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		A1C0FF0000000000000004AA /* SceneDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46C871B0300296FA00005621 /* Alamofire in Frameworks */,
+				46C871B2300296FA00005623 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +577,7 @@
 			children = (
 				A1C0FF0000000000000005AA /* UIColor+Theme.swift */,
 				A1C0FF0000000000000001AA /* CurrencyFormatter.swift */,
+				A1C0FF00000000000000F1AA /* UIImageView+RemoteImage.swift */,
 				37EB3E816C5834DD0B4C608A /* UIViewController+Alert.swift */,
 				659686D6FBA97891B74978FE /* Date+ISO8601.swift */,
 				E5AC365AE1B9C55B03014491 /* String+Luhn.swift */,
@@ -643,6 +648,7 @@
 			mainGroup = 0D84DB5413C24FD99C56EF7C;
 			packageReferences = (
 				46C871AE300296FA00005621 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				46C871B3300296FA00005624 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 0F0EFE1861AF4C45BC4DAC3B /* Products */;
 			projectDirPath = "";
@@ -680,6 +686,7 @@
 				A1C0FF0000000000000003BB /* LoadingOverlayView.swift in Sources */,
 				A1C0FF0000000000000002BB /* LoadState.swift in Sources */,
 				A1C0FF0000000000000001BB /* CurrencyFormatter.swift in Sources */,
+				A1C0FF00000000000000F1BB /* UIImageView+RemoteImage.swift in Sources */,
 				6345AF89B184463EB65D6071 /* AppDelegate.swift in Sources */,
 				BD03A8B614A54E37B7B2E5ED /* AppCoordinator.swift in Sources */,
 				A7A320EAAF0B4CD9B447AE39 /* CartCoordinator.swift in Sources */,
@@ -1007,6 +1014,14 @@
 				minimumVersion = 5.12.0;
 			};
 		};
+		46C871B3300296FA00005624 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.14.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1014,6 +1029,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 46C871AE300296FA00005621 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		46C871B1300296FA00005622 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46C871B3300296FA00005624 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

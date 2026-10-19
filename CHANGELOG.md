@@ -1,5 +1,26 @@
 # Changelog
 
+## [Unreleased] — `feature/catalogo-peru`
+
+### Added
+
+- **[Kingfisher](https://github.com/onevcat/Kingfisher) 8.14** vía SPM (segunda dependencia, junto a Alamofire) para descargar y cachear las imágenes del catálogo. Se eligió sobre `AlamofireImage` porque mantiene su propia caché en memoria y disco, cancela la descarga al reciclar la celda y es la opción con soporte más activo; Alamofire se queda solo con el rol de capa HTTP de la API.
+- **`UIImageView.setRemoteImage(_:)`** (`Extensions/UIImageView+RemoteImage.swift`): único punto de carga remota, con fade de entrada y cancelación en `prepareForReuse`. Sin esa cancelación, al scrollear rápido la imagen de una celda anterior puede llegar tarde y pintarse sobre la celda ya reutilizada.
+
+### Changed
+
+- **Catálogo de nike.com.pe**: pasa de 4 productos dummy a los **14 productos reales** de la tienda peruana (el seed del backend ya no siembra los dummy). Nombres y precios son los de nike.com.pe.
+- **Precios en soles**: `CurrencyFormatter` emite `S/ 1,234.50` en vez de `$1.234,50`. La locale del formatter queda fija en `es_PE` y ya no sigue la del dispositivo — la tienda es peruana y los precios de la API son soles, así que un iPhone en inglés o en español de España debe mostrar el mismo separador de miles (coma) y decimal (punto).
+- **Imágenes por descarga**: `Shoe.images: [UIImage]` (resueltas con `UIImage(named:)` del asset catalog) pasa a `Shoe.imageURLs: [URL]`, que vienen del CDN de nike.com.pe en `GET /products`. Afecta a Feed, Favoritos, Carrito, el carrusel del detalle y las sugerencias: todas las celdas reciben ahora `imageURL:` en vez de `image:`.
+
+### Verified
+
+- `xcodebuild build -scheme NikeResearch-QA` pasa sin warnings nuevos.
+
+### Pendiente
+
+- Los 26 imagesets de producto del asset catalog (`Assets.xcassets/products/`, ~4 MB) quedaron sin uso salvo `s1`, que Nike+ usa de avatar. Borrarlos requiere un permiso que la sesión no tenía.
+
 ## [Unreleased]
 
 Migración completa del app de datos dummy en memoria a la API real (`nike-store-api`), más mejoras de UX y localización completa.

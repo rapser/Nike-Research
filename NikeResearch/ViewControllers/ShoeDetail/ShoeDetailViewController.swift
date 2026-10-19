@@ -45,7 +45,7 @@ final class ShoeDetailViewController: UIViewController {
         setupFavoriteButton()
         tableView.dataSource = self
         tableView.delegate = self
-        if !viewModel.images.isEmpty {
+        if !viewModel.imageURLs.isEmpty {
             setupHeader()
         }
         viewModel.onQuantityChanged = { [weak self] in
@@ -72,7 +72,7 @@ final class ShoeDetailViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if !viewModel.images.isEmpty {
+        if !viewModel.imageURLs.isEmpty {
             sizeHeaderToFit()
         }
     }
@@ -107,9 +107,9 @@ final class ShoeDetailViewController: UIViewController {
     }
 
     private func setupHeader() {
-        headerView.pageControl.numberOfPages = viewModel.images.count
+        headerView.pageControl.numberOfPages = viewModel.imageURLs.count
 
-        let pageVC = ShoeImagesPageViewController(images: viewModel.images)
+        let pageVC = ShoeImagesPageViewController(imageURLs: viewModel.imageURLs)
         pageVC.onPageChanged = { [weak self] index in
             self?.headerView.pageControl.currentPage = index
         }
@@ -207,7 +207,7 @@ extension ShoeDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestionCollectionCell.reuseID, for: indexPath) as! SuggestionCollectionCell
         cell.configure(
-            image: viewModel.suggestionImage(at: indexPath.item),
+            imageURL: viewModel.suggestionImageURL(at: indexPath.item),
             name: viewModel.suggestionName(at: indexPath.item),
             price: viewModel.suggestionPrice(at: indexPath.item)
         )

@@ -1,8 +1,8 @@
-import UIKit
+import Foundation
 
-/// Catálogo servido por `GET /products`. Las imágenes siguen resolviéndose del asset
-/// catalog del bundle (`UIImage(named:)`) — el backend devuelve los mismos nombres de
-/// asset con los que fue sembrado, no URLs remotas.
+/// Catálogo servido por `GET /products`. El backend devuelve URLs absolutas del CDN de
+/// nike.com.pe: las imágenes se descargan en runtime (ver `UIImageView.setRemoteImage`),
+/// ya no salen del asset catalog del bundle.
 ///
 /// Misma forma que `CartService`/`FavoritesService`: propiedad cacheada + observers
 /// multicast. Antes era el único servicio sin caché, lo que obligaba a `FeedViewModel`
@@ -43,7 +43,7 @@ final class ProductsService {
         Shoe(
             uid: dto.id,
             name: dto.name,
-            images: dto.images.compactMap { UIImage(named: $0) },
+            imageURLs: dto.images.compactMap(URL.init(string:)),
             price: dto.price,
             description: dto.description,
             detail: dto.detail
