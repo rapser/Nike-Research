@@ -1,5 +1,23 @@
 # Changelog
 
+## [Unreleased] — `chore/migracion-render`
+
+El backend (`nike-store-api`) se migró a otra cuenta de Render. La base de datos sigue en Neon, sin cambios.
+
+### Changed
+
+- **URL de producción**: `Production.xcconfig` pasa de `https://nike-store-api.onrender.com` a `https://nike-store-api-q86v.onrender.com`. Render asigna una URL nueva al recrear el servicio en otra cuenta, y la del app va fija en el binario, así que los builds anteriores siguen apuntando al servicio viejo hasta que este se borre. La tabla de ambientes del README se actualizó.
+- README: se documenta que la URL cambia si el servicio se recrea, y que el backend tiene ahora un keep-alive interno que reduce el cold start del plan Free (el timeout de 90 s se mantiene, porque no es una garantía de Render).
+
+### Verified
+
+- `xcodebuild build -scheme NikeResearch -configuration Release` pasa, y el `Info.plist` resultante trae `APIBaseURL = https://nike-store-api-q86v.onrender.com`.
+- `GET /health` y `GET /products` responden `200` en el servicio nuevo.
+
+### Nota
+
+- Las entradas siguientes citan la URL anterior (`nike-store-api.onrender.com`) porque eran la vigente en esa versión; no se reescribieron.
+
 ## [1.0.0] — build 4 — 2026-10-18
 
 El catálogo pasa a ser el real de [nike.com.pe](https://www.nike.com.pe/), con precios en soles e imágenes descargadas del CDN de la tienda en vez de empaquetadas en el app.
