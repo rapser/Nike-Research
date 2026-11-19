@@ -42,11 +42,13 @@ Dos schemes de Xcode, mismo target y bundle ID, cada uno con su Build Configurat
 | Scheme | Build Configuration | `API_BASE_URL` |
 |---|---|---|
 | `NikeResearch-QA` | Debug | `http://localhost:3000` |
-| `NikeResearch` | Release | `https://nike-store-api.onrender.com` |
+| `NikeResearch` | Release | `https://nike-store-api-q86v.onrender.com` |
 
 La URL se inyecta vía `.xcconfig` (`NikeResearch/Configuration/QA.xcconfig` / `Production.xcconfig`), sustituida como `$(API_BASE_URL)` en una clave `APIBaseURL` del `Info.plist`, y leída en runtime por `AppConfig.swift` (`Bundle.main.object(forInfoDictionaryKey:)`). Cambiar de ambiente es elegir el scheme desde el dropdown de Xcode — no requiere tocar código.
 
-El timeout de las tres `Session` de Alamofire está en 90s (`URLSessionConfiguration.nikeAPI` en `AppConfig.swift`), más alto que el default de 60s, porque el plan Free de Render apaga la instancia tras ~15 min de inactividad y el cold start puede tardar ese tiempo en responder.
+El timeout de las tres `Session` de Alamofire está en 90s (`URLSessionConfiguration.nikeAPI` en `AppConfig.swift`), más alto que el default de 60s, porque el plan Free de Render apaga la instancia tras ~15 min de inactividad y el cold start puede tardar ese tiempo en responder. El backend se hace ping a sí mismo cada 10 minutos para evitar ese cold start (ver el README de `nike-store-api`), pero no está garantizado por Render, así que el timeout se mantiene.
+
+La URL de producción es la pública del servicio en Render y cambia si el servicio se recrea (por ejemplo, al migrarlo a otra cuenta). En ese caso hay que actualizar `Production.xcconfig` y publicar un build nuevo, porque la URL va fija en el binario.
 
 ## Funcionalidades
 
