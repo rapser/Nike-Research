@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased] — `chore/migracion-render`
+## [1.0.0] — build 5 — 2026-11-19
 
-El backend (`nike-store-api`) se migró a otra cuenta de Render. La base de datos sigue en Neon, sin cambios.
+El backend (`nike-store-api`) se migró a otra cuenta de Render. La base de datos sigue en Neon, sin cambios. El app no tiene cambios de código: solo apunta a la URL nueva.
 
 ### Changed
 
@@ -13,6 +13,13 @@ El backend (`nike-store-api`) se migró a otra cuenta de Render. La base de dato
 
 - `xcodebuild build -scheme NikeResearch -configuration Release` pasa, y el `Info.plist` resultante trae `APIBaseURL = https://nike-store-api-q86v.onrender.com`.
 - `GET /health` y `GET /products` responden `200` en el servicio nuevo.
+
+### Known issues
+
+Del lado del backend, sin efecto con un solo usuario (detalle y plan en la sección «Deuda técnica conocida» del README de `nike-store-api`):
+
+- El rate limiter del backend (100 peticiones por minuto) no cuenta por la IP real de cada usuario detrás de Cloudflare + Render, así que con muchos usuarios simultáneos podrían aparecer errores `429`. Hay que cerrarlo antes de publicar el app.
+- El catálogo en vivo tiene 15 productos, no 30: el seed de `catalogo-30-productos` no se ha corrido contra Neon.
 
 ### Nota
 

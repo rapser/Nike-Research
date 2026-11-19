@@ -50,6 +50,13 @@ El timeout de las tres `Session` de Alamofire está en 90s (`URLSessionConfigura
 
 La URL de producción es la pública del servicio en Render y cambia si el servicio se recrea (por ejemplo, al migrarlo a otra cuenta). En ese caso hay que actualizar `Production.xcconfig` y publicar un build nuevo, porque la URL va fija en el binario.
 
+## Limitaciones conocidas
+
+Son del backend y no afectan con un solo usuario; el detalle y el plan para cerrarlas están en la sección «Deuda técnica conocida» del README de [`nike-store-api`](https://github.com/rapser/nike-store-api). Conviene resolverlas **antes de publicar el app**:
+
+- **Rate limit compartido:** el limitador del backend (100 peticiones por minuto) no distingue bien a los usuarios detrás de Cloudflare + Render, así que con muchos usuarios a la vez podrían verse errores `429`.
+- **Catálogo en vivo de 15 productos:** el catálogo de 30 descrito abajo requiere correr el seed contra Neon, y todavía no se ha hecho.
+
 ## Funcionalidades
 
 - **Auth**: login/registro contra la API real, tokens en Keychain, refresh automático, logout limpia todo el caché de datos de cuenta (carrito, favoritos, direcciones, tarjetas, pedidos, Nike+).
